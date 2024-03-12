@@ -6,7 +6,7 @@
         <div class="container mx-auto py-10 bg-white p-5 shadow-lg rounded-lg">
             <div class="flex flex-col gap-5">
                 <div>
-                    <h3 class="text-2xl text-lime-300 font-bold text-gray-900">Place Order To Get Deliver From:</h3>
+                    <h3 class="text-2xl  font-bold text-sky-600">Place Order To Get Deliver From:</h3>
                 </div>
                 <div>
                     <h1 class="text-4xl font-medium  text-red-500">Subway</h1>

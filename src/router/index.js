@@ -1,11 +1,18 @@
 import { createRouter , createWebHistory } from "vue-router";
+import HeroSection from '../pages/HeroSection.vue';
+import TimeSection from "../pages/TimeSection.vue";
  
 const routes = [
-        // {
-        //     path: '/',
-        //     name: 'home',
-        //     component: Home,
-        // }
+        {
+            path: '/',
+            name: 'heroSection',
+            component: HeroSection,
+        },
+        {
+          path: '/time-section/{id}',
+          name: 'timeSection',
+          component: TimeSection,
+      },
 ];
 const router = createRouter({
     history: createWebHistory(),
