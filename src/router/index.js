@@ -9,7 +9,7 @@ const routes = [
             component: HeroSection,
         },
         {
-          path: '/time-section/{id}',
+          path: '/time-section',
           name: 'timeSection',
           component: TimeSection,
       },

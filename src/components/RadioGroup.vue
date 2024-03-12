@@ -27,9 +27,9 @@
               v-slot="{ active, checked }"
             >
               <router-link
-                :to="{ name: 'timeSection', params: { plan: plan.name } }"
+                :to="{ name: 'timeSection' }"
                 class="relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none"
-                :class="[ active ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300' : '', checked ? 'bg-sky-900/75 text-white' : 'bg-white' ]"
+                :class="[ active ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300' : '', checked ? 'bg-gray-900 text-white' : 'bg-white' ]"
               >
                 <div class="flex w-full items-center justify-between">
                   <div class="flex items-center">
