@@ -1,16 +1,21 @@
 <script setup>
-    import { ref } from 'vue'
+    import { ref, watch } from 'vue'
     import { RadioGroup, RadioGroupLabel, RadioGroupDescription, RadioGroupOption, } from '@headlessui/vue'
 
-    const plans = [
-        { name: 'Bank', },
-        { name: 'Cintas', },
-        { name: 'Medical Office', },
-        { name: 'American Heritage', },
-    ]
+    const props = defineProps({
+        items:{
+            type:Array,
+            default:[]
+        }
+    });
+    
+    const emits = defineEmits(['change']);
 
-    const selected = ref(plans[0])
-    console.log("selected",selected.value.name);
+    const selected = ref(props.items[0])
+
+    watch(selected,(value) => {
+        emits('change',value)
+    });
 </script>
 
 <template>
@@ -21,15 +26,14 @@
           <div class="space-y-2">
             <RadioGroupOption
               as="template"
-              v-for="plan in plans"
-              :key="plan.name"
-              :value="plan"
+              v-for="item in items"
+              :key="item.name"
+              :value="item"
               v-slot="{ active, checked }"
             >
-              <router-link
-                :to="{ name: 'timeSection' }"
+              <div
                 class="relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none"
-                :class="[ active ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300' : '', checked ? 'bg-gray-900 text-white' : 'bg-white' ]"
+                :class="[ active ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300' : '', checked ? 'bg-primary text-white' : 'bg-white' ]"
               >
                 <div class="flex w-full items-center justify-between">
                   <div class="flex items-center">
@@ -39,7 +43,7 @@
                         :class="checked ? 'text-white' : 'text-gray-900'"
                         class="font-medium"
                       >
-                        {{ plan.name }}
+                        {{ item.name }}
                       </RadioGroupLabel>
                     </div>
                   </div>
@@ -62,7 +66,7 @@
                     </svg>
                   </div>
                 </div>
-              </router-link>
+              </div>
             </RadioGroupOption>
           </div>
         </RadioGroup>
