@@ -1,9 +1,10 @@
 <script setup>
-    import { useRoute } from 'vue-router';
+    import { useRoute,useRouter } from 'vue-router';
     import { computed } from 'vue';
     import Button from '../components/Button.vue';
 
     const { params } = useRoute();
+    const router = useRouter()
     const currentPlan = params.plan;
 
     const startTime =  computed(() => {
@@ -27,7 +28,7 @@
 </script>
 <template>
     <section>
-        <Button class="mt-5 mx-3 text-white font-bold">Back</Button>
+            <Button class="mt-5 mx-3 text-white font-bold" @click="router.back()">Back</Button>
         <div class="flex items-center h-screen p-5">
             <div class="container mx-auto py-10 bg-[#1f1d2b] p-5 shadow-sm shadow-[#EA7C69] rounded-xl  border border-[#EA7C69] ring-2 ring-[#EA7C69] ring-opacity-30">
                 <div class="flex flex-col gap-5 items-center sm:items-start">
