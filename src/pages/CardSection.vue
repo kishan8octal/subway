@@ -36,7 +36,14 @@
         <Button class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
         <div class="container mx-auto py-10 px-5">
             <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
-                <div class="bg-[#1F1D2B] shadow-lg rounded-lg cursor-pointer" v-for="(card,index) in cards" :key="index" @click="handleNavigate(card.id)">
+                <div
+                        v-motion
+                        :initial="{ opacity: 0, y: 100 }"
+                        :enter="{ opacity: 1, y: 0, scale: 1 }"
+                        :variants="{ custom: { scale: 2 } }"
+                        :hovered="{ scale: 1.1 }"
+                        :delay="200"
+                        class="bg-gray-900 shadow-lg rounded-lg cursor-pointer" v-for="(card,index) in cards" :key="index" @click="handleNavigate(card.id)">
                         <div class="rounded-lg">
                             <img src="../assets/classicsendwich.png" alt="Image 1" class="rounded-sm h-100 w-100 object-cover">
                         </div>

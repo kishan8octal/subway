@@ -125,20 +125,28 @@ const SandwichCards = [
     <section>
       <Button class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
       <div class="container mx-auto py-10 px-5">
-        <div v-if="card === '1' || card === '2'" class="flex flex-wrap gap-5">
-          <div class="main_card_section bg-[#1F1D2B] shadow-lg rounded-[1rem] flex flex-col items-center justify-center" v-for="(card, index) in SandwichCards" :key="index">
-            <div class="card-image-container">
+        <div v-if="card === '1' || card === '2'"
+             class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2">
+          <div
+                  v-motion
+                  :initial="{ opacity: 0, y: 100 }"
+                  :enter="{ opacity: 1, y: 0, scale: 1 }"
+                  :variants="{ custom: { scale: 2 } }"
+                  :hovered="{ scale: 1.1 }"
+                  :delay="200"
+                  class="bg-gray-900 shadow-lg rounded-[1rem] flex flex-col items-center justify-center relative" v-for="(card, index) in SandwichCards" :key="index">
+            <div class="absolute top-[-40px]">
               <img :src="card.image" alt="Image 1" class="rounded-sm h-[100px] w-[120px] object-cover" />
             </div>
-            <h3 class="text-white text-center mt-3 font-[cursive]">{{ card.name }}</h3>
+            <h3 class="text-white text-center text-2xl font-[cursive] mb-4 mt-28">{{ card.name }}</h3>
           </div>
         </div>
-        <div v-if="card === '3'" class="flex flex-wrap gap-5">
-            <div class="main_card_section bg-[#1F1D2B] shadow-lg rounded-[1rem] flex flex-col items-center justify-center" v-for="(card, index) in saladCard" :key="index">
-              <div class="card-image-container">
+        <div v-if="card === '3'" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2 relative">
+            <div class="bg-gray-900 shadow-lg rounded-[1rem] flex flex-col items-center justify-center" v-for="(card, index) in saladCard" :key="index">
+              <div class="absolute top-[-40px]">
                 <img :src="card.image" alt="Image 1" class="rounded-sm h-[100px] w-[120px] object-cover" />
               </div>
-              <h3 class="text-white text-center mt-3 font-[cursive]">{{ card.name }}</h3>
+              <h3 class="text-white text-center text-2xl font-[cursive] mb-4 mt-28">{{ card.name }}</h3>
             </div>
           </div>
       </div>
@@ -146,25 +154,4 @@ const SandwichCards = [
   </template>
   
   <style scoped>
-  .main_card_section {
-    padding: 20px;
-    margin-bottom: 15px;
-    width: calc(50% - 20px);
-  }
-  
-  @media (min-width: 640px) {
-    .main_card_section {
-      width: calc(33.33% - 20px); 
-    }
-  }
-  
-  @media (min-width: 1024px) {
-    .main_card_section {
-      width: calc(25% - 20px); 
-    }
-  }
-  
-  .card-image-container {
-    margin-top: -50px; 
-  }
   </style>
