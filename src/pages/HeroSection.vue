@@ -23,7 +23,7 @@
 <template>
     <!--    <div class="overlay-img"></div>-->
     <section class="flex items-center h-screen p-5">
-        <div class="container mx-auto py-10 bg-[#1f1d2b] p-5 shadow-sm shadow-[#EA7C69] rounded-xl  border border-primary ring-2 ring-primary ring-opacity-30">
+        <div class="container mx-auto py-10 bg-gray-900 p-5 shadow-sm shadow-[#EA7C69] rounded-xl  border border-primary ring-2 ring-primary ring-opacity-30">
             <div class="flex flex-col gap-10">
                 <div>
                     <h3 class="text-2xl  font-bold text-primary font-sans">Place Order To Get Deliver From:</h3>
