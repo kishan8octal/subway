@@ -2,7 +2,7 @@ import { createRouter, createWebHistory } from 'vue-router';
 import HeroSection from '../pages/HeroSection.vue';
 import TimeSection from '../pages/TimeSection.vue';
 import CardSection from '../pages/CardSection.vue';
-import CardDetails from "../pages/CardDetails.vue";
+import DetailsSection from '../pages/DetailsSection.vue';
 
 const routes = [
     {
@@ -19,10 +19,11 @@ const routes = [
         path: '/card-section',
         name: 'cardSection',
         component: CardSection,
-    },{
-        path: '/card-details',
+    }
+    ,{
+        path: '/card-details/:card',
         name: 'cardDetails',
-        component: CardDetails,
+        component: DetailsSection,
     },
 ];
 const router = createRouter({
