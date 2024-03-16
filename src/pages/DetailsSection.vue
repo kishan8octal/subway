@@ -120,6 +120,14 @@ const SandwichCards = [
     image: sandwichImage,
   },
 ];
+const showBreadDetails=(item)=>{
+  router.push({
+            name: 'breadSection',
+            params: {
+                card: item,
+            },
+        });
+}
 </script>
 <template>
     <section>
@@ -134,19 +142,20 @@ const SandwichCards = [
                   :variants="{ custom: { scale: 2 } }"
                   :hovered="{ scale: 1.1 }"
                   :delay="200"
-                  class="bg-gray-900 shadow-lg rounded-[1rem] flex flex-col items-center justify-center relative" v-for="(card, index) in SandwichCards" :key="index">
-            <div class="absolute top-[-40px]">
+                  @click="showBreadDetails(card.id)"
+                  class="bg-gray-900 shadow-lg rounded-[1rem] flex flex-col items-center justify-center relative px-4" v-for="(card, index) in SandwichCards" :key="index">
+            <div class="relative top-[-40px]">
               <img :src="card.image" alt="Image 1" class="rounded-sm h-[100px] w-[120px] object-cover" />
             </div>
-            <h3 class="text-white text-center text-2xl font-[cursive] mb-4 mt-28">{{ card.name }}</h3>
+            <h3 class="text-white text-center text-2xl font-[cursive] mb-3">{{ card.name }}</h3>
           </div>
         </div>
         <div v-if="card === '3'" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2 relative">
             <div class="bg-gray-900 shadow-lg rounded-[1rem] flex flex-col items-center justify-center" v-for="(card, index) in saladCard" :key="index">
-              <div class="absolute top-[-40px]">
+              <div class="relative top-[-40px]">
                 <img :src="card.image" alt="Image 1" class="rounded-sm h-[100px] w-[120px] object-cover" />
               </div>
-              <h3 class="text-white text-center text-2xl font-[cursive] mb-4 mt-28">{{ card.name }}</h3>
+              <h3 class="text-white text-center text-2xl font-[cursive] mb-3">{{ card.name }}</h3>
             </div>
           </div>
       </div>
