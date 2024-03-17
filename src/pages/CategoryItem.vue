@@ -42,6 +42,11 @@ const cheeseCard = [
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2"
         >
           <div
+                  v-motion
+                  :initial="{ opacity: 0, y: 100 }"
+                  :enter="{ opacity: 1, y: 0, scale: 1 }"
+                  :variants="{ custom: { scale: 2 } }"
+                  :hovered="{ scale: 1.1 }"
             class="cursor-pointer ring-2 ring-green-600 
                     ring-opacity-20 bg-white border border-green-600 shadow-lg rounded-[1rem] flex gap-8 items-center justify-center relative px-4 py-4 cursor-pointer"
             v-for="(card, index) in cheeseCard"
