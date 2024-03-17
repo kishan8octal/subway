@@ -1,6 +1,6 @@
 <script setup>
 import Button from "../components/Button.vue";
-import { useRoute, useRouter } from "vue-router";
+import {  useRouter } from "vue-router";
 
 const router = useRouter();
 const cheeseCard = [
@@ -39,7 +39,7 @@ const cheeseCard = [
           Select veggies
         </h1>
         <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-1 gap-12 px-10 sm:px-2"
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-12 px-10 sm:px-2"
         >
          <div 
                      v-motion
@@ -59,7 +59,7 @@ const cheeseCard = [
                 alt="bread"
                 class="object-cover h-[60px] w-[60px] rounded-xl "
             />
-            <div class="text-white font-[cursive] flex flex-col text-center md:text-left">
+            <div class="text-white font-[cursive] flex flex-col text-center md:text-left md:text-lg text-sm">
                 <span>
                 {{ card.name }}
                 </span>
@@ -69,13 +69,14 @@ const cheeseCard = [
             </div>
            </div>
             <div>
-                <button class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-full text-sm px-5 py-2.5 text-center me-2 mb-2">
+                <button class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-2 
+                focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-full text-sm md:px-5 md:py-2.5 px-3 py-2 text-center">
                     Remove
                   </button>
 
             </div>
           </div>
-          <div class="flex md:gap-5 justify-around">
+          <div class="flex md:gap-5 md:justify-around flex-col md:flex-row">
             <button  class="text-white md:w-1/6 w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
                 Less
               </button>
