@@ -1,42 +1,42 @@
 import { createRouter, createWebHistory } from 'vue-router';
-import HeroSection from '../pages/HeroSection.vue';
-import TimeSection from '../pages/TimeSection.vue';
-import CardSection from '../pages/CardSection.vue';
-import DetailsSection from '../pages/DetailsSection.vue';
-import BreadSection from '../pages/BreadSection.vue';
-import CheeseSection from '../pages/CheeseSection.vue';
+import Index from '../pages/index.vue';
+import DeliveryTime from '../pages/DeliveryTime.vue';
+import Foods from '../pages/Foods.vue';
+import FoodCategories from '../pages/FoodICategories.vue';
+import CategoryItems from '../pages/CategoryItems.vue';
+import CategoryItem from '../pages/CategoryItem.vue';
 import ToastedSection from '../pages/ToastedSection.vue';
 import VeggiesSection from '../pages/VeggiesSection.vue'
 const routes = [
     {
         path: '/',
-        name: 'heroSection',
-        component: HeroSection,
+        name: 'index',
+        component: Index,
     },
     {
-        path: '/time-section/:plan',
-        name: 'timeSection',
-        component: TimeSection,
+        path: '/delivery-time/:plan',
+        name: 'deliveryTime',
+        component: DeliveryTime,
     },
     {
-        path: '/card-section',
-        name: 'cardSection',
-        component: CardSection,
+        path: '/foods/:time',
+        name: 'foods',
+        component: Foods,
     },
     {
-        path: '/card-details/:card',
-        name: 'cardDetails',
-        component: DetailsSection,
+        path: '/food-categories/:category',
+        name: 'foodCategories',
+        component: FoodCategories,
     },
     {
-        path: '/card-details/:card/breadSection',
-        name: 'breadSection',
-        component: BreadSection,
+        path: '/food-categories/:category/items',
+        name: 'categoryItems',
+        component: CategoryItems,
     },
     {
-        path: '/card-details/:card/breadSection/:id',
-        name: 'cheeseSection',
-        component: CheeseSection,
+        path: '/food-categories/:category/items/:id',
+        name: 'categoryItem',
+        component: CategoryItem,
     },
     {
         path: '/toasted-section',

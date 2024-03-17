@@ -5,7 +5,7 @@ import sandwichImage from "../assets/sandwich.png";
 import saladImage from "../assets/salad.png";
 
 const router = useRouter();
-const { params:{card} } = useRoute();
+const { params:{category} } = useRoute();
 const saladCard = [
     {
     id: 1,
@@ -122,9 +122,9 @@ const SandwichCards = [
 ];
 const showBreadDetails=(item)=>{
   router.push({
-            name: 'breadSection',
+            name: 'categoryItems',
             params: {
-                card: item,
+                category: item,
             },
         });
 }
@@ -133,7 +133,7 @@ const showBreadDetails=(item)=>{
     <section>
       <Button class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
       <div class="container mx-auto py-10 px-5">
-        <div v-if="card === '1' || card === '2'"
+        <div v-if="category === '1' || category === '2'"
              class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2">
           <div
                   v-motion
@@ -143,14 +143,14 @@ const showBreadDetails=(item)=>{
                   :hovered="{ scale: 1.1 }"
                   :delay="200"
                   @click="showBreadDetails(card.id)"
-                  class="bg-gray-900 shadow-lg rounded-[1rem] flex flex-col items-center justify-center relative px-4" v-for="(card, index) in SandwichCards" :key="index">
+                  class="cursor-pointer bg-gray-900 shadow-lg rounded-[1rem] flex flex-col items-center justify-center relative px-4" v-for="(card, index) in SandwichCards" :key="index">
             <div class="relative top-[-40px]">
               <img :src="card.image" alt="Image 1" class="rounded-sm h-[100px] w-[120px] object-cover" />
             </div>
             <h3 class="text-white text-center text-2xl font-[cursive] mb-3">{{ card.name }}</h3>
           </div>
         </div>
-        <div v-if="card === '3'" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2 relative">
+        <div v-if="category === '3'" class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2 relative">
             <div class="bg-gray-900 shadow-lg rounded-[1rem] flex flex-col items-center justify-center" v-for="(card, index) in saladCard" :key="index">
               <div class="relative top-[-40px]">
                 <img :src="card.image" alt="Image 1" class="rounded-sm h-[100px] w-[120px] object-cover" />

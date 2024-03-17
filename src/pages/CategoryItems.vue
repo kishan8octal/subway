@@ -24,7 +24,7 @@ const breadCard = [
 ];
 const showCheeseDetails = (item) => {
   router.push({
-    name: "cheeseSection",
+    name: "categoryItem",
     params: {
       id: item.id,
     },

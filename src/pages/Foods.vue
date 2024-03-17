@@ -22,11 +22,10 @@
         // },
     ];
     const handleNavigate = (id)=>{
-        console.log("value",id);
         router.push({
-            name: 'cardDetails',
+            name: 'foodCategories',
             params: {
-                card: id,
+                category: id,
             },
         });
     }

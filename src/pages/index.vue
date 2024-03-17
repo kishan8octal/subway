@@ -13,7 +13,7 @@
 
     const handleChangeItem = (value) => {
         router.push({
-            name: 'timeSection',
+            name: 'deliveryTime',
             params: {
                 plan: value.id,
             },
