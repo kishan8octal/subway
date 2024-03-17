@@ -5,6 +5,8 @@ import CardSection from '../pages/CardSection.vue';
 import DetailsSection from '../pages/DetailsSection.vue';
 import BreadSection from '../pages/BreadSection.vue';
 import CheeseSection from '../pages/CheeseSection.vue';
+import ToastedSection from '../pages/ToastedSection.vue';
+import VeggiesSection from '../pages/VeggiesSection.vue'
 const routes = [
     {
         path: '/',
@@ -26,15 +28,25 @@ const routes = [
         name: 'cardDetails',
         component: DetailsSection,
     },
-    ,{
+    {
         path: '/card-details/:card/breadSection',
         name: 'breadSection',
         component: BreadSection,
     },
-    ,{
+    {
         path: '/card-details/:card/breadSection/:id',
         name: 'cheeseSection',
         component: CheeseSection,
+    },
+    {
+        path: '/toasted-section',
+        name: 'toastedSection',
+        component: ToastedSection,
+    },
+    {
+        path: '/veggies-section',
+        name: 'veggiesSection',
+        component: VeggiesSection,
     }
 ];
 const router = createRouter({
