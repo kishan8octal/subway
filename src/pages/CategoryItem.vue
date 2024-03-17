@@ -33,16 +33,17 @@ const cheeseCard = [
 </script>
 <template>
     <section>
-      <Button class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
+      <Button variant="primary" class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
       <div class="container mx-auto py-10 px-5">
-        <h1 class="text-white font-[cursive] text-[24px] mb-5">
+        <h1 class="text-gray-700 font-[cursive] text-[24px] mb-5">
           Select the Cheese
         </h1>
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2"
         >
           <div
-            class="bg-gray-900 shadow-lg rounded-[1rem] flex gap-8 items-center justify-center relative px-4 py-4 cursor-pointer"
+            class="cursor-pointer ring-2 ring-green-600 
+                    ring-opacity-20 bg-white border border-green-600 shadow-lg rounded-[1rem] flex gap-8 items-center justify-center relative px-4 py-4 cursor-pointer"
             v-for="(card, index) in cheeseCard"
             :key="index"
           >
@@ -51,11 +52,11 @@ const cheeseCard = [
               alt="bread"
               class="object-cover h-[50px] w-[50px] rounded-xl"
             />
-            <div class="text-white font-[cursive] flex flex-col">
+            <div class="text-gray-700 font-[cursive] flex flex-col">
               <span>
                 {{ card.name }}
               </span>
-              <span class="text-slate-300">
+              <span class="text-slate-800">
                 {{ card.des }}
               </span>
             </div>

@@ -1,75 +1,34 @@
 <script setup>
-    import { ref, watch } from 'vue'
-    import { RadioGroup, RadioGroupLabel, RadioGroupDescription, RadioGroupOption, } from '@headlessui/vue'
+    import { ref } from 'vue';
+    import { RadioGroup, RadioGroupLabel, RadioGroupOption } from '@headlessui/vue';
+    import { CheckCircleIcon } from '@heroicons/vue/20/solid';
 
     const props = defineProps({
-        items:{
-            type:Array,
-            default:[]
-        }
-    });
-    
-    const emits = defineEmits(['change']);
-
-    const selected = ref(props.items[0])
-
-    watch(selected,(value) => {
-        emits('change',value)
+        options: {
+            type: Array,
+            required: true,
+        },
+        disabled: {
+            type: Boolean,
+            default: false,
+        },
     });
 </script>
-
 <template>
-    <div class="w-full">
-      <div class="w-full max-w-md">
-        <RadioGroup v-model="selected">
-          <RadioGroupLabel class="sr-only">Server size</RadioGroupLabel>
-          <div class="space-y-2">
-            <RadioGroupOption
-              as="template"
-              v-for="item in items"
-              :key="item.name"
-              :value="item"
-              v-slot="{ active, checked }"
-            >
-              <div
-                class="relative flex cursor-pointer rounded-lg px-5 py-4 shadow-md focus:outline-none"
-                :class="[ active ? 'ring-2 ring-white/60 ring-offset-2 ring-offset-sky-300' : '', checked ? 'bg-primary text-white' : 'bg-white' ]"
-              >
-                <div class="flex w-full items-center justify-between">
-                  <div class="flex items-center">
-                    <div class="text-2xl">
-                      <RadioGroupLabel
-                        as="p"
-                        :class="checked ? 'text-white' : 'text-gray-900'"
-                        class="font-medium"
-                      >
-                        {{ item.name }}
-                      </RadioGroupLabel>
-                    </div>
-                  </div>
-                  <div v-show="checked" class="shrink-0 text-white">
-                    <svg class="h-6 w-6" viewBox="0 0 24 24" fill="none">
-                      <circle
-                        cx="12"
-                        cy="12"
-                        r="12"
-                        fill="#fff"
-                        fill-opacity="0.2"
-                      />
-                      <path
-                        d="M7 13l3 3 7-7"
-                        stroke="#fff"
-                        stroke-width="1.5"
-                        stroke-linecap="round"
-                        stroke-linejoin="round"
-                      />
-                    </svg>
-                  </div>
+    <RadioGroup :disabled="disabled">
+        <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-2">
+            <RadioGroupOption as="template" v-for="option in options" :key="option.id" :value="option.id" v-slot="{ active, checked }">
+                <div :class="[active ? 'border-green-600' : 'border-gray-300', !checked && disabled ? 'cursor-not-allowed' : 'cursor-pointer',
+                'relative flex items-center rounded-lg border bg-white px-3 py-2.5 focus:outline-none hover:border-green-600']">
+                    <span class="flex flex-1">
+                        <RadioGroupLabel as="span" class="block capitalize text-body-medium" :class="!checked && disabled ? 'text-neutral-gray-500' : 'text-neutral-gray-900'">
+                            {{ option.name }}
+                        </RadioGroupLabel>
+                    </span>
+                    <CheckCircleIcon :class="[!checked ? 'invisible' : '', 'h-5 w-5 text-green-600']" aria-hidden="true"/>
+                    <span :class="[active ? 'border' : 'border', checked ? 'border-green-600' : 'border-transparent', 'pointer-events-none absolute -inset-px rounded-lg']" aria-hidden="true"/>
                 </div>
-              </div>
             </RadioGroupOption>
-          </div>
-        </RadioGroup>
-      </div>
-    </div>
-  </template>
+        </div>
+    </RadioGroup>
+</template>

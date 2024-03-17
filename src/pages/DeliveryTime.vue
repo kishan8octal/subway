@@ -2,6 +2,7 @@
     import { useRoute, useRouter } from 'vue-router';
     import { computed } from 'vue';
     import Button from '../components/Button.vue';
+    import Card from '../components/Card.vue';
 
     const { params } = useRoute();
     const router = useRouter();
@@ -28,13 +29,13 @@
 </script>
 <template>
     <section>
-        <Button class="mt-5 mx-3 text-white font-bold" @click="router.back()">Back</Button>
-        <div class="flex items-center h-screen p-5">
-            <div class="container mx-auto py-10 bg-[#1f1d2b] p-5 shadow-sm shadow-[#EA7C69] rounded-xl  border border-[#EA7C69] ring-2 ring-[#EA7C69] ring-opacity-30">
+        <Button variant="primary" class="mt-5 mx-3 text-white font-bold" @click="router.back()">Back</Button>
+        <div class="flex items-center h-screen p-5 z-50">
+            <Card class="shadow-lg container mx-auto">
                 <div class="flex flex-col gap-5 items-center sm:items-start">
-                    <div class="text-white font-mono font-bold text-lg">Select Your Delivery Time</div>
-                    <div class="text-white font-bold">Deliver At</div>
-                    <div class="flex gap-3 items-center text-white font-bold">
+                    <div class="text-green-600 font-mono font-bold text-lg">Select Your Delivery Time</div>
+                    <div class="font-bold text-gray-800">Deliver At</div>
+                    <div class="flex gap-3 items-center font-bold">
                         <router-link :to="{ name: 'foods', params: { time: startTime }}">
                             <Button>
                                 {{startTime}} AM
@@ -47,7 +48,7 @@
                         </router-link>
                     </div>
                 </div>
-            </div>
+            </Card>
         </div>
     </section>
 </template>

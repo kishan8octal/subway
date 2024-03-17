@@ -33,7 +33,7 @@ const cheeseCard = [
 </script>
 <template>
     <section>
-      <Button class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
+      <Button variant="primary" class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
       <div class="container mx-auto py-10 px-5">
         <h1 class="text-white font-[cursive] text-[24px] mb-5">
           Select veggies

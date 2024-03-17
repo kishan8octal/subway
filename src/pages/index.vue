@@ -1,44 +1,41 @@
 <script setup>
     import RadioGroup from '../components/RadioGroup.vue';
+    import Card from '../components/Card.vue';
     import { useRouter } from 'vue-router';
+    import { ref, watch } from 'vue';
 
     const router = useRouter();
 
-    const plans = [
+    const options = [
         { name: 'Bank', id: 1 },
         { name: 'Cintas', id: 2 },
         { name: 'Medical Office', id: 3 },
         { name: 'American Heritage', id: 4 },
     ];
+    const selectedOptions = ref('');
 
-    const handleChangeItem = (value) => {
-        router.push({
-            name: 'deliveryTime',
-            params: {
-                plan: value.id,
-            },
-        });
-    };
+    watch(selectedOptions, (value) => {
+        router.push({ name: 'deliveryTime', params: { plan: value } });
+    });
 </script>
 <template>
-    <!--    <div class="overlay-img"></div>-->
-    <section class="flex items-center h-screen p-5">
-        <div class="container mx-auto py-10 bg-gray-900 p-5 shadow-sm shadow-[#EA7C69] rounded-xl  border border-primary ring-2 ring-primary ring-opacity-30">
+    <section class="flex items-center h-screen p-5 z-50">
+        <Card class="shadow-lg container mx-auto">
             <div class="flex flex-col gap-10">
                 <div>
-                    <h3 class="text-2xl  font-bold text-primary font-sans">Place Order To Get Deliver From:</h3>
+                    <h3 class="text-2xl  font-bold text-green-800 font-sans">Place Order To Get Deliver From:</h3>
                 </div>
                 <div>
-                    <h1 class="text-5xl font-bold text-gray-100 font-mono text-shadow-lg">Subway</h1>
+                    <h1 class="text-5xl font-bold text-gray-800 font-mono text-shadow-lg">Subway</h1>
                 </div>
                 <div class="font-sans">
-                    <p class="text-2xl text-white"> 9979 Bustleton Avenue,</p>
-                    <p class="text-2xl text-white">Philadelphia PA 19115</p>
+                    <p class="text-2xl text-gray-700"> 9979 Bustleton Avenue,</p>
+                    <p class="text-2xl text-gray-700">Philadelphia PA 19115</p>
                 </div>
                 <div>
-                    <RadioGroup :items="plans" @change="handleChangeItem"/>
+                    <RadioGroup :options="options" v-model="selectedOptions"/>
                 </div>
             </div>
-        </div>
+        </Card>
     </section>
 </template>
