@@ -35,8 +35,8 @@
     <section>
         <Button variant="primary" class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
         <div class="h-screen p-5 z-50">
-            <div class="max-w-7xl mx-auto p-20">
-                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-10">
+            <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
+                <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-48 sm:gap-10">
                     <div
                             v-motion
                             :initial="{ opacity: 0, y: 100 }"
