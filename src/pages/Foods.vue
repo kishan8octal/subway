@@ -1,9 +1,11 @@
 <script setup>
     import Button from '../components/Button.vue';
     import Card from '../components/Card.vue';
-    import { useRouter } from 'vue-router';
+    import { useRouter, useRoute } from 'vue-router';
 
     const router = useRouter();
+    const { params } = useRoute();
+    
     const cards = [
         {
             id: 1,
@@ -16,17 +18,14 @@
             dec: 'Footlong Sandwich + Chips + Soda = $15.00 with tax',
         },
         { id: 3, name: 'salad', dec: 'Salad + water bottle = $10.00 with tax' },
-        // {
-        //     id: 4,
-        //     name: 'classic sandwiches',
-        //     dec: '4. Cinnabon Churro = $ 2.16 Antey Annie’s Pretzel   = $ 3.24 Footlong Cookie = $ 5.40',
-        // },
     ];
     const handleNavigate = (id) => {
         router.push({
             name: 'foodCategories',
             params: {
-                category: id,
+                branch:params.branch,
+                time:params.time,
+                food: id,
             },
         });
     };

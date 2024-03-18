@@ -6,7 +6,7 @@ import FoodCategories from '../pages/FoodICategories.vue';
 import CategoryItems from '../pages/CategoryItems.vue';
 import CategoryItem from '../pages/CategoryItem.vue';
 import ToastedSection from '../pages/ToastedSection.vue';
-import VeggiesSection from '../pages/VeggiesSection.vue'
+import VeggiesSection from '../pages/VeggiesSection.vue';
 const routes = [
     {
         path: '/',
@@ -14,37 +14,37 @@ const routes = [
         component: Index,
     },
     {
-        path: '/delivery-time/:plan',
+        path: '/branch/:branch/delivery-time',
         name: 'deliveryTime',
         component: DeliveryTime,
     },
     {
-        path: '/foods/:time',
+        path: '/branch/:branch/delivery-time/:time/foods',
         name: 'foods',
         component: Foods,
     },
     {
-        path: '/food-categories/:category',
+        path: '/branch/:branch/delivery-time/:time/foods/:food/categories',
         name: 'foodCategories',
         component: FoodCategories,
     },
     {
-        path: '/food-categories/:category/items',
+        path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/category-items',
         name: 'categoryItems',
         component: CategoryItems,
     },
     {
-        path: '/food-categories/:category/items/:id',
+        path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/category-items/:item/variants',
         name: 'categoryItem',
         component: CategoryItem,
     },
     {
-        path: '/food-categories/:category/items/:id/toasted-section',
+        path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/category-items/:item/variants/:variant/toasted',
         name: 'toastedSection',
         component: ToastedSection,
     },
     {
-        path: '/veggies-section',
+        path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/category-items/:item/variants/:variant/toasted/:toast/veggies',
         name: 'veggiesSection',
         component: VeggiesSection,
     }

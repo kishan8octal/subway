@@ -3,7 +3,8 @@ import Button from "../components/Button.vue";
 import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
-const cheeseCard = [
+const { params } = useRoute();
+const itemVariants = [
   {
     id: 1,
     name: "American Cheese",
@@ -30,11 +31,16 @@ const cheeseCard = [
     // des: "0 Cals",
   },
 ];
-const showToastedDetails=(item)=>{
+const showToastedDetails=(id)=>{
   router.push({
             name: 'toastedSection',
             params: {
-                category: item,
+                branch:params.branch,
+                time:params.time,
+                food:params.food,
+                category:params.category,
+                item: params.item,
+                variant: id,
             },
 });
 }
@@ -43,9 +49,7 @@ const showToastedDetails=(item)=>{
     <section>
       <Button variant="primary" class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
       <div class="container mx-auto py-10 px-5">
-        <h1 class="text-gray-700 font-[cursive] text-[24px] mb-5">
-          Select the Cheese
-        </h1>
+          <div class="text-green-600 font-mono font-bold text-xl my-5">Select the Cheese</div>
         <div
           class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2"
         >
@@ -57,9 +61,9 @@ const showToastedDetails=(item)=>{
                   :hovered="{ scale: 1.1 }"
             class="cursor-pointer ring-2 ring-green-600 
                     ring-opacity-20 bg-white border border-green-600 shadow-lg rounded-[1rem] flex gap-8 items-center justify-center relative px-4 py-4 cursor-pointer"
-            v-for="(card, index) in cheeseCard"
+            v-for="(item, index) in itemVariants"
             :key="index"
-            @click="showToastedDetails(card.id)"
+            @click="showToastedDetails(item.id)"
           >
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGL2-K4dw9cCSVZnTMspWXcsG5b0Ih9DTurw&usqp=CAU"
@@ -68,10 +72,10 @@ const showToastedDetails=(item)=>{
             />
             <div class="text-gray-700 font-[cursive] flex flex-col">
               <span>
-                {{ card.name }}
+                {{ item.name }}
               </span>
               <span class="text-slate-800">
-                {{ card.des }}
+                {{ item.des }}
               </span>
             </div>
           </div>

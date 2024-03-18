@@ -6,8 +6,7 @@
 
     const { params } = useRoute();
     const router = useRouter();
-    const currentPlan = params.plan;
-
+    const currentPlan = params.branch;
     const startTime = computed(() => {
         return {
             1: '11:00',
@@ -36,14 +35,14 @@
                     <div class="text-green-600 font-[cursive] font-bold text-lg">Select Your Delivery Time</div>
                     <div class="font-bold font-[cursive] text-gray-800">Deliver At</div>
                     <div class="flex gap-3 items-center font-bold">
-                        <router-link :to="{ name: 'foods', params: { time: startTime }}">
+                        <router-link :to="{ name: 'foods', params: { branch:params.branch,time: startTime }}">
                             <Button>
                                 {{startTime}} AM
                             </Button>
                         </router-link>
 
                         <span>OR</span>
-                        <router-link :to="{ name: 'foods', params: { time: endTime }}">
+                        <router-link :to="{ name: 'foods', params: { time: endTime,branch:params.branch }}">
                             <Button>{{endTime}} PM</Button>
                         </router-link>
                     </div>

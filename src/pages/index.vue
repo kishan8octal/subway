@@ -15,7 +15,7 @@
     const selectedOptions = ref('');
 
     watch(selectedOptions, (value) => {
-        router.push({ name: 'deliveryTime', params: { plan: value } });
+        router.push({ name: 'deliveryTime', params: { branch: value } });
     });
 </script>
 <template>

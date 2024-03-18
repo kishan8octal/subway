@@ -1,5 +1,6 @@
 <script setup>
 import Button from "../components/Button.vue";
+import Card from "../components/Card.vue";
 import {  useRouter } from "vue-router";
 
 const router = useRouter();
@@ -35,59 +36,39 @@ const VeggiesCard = [
     <section>
       <Button variant="primary" class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
       <div class="container mx-auto py-10 px-5">
-        <h1 class="text-white font-[cursive] text-[24px] mb-5">
-          Select veggies
-        </h1>
-        <div
-          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-1 lg:grid-cols-1 gap-12 px-10 sm:px-2"
-        >
-         <div 
-                     v-motion
-                        :initial="{ opacity: 0, y: 100 }"
-                        :enter="{ opacity: 1, y: 0, scale: 1 }"
-                        :variants="{ custom: { scale: 2 } }"
-                        :hovered="{ scale: 1.1 }"
-                        :delay="200"
-         class="bg-gray-900  shadow-sm  shadow-white rounded-[1rem] p-5 cursor-pointer"  v-for="(card, index) in VeggiesCard"
-         :key="index">
-            <div
-            class="flex gap-8 md:items-center justify-around relative px-4 py-4 cursor-pointer"
-          >
-           <div class="flex items-center gap-3 w-1/2 flex-col md:flex-row">
-                <img
-                src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGL2-K4dw9cCSVZnTMspWXcsG5b0Ih9DTurw&usqp=CAU"
-                alt="bread"
-                class="object-cover h-[60px] w-[60px] rounded-xl "
-            />
-            <div class="text-white font-[cursive] flex flex-col text-center md:text-left md:text-lg text-sm">
-                <span>
-                {{ card.name }}
-                </span>
-                <span class="text-slate-300">
-                {{ card.des }}
-                </span>
-            </div>
-           </div>
-            <div>
-                <button class="text-white bg-gradient-to-r from-purple-500 via-purple-600 to-purple-700 hover:bg-gradient-to-br focus:ring-2 
-                focus:outline-none focus:ring-purple-300 dark:focus:ring-purple-800 shadow-lg shadow-purple-500/50 dark:shadow-lg dark:shadow-purple-800/80 font-medium rounded-full text-sm md:px-5 md:py-2.5 px-3 py-2 text-center">
-                    Remove
-                  </button>
+          <div class="text-green-600 font-mono font-bold text-xl my-5">Select veggies</div>
 
-            </div>
-          </div>
-          <div class="flex md:gap-5 md:justify-around flex-col md:flex-row">
-            <button  class="text-white md:w-1/6 w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                Less
-              </button>
-            <button  class="text-white md:w-1/6 w-full bg-gradient-to-r from-green-400 via-green-500 to-green-600 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-green-300 dark:focus:ring-green-800 shadow-lg shadow-green-500/50 dark:shadow-lg dark:shadow-green-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                Regular
-            </button>
-            <button class="text-white md:w-1/6 w-full bg-gradient-to-r from-cyan-400 via-cyan-500 to-cyan-600 hover:bg-gradient-to-br focus:ring-2 focus:outline-none focus:ring-cyan-300 dark:focus:ring-cyan-800 shadow-lg shadow-cyan-500/50 dark:shadow-lg dark:shadow-cyan-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2">
-                More
-              </button>
-          </div>
-         </div>
+          <div
+          class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8"
+        >
+              <div
+                      v-motion
+                      :initial="{ opacity: 0, y: 100 }"
+                      :enter="{ opacity: 1, y: 0, scale: 1 }"
+                      :variants="{ custom: { scale: 2 } }"
+                      :hovered="{ scale: 1.1 }"
+                      v-for="(item, index) in VeggiesCard" :key="index">
+                  <Card class="border border-green-600 ring-2 ring-green-600 ring-opacity-20 cursor-pointer">
+                      <div class="flex items-center gap-5">
+                          <div>
+                              <img
+                                      src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGL2-K4dw9cCSVZnTMspWXcsG5b0Ih9DTurw&usqp=CAU"
+                                      alt="bread"
+                                      class="object-cover h-[60px] w-[60px] rounded-xl "
+                              />
+                          </div>
+                          <div class="flex flex-col gap-1">
+                              <span class="text-gray-950 font-semibold text-xl">{{ item.name }}</span>
+                              <span class="text-gray-700 text-lg">{{ item.des }}</span>
+                          </div>
+                      </div>
+                      <div class="flex  gap-5 mt-5 justify-center">
+                          <Button class="text-md" variant="secondaryDestructive">Less</Button>
+                          <Button class="text-md" variant="primary">Regular</Button>
+                          <Button class="text-md" variant="secondaryDestructive">More</Button>
+                      </div>
+                  </Card>         
+              </div>
         </div>
       </div>
     </section>
