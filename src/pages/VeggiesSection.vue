@@ -47,8 +47,9 @@ const VeggiesCard = [
                       :enter="{ opacity: 1, y: 0, scale: 1 }"
                       :variants="{ custom: { scale: 2 } }"
                       :hovered="{ scale: 1.1 }"
-                      v-for="(item, index) in VeggiesCard" :key="index">
+                      v-for="(item, index) in VeggiesCard" :key="index" class="relative">
                   <Card class="border border-green-600 ring-2 ring-green-600 ring-opacity-20 cursor-pointer">
+                      <Button class="text-md absolute right-2 top-2" variant="secondaryDestructive">Remove</Button>
                       <div class="flex items-center gap-5">
                           <div>
                               <img
