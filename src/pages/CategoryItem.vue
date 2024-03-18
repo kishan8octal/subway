@@ -27,9 +27,17 @@ const cheeseCard = [
   {
     id: 5,
     name: "No Cheese",
-    des: "0 Cals",
+    // des: "0 Cals",
   },
 ];
+const showToastedDetails=(item)=>{
+  router.push({
+            name: 'toastedSection',
+            params: {
+                category: item,
+            },
+});
+}
 </script>
 <template>
     <section>
@@ -51,6 +59,7 @@ const cheeseCard = [
                     ring-opacity-20 bg-white border border-green-600 shadow-lg rounded-[1rem] flex gap-8 items-center justify-center relative px-4 py-4 cursor-pointer"
             v-for="(card, index) in cheeseCard"
             :key="index"
+            @click="showToastedDetails(card.id)"
           >
             <img
               src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGL2-K4dw9cCSVZnTMspWXcsG5b0Ih9DTurw&usqp=CAU"

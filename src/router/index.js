@@ -39,7 +39,7 @@ const routes = [
         component: CategoryItem,
     },
     {
-        path: '/toasted-section',
+        path: '/food-categories/:category/items/:id/toasted-section',
         name: 'toastedSection',
         component: ToastedSection,
     },

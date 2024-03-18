@@ -23,12 +23,12 @@
         <Card class="shadow-lg container mx-auto">
             <div class="flex flex-col gap-10">
                 <div>
-                    <h3 class="text-2xl  font-bold text-green-800 font-sans">Place Order To Get Deliver From:</h3>
+                    <h3 class="text-2xl  font-bold font-[cursive] text-green-800">Place Order To Get Deliver From:</h3>
                 </div>
                 <div>
-                    <h1 class="text-5xl font-bold text-gray-800 font-mono text-shadow-lg">Subway</h1>
+                    <h1 class="text-5xl font-bold font-[cursive] text-gray-800 text-shadow-lg">Subway</h1>
                 </div>
-                <div class="font-sans">
+                <div class="font-[cursive]">
                     <p class="text-2xl text-gray-700"> 9979 Bustleton Avenue,</p>
                     <p class="text-2xl text-gray-700">Philadelphia PA 19115</p>
                 </div>

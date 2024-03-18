@@ -33,8 +33,8 @@
         <div class="flex items-center h-screen p-5 z-50">
             <Card class="shadow-lg container mx-auto">
                 <div class="flex flex-col gap-5 items-center sm:items-start">
-                    <div class="text-green-600 font-mono font-bold text-lg">Select Your Delivery Time</div>
-                    <div class="font-bold text-gray-800">Deliver At</div>
+                    <div class="text-green-600 font-[cursive] font-bold text-lg">Select Your Delivery Time</div>
+                    <div class="font-bold font-[cursive] text-gray-800">Deliver At</div>
                     <div class="flex gap-3 items-center font-bold">
                         <router-link :to="{ name: 'foods', params: { time: startTime }}">
                             <Button>

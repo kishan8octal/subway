@@ -3,30 +3,30 @@ import Button from "../components/Button.vue";
 import {  useRouter } from "vue-router";
 
 const router = useRouter();
-const cheeseCard = [
+const VeggiesCard = [
   {
     id: 1,
-    name: "American Cheese",
-    des: "80 Cals",
+    name: "Lettuce",
+    des: "5 Cals",
   },
   {
     id: 2,
-    name: "Pepper Jack",
-    des: "100 Cals",
+    name: "Tomatoes",
+    des: "15 Cals",
   },
   {
     id: 3,
-    name: "Provolone",
-    des: "100 Cals",
+    name: "Red Onions",
+    des: "5 Cals",
   },
   {
     id: 4,
-    name: "Monterey Cheddar",
-    des: "110 Cals",
+    name: "Spinach",
+    des: "0 Cals",
   },
   {
     id: 5,
-    name: "No Cheese",
+    name: "Cucumbers",
     des: "0 Cals",
   },
 ];
@@ -48,7 +48,7 @@ const cheeseCard = [
                         :variants="{ custom: { scale: 2 } }"
                         :hovered="{ scale: 1.1 }"
                         :delay="200"
-         class="bg-gray-900  shadow-sm  shadow-white rounded-[1rem] p-5 cursor-pointer"  v-for="(card, index) in cheeseCard"
+         class="bg-gray-900  shadow-sm  shadow-white rounded-[1rem] p-5 cursor-pointer"  v-for="(card, index) in VeggiesCard"
          :key="index">
             <div
             class="flex gap-8 md:items-center justify-around relative px-4 py-4 cursor-pointer"
