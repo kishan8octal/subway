@@ -34,6 +34,11 @@ const routes = [
         component: CategoryItems,
     },
     {
+        path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/variants',
+        name: 'categoryItemForSalad',
+        component: CategoryItem,
+    },
+    {
         path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/category-items/:item/variants',
         name: 'categoryItem',
         component: CategoryItem,
@@ -42,6 +47,11 @@ const routes = [
         path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/category-items/:item/variants/:variant/toasted',
         name: 'toastedSection',
         component: ToastedSection,
+    },
+    {
+        path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/variants/:variant/veggies',
+        name: 'veggiesSectionForSalad',
+        component: VeggiesSection,
     },
     {
         path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/category-items/:item/variants/:variant/toasted/:toast/veggies',

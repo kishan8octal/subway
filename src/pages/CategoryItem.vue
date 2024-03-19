@@ -32,17 +32,17 @@ const itemVariants = [
   },
 ];
 const showToastedDetails=(id)=>{
-  router.push({
-            name: 'toastedSection',
-            params: {
-                branch:params.branch,
-                time:params.time,
-                food:params.food,
-                category:params.category,
-                item: params.item,
-                variant: id,
-            },
-});
+    router.push({
+        name: params.food == 3 ? 'veggiesSectionForSalad': 'toastedSection',
+        params: {
+            branch:params.branch,
+            time:params.time,
+            food:params.food,
+            category:params.category,
+            ...(params.food == 3 && {item: params.item}),
+            variant: id,
+        },
+    });
 }
 </script>
 <template>

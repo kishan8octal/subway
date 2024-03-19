@@ -122,15 +122,15 @@ const SandwitchItems = [
 ];
 const selectedItemsData = params.food == 3 ? saladItems : SandwitchItems;
 const showBreadDetails=(id)=>{
-  router.push({
-            name: 'categoryItems',
-            params: {
-                branch:params.branch,
-                time:params.time,
-                food:params.food,
-                category:id,
-            },
-        });
+    router.push({
+        name: params.food == 3 ? 'categoryItemForSalad' : 'categoryItems',
+        params: {
+            branch: params.branch,
+            time: params.time,
+            food: params.food,
+            category: id,
+        },
+    });
 }
 </script>
 <template>
