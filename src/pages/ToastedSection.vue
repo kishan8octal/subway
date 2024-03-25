@@ -32,10 +32,10 @@ const handleToasted=(id)=>{
                 class="container mx-auto my-10 p-2">
             <Card class="border border-green-600 ring-2 ring-green-600 ring-opacity-20">
                 <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
-                        <Button variant="secondary" @click="handleToasted(2)">
+                        <Button variant="secondary" @click="handleToasted(1)">
                             Toasted                            
                         </Button>
-                        <Button variant="secondary" @click="handleToasted(1)">
+                        <Button variant="secondary" @click="handleToasted(2)">
                       Not toasted
                     </Button>
                 </div>

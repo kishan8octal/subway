@@ -7,6 +7,8 @@ import CategoryItems from '../pages/CategoryItems.vue';
 import CategoryItem from '../pages/CategoryItem.vue';
 import ToastedSection from '../pages/ToastedSection.vue';
 import VeggiesSection from '../pages/VeggiesSection.vue';
+import SaucesSection from '../pages/SaucesSection.vue';
+import ChipsSection from '../pages/ChipsSection.vue';
 const routes = [
     {
         path: '/',
@@ -57,6 +59,16 @@ const routes = [
         path: '/branch/:branch/delivery-time/:time/foods/:food/categories/:category/category-items/:item/variants/:variant/toasted/:toast/veggies',
         name: 'veggiesSection',
         component: VeggiesSection,
+    },
+    {
+        path: '/sauces/:veggies',
+        name: 'saucesSection',
+        component: SaucesSection,
+    },
+    {
+        path: '/chips/:sauce',
+        name: 'chipsSection',
+        component: ChipsSection,
     }
 ];
 const router = createRouter({

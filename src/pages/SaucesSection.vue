@@ -1,67 +1,72 @@
 <script setup>
 import Button from "../components/Button.vue";
 import Card from "../components/Card.vue";
-import { useRouter } from "vue-router";
+import { useRoute, useRouter } from "vue-router";
 
 const router = useRouter();
-const VeggiesCard = [
+const { params } = useRoute();
+const SaucesCard = [
   {
     id: 1,
-    name: "Lettuce",
-    des: "5 Cals",
+    name: "Regular Mayonnaise",
+    des: "200 Cals",
   },
   {
     id: 2,
-    name: "Tomatoes",
-    des: "15 Cals",
+    name: "Yellow Mustard",
+    des: "20 Cals",
   },
   {
     id: 3,
-    name: "Red Onions",
-    des: "5 Cals",
+    name: "Honey  Mustard",
+    des: "120 Cals",
   },
   {
     id: 4,
-    name: "Spinach",
-    des: "0 Cals",
+    name: "Buffalo Sauce",
+    des: "10 Cals",
   },
   {
     id: 5,
-    name: "Cucumbers",
-    des: "0 Cals",
+    name: "Sweet Onion Teriyaki",
+    des: "60 Cals",
   },
   {
     id: 6,
-    name: "Pickles",
-    des: "0 Cals",
+    name: "Peppercorn Ranch",
+    des: "160 Cals",
   },
   {
     id: 7,
-    name: "Green Peppers",
-    des: "0 Cals",
+    name: "Baja Chipotle",
+    des: "140 Cals",
   },
   {
     id: 8,
-    name: "Black Olives",
-    des: "5 Cals",
+    name: "Roasted Garlic Aioli",
+    des: "160 Cals",
   },
   {
     id: 9,
-    name: "Jalapenos",
-    des: "0 Cals",
+    name: "MVP Parmesan Vinaigrette",
+    des: "120 Cals",
   },
   {
     id: 10,
-    name: "Banana Peppers",
+    name: "Oil",
+    des: "90 Cals",
+  },
+  {
+    id: 11,
+    name: "Red Wine Vinegar",
     des: "0 Cals",
   },
 ];
-
-const navigateToSauces=(id)=>{
+const navigateToChips=(id)=>{
     router.push({
-        name: 'saucesSection',
+        name: 'chipsSection',
         params: {
-          veggies:id,
+          sauce:id,
         },
     });
 }
@@ -76,7 +81,7 @@ const navigateToSauces=(id)=>{
     >
     <div class="container mx-auto py-10 px-5">
       <div class="text-green-600 font-mono font-bold text-xl my-5">
-        Select veggies
+        Select The Sauces
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -86,23 +91,18 @@ const navigateToSauces=(id)=>{
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :variants="{ custom: { scale: 2 } }"
           :hovered="{ scale: 1.1 }"
-          v-for="(item, index) in VeggiesCard"
+          v-for="(item, index) in  SaucesCard"
           :key="index"
           class="relative"
-          @click="navigateToSauces(item.id)"
+          @click="navigateToChips(item.id)"
         >
           <Card
             class="border border-green-600 ring-2 ring-green-600 ring-opacity-20 cursor-pointer"
           >
-            <Button
-              class="text-md absolute right-2 top-2"
-              variant="secondaryDestructive"
-              >Remove</Button
-            >
             <div class="flex items-center gap-5">
               <div>
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGL2-K4dw9cCSVZnTMspWXcsG5b0Ih9DTurw&usqp=CAU"
+                  src="https://m.media-amazon.com/images/I/81nKFjkFEkL._SX679_.jpg"
                   alt="bread"
                   class="object-cover h-[60px] w-[60px] rounded-xl"
                 />
@@ -113,15 +113,6 @@ const navigateToSauces=(id)=>{
                 }}</span>
                 <span class="text-gray-700 text-lg">{{ item.des }}</span>
               </div>
-            </div>
-            <div class="flex gap-5 mt-5 justify-center">
-              <Button class="text-md" variant="secondaryDestructive"
-                >Less</Button
-              >
-              <Button class="text-md" variant="primary">Regular</Button>
-              <Button class="text-md" variant="secondaryDestructive"
-                >More</Button
-              >
             </div>
           </Card>
         </div>
