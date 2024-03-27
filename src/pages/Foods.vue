@@ -34,29 +34,40 @@
         });
     };
 </script>
+<style scoped>
+    .bg-primary-gradient:not(:hover) {
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.00) 100%), #009C5B;
+    }
+</style>
 <template>
     <section>
         <Button variant="primary" class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
-        <div class="h-screen p-5 z-50">
+        <div class="p-5 z-50">
             <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
                 <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-48 sm:gap-10">
-                    <div
-                            v-motion
-                            :initial="{ opacity: 0, y: 100 }"
-                            :enter="{ opacity: 1, y: 0, scale: 1 }"
-                            :variants="{ custom: { scale: 2 } }"
-                            :hovered="{ scale: 1.1 }"
+                    <div 
                             v-for="(card,index) in cards" 
-                            :key="index" 
+                            :key="index"
                             @click="handleNavigate(card.id)"
-                            class="border bg-white border-green-600 cursor-pointer shadow-md ring-2 ring-green-600 
-                            ring-opacity-20 relative rounded-md shadow-lg">
-                        <div class="rounded-full mx-auto mt-[-80px] h-[200px] w-[200px]">
-                            <img :src="card.image" alt="img" class="rounded-full mx-auto h-[180px] w-[180px] object-cover">
-                        </div>
-                        <div class="p-4 text-center rounded-lg">
-                            <p class="text-[24px] font-semibold font-[cursive] uppercase mt-5">{{ card.name }}</p>
-                            <p class="text-[18px] font-[cursive] mt-5">{{ card.dec }}</p>
+                            class="group relative cursor-pointer overflow-hidden bg-white px-6 pt-10 
+                            pb-8 shadow-xl ring-1 ring-gray-900/5 transition-all duration-300 
+                            hover:-translate-y-1 hover:shadow-2xl sm:mx-auto sm:max-w-sm sm:rounded-lg sm:px-10">
+                        <span class="absolute top-10 z-0 h-[150px] w-[150px] rounded-full
+                         bg-primary-gradient transition-all duration-300 group-hover:scale-[10]"></span>
+                        <div class="relative z-10 mx-auto max-w-md">
+                            <span class="grid h-[150px] w-[150px] place-items-center 
+                            rounded-full bg-sky-500 transition-all duration-300 group-hover:bg-sky-400">
+                <div class="text-white transition-all ">
+                    <img :src="card.image" alt="img" class="h-[150px] w-[150px] rounded-full mx-auto object-cover">
+                </div>
+            </span>
+                            <div class="space-y-6 pt-5 text-base leading-7 text-gray-600 transition-all duration-300 group-hover:text-white/90">
+                                <p class="font-semibold font-[cursive] text-2xl">{{card.name}}</p>
+                            </div>
+                            <div class="pt-5 text-base font-semibold leading-7">
+                                <p 
+                                        class="text-primary transition-all duration-300 group-hover:text-white font-[cursive] text-lg">{{card.dec}}</p>
+                            </div>
                         </div>
                     </div>
                 </div>

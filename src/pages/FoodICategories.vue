@@ -167,12 +167,17 @@ const showBreadDetails=(id)=>{
                   :hovered="{ scale: 1.1 }"
                   :delay="200"
                   @click="showBreadDetails(item.id)"
-                  class="cursor-pointer ring-2 ring-green-600 
-                            ring-opacity-20 bg-white border border-green-600 shadow-lg rounded-[1rem] flex flex-col items-center justify-center relative px-4" v-for="(item, index) in selectedItemsData" :key="index">
-            <div class="relative top-[-40px]">
-              <img :src="item.image" alt="Image 1" class="rounded-full h-[100px] w-[120px] object-cover" />
-            </div>
-            <h3 class="text-center text-2xl font-[cursive] mb-3">{{ item.name }}</h3>
+                  class="cursor-pointer ring-2 ring-green-600 ring-opacity-20
+                   bg-white border border-green-600 shadow-lg rounded-[1rem] px-4" 
+                  v-for="(item, index) in selectedItemsData" :key="index">
+              <div
+                      class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
+                  <img :src="item.image" alt="card-image" />
+              </div>
+<!--              <div class="relative  rounded-md">-->
+<!--                  <img :src="item.image" alt="Image 1" class="rounded-md object-cover" />-->
+<!--            </div>-->
+            <h3 class="text-2xl font-[cursive] mb-3 text-center">{{ item.name }}</h3>
           </div>
         </div>
       </div>
