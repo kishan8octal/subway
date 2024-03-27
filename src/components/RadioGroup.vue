@@ -12,11 +12,15 @@
             type: Boolean,
             default: false,
         },
+        isSimple:{
+            type: Boolean,
+            required: false
+        },
     });
 </script>
 <template>
     <RadioGroup :disabled="disabled">
-        <div class="grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-2">
+        <div :class="!isSimple ? 'grid grid-cols-1 gap-y-6 sm:grid-cols-2 sm:gap-x-2' : 'flex flex-wrap gap-1'">
             <RadioGroupOption as="template" v-for="option in options" :key="option.id" :value="option.id" v-slot="{ active, checked }">
                 <div :class="[active ? 'border-green-600' : 'border-gray-300', !checked && disabled ? 'cursor-not-allowed' : 'cursor-pointer',
                 'relative flex items-center rounded-lg border bg-white px-3 py-2.5 focus:outline-none hover:border-green-600 hover:ring-2 hover:ring-green-600 hover:ring-opacity-20']">
@@ -25,8 +29,8 @@
                             {{ option.name }}
                         </RadioGroupLabel>
                     </span>
-                    <CheckCircleIcon :class="[!checked ? 'invisible' : '', 'h-5 w-5 text-green-600']" aria-hidden="true"/>
-                    <span :class="[active ? 'border' : 'border', checked ? 'border-green-600' : 'border-transparent', 'pointer-events-none absolute -inset-px rounded-lg']" aria-hidden="true"/>
+                    <CheckCircleIcon v-if="!isSimple" :class="[!checked ? 'invisible' : '', 'h-5 w-5 text-green-600']" aria-hidden="true"/>
+                    <span v-if="!isSimple" :class="[active ? 'border' : 'border', checked ? 'border-green-600' : 'border-transparent', 'pointer-events-none absolute -inset-px rounded-lg']" aria-hidden="true"/>
                 </div>
             </RadioGroupOption>
         </div>

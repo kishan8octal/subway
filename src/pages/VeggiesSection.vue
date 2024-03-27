@@ -1,10 +1,12 @@
 <script setup>
+import { ref } from "vue";
 import Button from "../components/Button.vue";
 import Card from "../components/Card.vue";
 import { useRouter } from "vue-router";
+import RadioGroup from '../components/RadioGroup.vue';
 
 const router = useRouter();
-const VeggiesCard = [
+const data = [
   {
     id: 1,
     name: "Lettuce",
@@ -57,6 +59,19 @@ const VeggiesCard = [
   },
 ];
 
+const isSelectedItems = ref([]);
+
+isSelectedItems.value = data.map(item => {
+    return {
+        id: item.id,
+        value: [
+            { id:1, value: false },
+            { id:2, value: false },
+            { id:3, value: false },
+        ],
+    };
+});
+const VeggiesCard = ref(data);
 const navigateToSauces=(id)=>{
     router.push({
         name: 'saucesSection',
@@ -65,7 +80,35 @@ const navigateToSauces=(id)=>{
         },
     });
 }
+
+const handelRemoveCard = (id) => {
+  VeggiesCard.value = VeggiesCard.value.filter(item => item.id != id);
+}
+const handleVagiesItem = (id, selectedValue) => {
+    isSelectedItems.value = isSelectedItems.value.filter(item => {
+        if (item.id == id){
+            console.error(Object.keys(item.value).includes(selectedValue));
+            item.value[selectedValue] = !item.value[selectedValue];
+        }
+        return item;
+    });
+}
+const vaggiesOptions = [
+    { name: 'Less', id: 1 },
+    { name: 'Regular', id: 2 },
+    { name: 'More', id: 3 },
+];
+
+
 </script>
+<style scoped>
+    .radio input ~ label {
+       @apply bg-gray-100 p-2 text-gray-900
+    }
+    .radio input:checked ~ label {
+        @apply bg-primary text-white
+    }
+</style>
 <template>
   <section>
     <Button
@@ -96,6 +139,7 @@ const navigateToSauces=(id)=>{
           >
             <Button
               class="text-md absolute right-2 top-2"
+              @click.stop="handelRemoveCard(item.id)"
               variant="secondaryDestructive"
               >Remove</Button
             >
@@ -114,14 +158,28 @@ const navigateToSauces=(id)=>{
                 <span class="text-gray-700 text-lg">{{ item.des }}</span>
               </div>
             </div>
-            <div class="flex gap-5 mt-5 justify-center">
-              <Button class="text-md" variant="secondaryDestructive"
-                >Less</Button
-              >
-              <Button class="text-md" variant="primary">Regular</Button>
-              <Button class="text-md" variant="secondaryDestructive"
-                >More</Button
-              >
+            <div class="flex gap-5 mt-5 justify-center" @click.stop="">
+                <div class="inline-block radio">
+                    <input :name="`answer-${index}`" type="radio" :id="`B1-${index}`" hidden="hidden" value="B" 
+                           @click.stop="handleVagiesItem(item.id,1)"/>
+                    <label :for="`B1-${index}`"
+                           class="px-2 py-1 rounded-lg cursor-pointer flex justify-center items-center
+                          ">Less</label>
+                </div>
+                <div class="inline-block radio">
+                    <input :name="`answer-${index}`" type="radio" :id="`C1-${index}`" hidden="hidden" value="C" 
+                           @click.stop="handleVagiesItem(item.id,1)"/>
+                    <label :for="`C1-${index}`"
+                            class="px-2 py-1 rounded-lg cursor-pointer flex justify-center items-center
+                            ">Regular</label>
+                </div>
+                <div class="inline-block radio">
+                    <input :name="`answer-${index}`" type="radio" :id="`D1-${index}`" hidden="hidden" value="D" 
+                           @click.stop="handleVagiesItem(item.id,1)"/>
+                    <label :for="`D1-${index}`"
+                            class="px-2 py-1 rounded-lg cursor-pointer flex justify-center 
+                            items-center">More</label>
+                </div>
             </div>
           </Card>
         </div>
@@ -129,5 +187,3 @@ const navigateToSauces=(id)=>{
     </div>
   </section>
 </template>
-
-<style scoped></style>
