@@ -1,7 +1,9 @@
 <script setup>
 import Button from "../components/Button.vue";
 import { useRoute, useRouter } from "vue-router";
-import sandwichImage from "../assets/sandwich.png";
+import breadGrainWheat from "../assets/breadGrainWheat.avif";
+import breadtalianWhite from "../assets/breadtalianWhite.avif";
+import breadtalianHerbsCheese from "../assets/breadtalianHerbsCheese.avif";
 import saladImage from "../assets/salad.png";
 
 const router = useRouter();
@@ -12,16 +14,19 @@ const sandwitchCategories = [
     id: 1,
     name: "Hearty Multigrain",
     des: "200 Cals",
+    image: breadGrainWheat
   },
   {
     id: 2,
     name: "Artisan Italian",
     des: "200 Cals",
+    image: breadtalianWhite
   },
   {
     id: 3,
     name: "Italian Herbs & Cheese",
     des: "240 Cals",
+    image: breadtalianHerbsCheese
   },
 ];
 const sandwitchCategoriesSecond = [
@@ -29,16 +34,19 @@ const sandwitchCategoriesSecond = [
         id: 1,
         name: "Hearty Multigrain",
         des: "400 Cals",
+        image: breadGrainWheat
     },
     {
         id: 2,
         name: "Artisan Italian",
         des: "400 Cals",
+        image: breadtalianWhite
     },
     {
         id: 3,
         name: "Italian Herbs & Cheese",
         des: "480 Cals",
+        image: breadtalianHerbsCheese
     },   
 ];
 const selectedCategoryItems = params.food == 1 ? sandwitchCategories : sandwitchCategoriesSecond;
@@ -78,7 +86,7 @@ const showCheeseDetails = (item) => {
           @click="showCheeseDetails(item)"
         >
           <img
-            src="https://png.pngtree.com/png-clipart/20220215/ourmid/pngtree-breakfast-and-bakery-bread-loaf-png-image_4389284.png"
+            :src="item.image"
             alt="bread"
             class="object-cover h-[50px] w-[50px] rounded-xl"
           />

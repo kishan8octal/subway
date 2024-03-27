@@ -4,58 +4,77 @@ import Button from "../components/Button.vue";
 import Card from "../components/Card.vue";
 import { useRouter } from "vue-router";
 import RadioGroup from '../components/RadioGroup.vue';
-
+import veggieLettuce_6in from "../assets/veggieLettuce_6in.avif";
+import veggieTomato_6in from "../assets/veggieTomato_6in.avif";
+import veggieOnion_6in from "../assets/veggieOnion_6in.avif";
+import veggieSpinach_6in from "../assets/veggieSpinach_6in.avif";
+import veggieCucumber_6in from "../assets/veggieCucumber_6in.avif";
+import veggiePickle_6in from "../assets/veggiePickle_6in.avif";
+import veggieGreenPepper_6in from "../assets/veggieGreenPepper_6in.avif";
+import veggieBlkOlives_6in from "../assets/veggieBlkOlives_6in.avif";
+import veggieJalapeno_6in from "../assets/veggieJalapeno_6in.avif";
+import veggieBananaPeppers_6in from "../assets/veggieBananaPeppers_6in.avif";
 const router = useRouter();
 const data = [
   {
     id: 1,
     name: "Lettuce",
     des: "5 Cals",
+    image: veggieLettuce_6in
   },
   {
     id: 2,
     name: "Tomatoes",
     des: "15 Cals",
+    image: veggieTomato_6in
   },
   {
     id: 3,
     name: "Red Onions",
     des: "5 Cals",
+    image: veggieOnion_6in
   },
   {
     id: 4,
     name: "Spinach",
     des: "0 Cals",
+    image: veggieSpinach_6in
   },
   {
     id: 5,
     name: "Cucumbers",
     des: "0 Cals",
+    image: veggieCucumber_6in
   },
   {
     id: 6,
     name: "Pickles",
     des: "0 Cals",
+    image: veggiePickle_6in
   },
   {
     id: 7,
     name: "Green Peppers",
     des: "0 Cals",
+    image: veggieGreenPepper_6in
   },
   {
     id: 8,
     name: "Black Olives",
     des: "5 Cals",
+    image: veggieBlkOlives_6in
   },
   {
     id: 9,
     name: "Jalapenos",
     des: "0 Cals",
+    image: veggieJalapeno_6in
   },
   {
     id: 10,
     name: "Banana Peppers",
     des: "0 Cals",
+    image: veggieBananaPeppers_6in
   },
 ];
 
@@ -146,7 +165,7 @@ const vaggiesOptions = [
             <div class="flex items-center gap-5">
               <div>
                 <img
-                  src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGL2-K4dw9cCSVZnTMspWXcsG5b0Ih9DTurw&usqp=CAU"
+                  :src="item.image"
                   alt="bread"
                   class="object-cover h-[60px] w-[60px] rounded-xl"
                 />

@@ -1,7 +1,10 @@
 <script setup>
 import Button from "../components/Button.vue";
 import { useRoute, useRouter } from "vue-router";
-
+import cheeseWhiteAmerican from "../assets/cheeseWhiteAmerican.avif";
+import cheesePepperJack from "../assets/cheesePepperJack.avif";
+import cheeseProvolone from "../assets/cheeseProvolone.avif";
+import cheeseMontereyCheddarShredded from "../assets/cheeseMontereyCheddarShredded.avif";
 const router = useRouter();
 const { params } = useRoute();
 const itemVariants = [
@@ -9,26 +12,30 @@ const itemVariants = [
     id: 1,
     name: "American Cheese",
     des: "80 Cals",
+    image: cheeseWhiteAmerican
   },
   {
     id: 2,
     name: "Pepper Jack",
     des: "100 Cals",
+    image: cheesePepperJack
   },
   {
     id: 3,
     name: "Provolone",
     des: "100 Cals",
+    image:cheeseProvolone
   },
   {
     id: 4,
     name: "Monterey Cheddar",
     des: "110 Cals",
+    image:cheeseMontereyCheddarShredded
   },
   {
     id: 5,
     name: "No Cheese",
-    // des: "0 Cals",
+    image: "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9gYFpQiP6QDCSXL4bw8faWc0T3LYWd2acSA&usqp=CAU"
   },
 ];
 const showToastedDetails=(id)=>{
@@ -59,15 +66,15 @@ const showToastedDetails=(id)=>{
                   :enter="{ opacity: 1, y: 0, scale: 1 }"
                   :variants="{ custom: { scale: 2 } }"
                   :hovered="{ scale: 1.1 }"
-            class="cursor-pointer ring-2 ring-green-600 
+            class="ring-2 ring-green-600 
                     ring-opacity-20 bg-white border border-green-600 shadow-lg rounded-[1rem] flex gap-8 items-center justify-center relative px-4 py-4 cursor-pointer"
             v-for="(item, index) in itemVariants"
             :key="index"
             @click="showToastedDetails(item.id)"
           >
             <img
-              src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSGL2-K4dw9cCSVZnTMspWXcsG5b0Ih9DTurw&usqp=CAU"
-              alt="bread"
+              :src="item.image"
+              alt="cheese"
               class="object-cover h-[50px] w-[50px] rounded-xl"
             />
             <div class="text-gray-700 font-[cursive] flex flex-col">

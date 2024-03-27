@@ -2,6 +2,8 @@
     import Button from '../components/Button.vue';
     import Card from '../components/Card.vue';
     import { useRouter, useRoute } from 'vue-router';
+    import sandwiches from "../assets/allSandWiches.avif"
+    import saladImg from "../assets/salad.avif"
 
     const router = useRouter();
     const { params } = useRoute();
@@ -11,13 +13,15 @@
             id: 1,
             name: 'classic sandwiches',
             dec: '6 Inch Sandwich + Chips + Soda = $10.00 with tax',
+            image: sandwiches
         },
         {
             id: 2,
             name: 'classic sandwiches',
             dec: 'Footlong Sandwich + Chips + Soda = $15.00 with tax',
+            image: sandwiches
         },
-        { id: 3, name: 'salad', dec: 'Salad + water bottle = $10.00 with tax' },
+        { id: 3, name: 'salad', dec: 'Salad + water bottle = $10.00 with tax',image: saladImg },
     ];
     const handleNavigate = (id) => {
         router.push({
@@ -47,8 +51,8 @@
                             @click="handleNavigate(card.id)"
                             class="border bg-white border-green-600 cursor-pointer shadow-md ring-2 ring-green-600 
                             ring-opacity-20 relative rounded-md shadow-lg">
-                        <div class="rounded-full mx-auto mt-[-100px] h-[200px] w-[200px]">
-                            <img src="../assets/classicsendwich.png" alt="img" class="rounded-full mx-auto h-[200px] w-[200px] object-cover">
+                        <div class="rounded-full mx-auto mt-[-80px] h-[200px] w-[200px]">
+                            <img :src="card.image" alt="img" class="rounded-full mx-auto h-[180px] w-[180px] object-cover">
                         </div>
                         <div class="p-4 text-center rounded-lg">
                             <p class="text-[24px] font-semibold font-[cursive] uppercase mt-5">{{ card.name }}</p>
