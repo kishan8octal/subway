@@ -9,6 +9,7 @@ import ToastedSection from '../pages/ToastedSection.vue';
 import VeggiesSection from '../pages/VeggiesSection.vue';
 import SaucesSection from '../pages/SaucesSection.vue';
 import ChipsSection from '../pages/ChipsSection.vue';
+import DrinkSection from '../pages/DrinkSection.vue';
 const routes = [
     {
         path: '/',
@@ -69,6 +70,11 @@ const routes = [
         path: '/chips/:sauce',
         name: 'chipsSection',
         component: ChipsSection,
+    },
+    {
+        path: '/drink',
+        name: 'drinkSection',
+        component: DrinkSection,
     }
 ];
 const router = createRouter({

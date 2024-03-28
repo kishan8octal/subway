@@ -2,31 +2,33 @@
 import Button from "../components/Button.vue";
 import Card from "../components/Card.vue";
 import {  useRouter } from "vue-router";
-import chipsDoritosNachoCheese from "../assets/chipsDoritosNachoCheese.avif";
-import chipsLaysClassic from "../assets/chipsLaysClassic.avif";
-
-
+import drinkDasaniBottle from "../assets/drinkDasaniBottle.avif";
+import drinkDietCoke from "../assets/drinkDietCoke.avif";
+import drinkspritelogo from "../assets/drinkspritelogo.avif";
+import drinkCocaCola from "../assets/drinkCocaCola.avif";
 const router = useRouter();
-const chipsCard = [
+const drinkCard = [
     {
     id: 1,
-    name: "DORITOS Nacho Cheese",
-    image: chipsDoritosNachoCheese
+    name: "Dasani Water",
+    image: drinkDasaniBottle
   },
   {
     id: 2,
-    name: "LAY'S Classic",
-    image: chipsLaysClassic
+    name: "Diet Coke",
+    image: drinkDietCoke
+  },
+  {
+    id: 3,
+    name: "Sprite",
+    image: drinkspritelogo,
+  },
+  {
+    id: 4,
+    name: "Coca-Cola Classic",
+    image: drinkCocaCola
   }
 ]
-const navigateToDrink=(id)=>{
-    router.push({
-        name: 'drinkSection',
-        params: {
-          veggies:id,
-        },
-    });
-}
 </script>
 <template>
   <section>
@@ -38,7 +40,7 @@ const navigateToDrink=(id)=>{
     >
     <div class="container mx-auto py-10 px-5">
       <div class="text-green-600 font-mono font-bold text-xl my-5">
-        Select The Chips
+        Select Your Drink
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -48,10 +50,9 @@ const navigateToDrink=(id)=>{
           :enter="{ opacity: 1, y: 0, scale: 1 }"
           :variants="{ custom: { scale: 2 } }"
           :hovered="{ scale: 1.1 }"
-          v-for="(item, index) in  chipsCard"
+          v-for="(item, index) in  drinkCard"
           :key="index"
           class="relative"
-          @click="navigateToDrink(item.id)"
         >
           <Card
             class="border border-green-600 ring-2 ring-green-600 ring-opacity-20 cursor-pointer"

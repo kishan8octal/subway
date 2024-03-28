@@ -1,4 +1,4 @@
-<script setup>
+<!-- <script setup>
     const app = import.meta.env.VITE_APP_ENV;
     
     document.onkeydown = function(e) {
@@ -22,7 +22,7 @@
             return false;
         }
     }
-</script>
+</script> -->
 
 <template>
     <div class="min-h-100vh">
