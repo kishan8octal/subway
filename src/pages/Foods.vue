@@ -35,7 +35,7 @@
     };
 </script>
 <style scoped>
-    .bg-primary-gradient:not(:hover) {
+    .bg-primary-gradient{
         background: linear-gradient(180deg, rgba(255, 255, 255, 0.16) 0%, rgba(255, 255, 255, 0.00) 100%), #009C5B;
     }
 </style>
