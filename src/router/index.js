@@ -17,7 +17,7 @@ const routes = [
         component: Index,
     },
     {
-        path: '/branch/:branch/delivery-time',
+        path: '/delivery-time',
         name: 'deliveryTime',
         component: DeliveryTime,
     },

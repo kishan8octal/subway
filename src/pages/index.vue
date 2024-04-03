@@ -3,25 +3,38 @@
     import Card from '../components/Card.vue';
     import { useRouter } from 'vue-router';
     import { ref, watch } from 'vue';
+    import { useStore } from 'vuex';
 
     const router = useRouter();
+    const store = useStore();
 
     const options = [
-        { name: 'Bank', id: 1 },
-        { name: 'Cintas', id: 2 },
+        // { name: 'Bank', id: 1 },
+        // { name: 'Cintas', id: 2 },
         { name: 'Medical Office', id: 3 },
         { name: 'American Heritage', id: 4 },
     ];
+
+
     const selectedOptions = ref('');
 
     watch(selectedOptions, (value) => {
-        router.push({ name: 'deliveryTime', params: { branch: value } });
+        store.dispatch('storeBranch',value);
+        setTimeout(() => {
+        router.push({ name: 'deliveryTime'});
+        }, 300);
     });
-</script>
+</script>rou
 <template>
-    <section class="flex items-center h-screen p-5 z-50">
+    <section 
+    class="flex items-center h-screen p-5 z-50"
+    >
         <Card class="shadow-lg container mx-auto">
-            <div class="flex flex-col gap-10">
+            <div
+            v-motion
+            :initial="{ opacity: 0, y: 100 }"
+            :enter="{ opacity: 1, y: 0, scale: 1 }"
+            class="flex flex-col gap-10">
                 <div>
                     <h3 class="text-2xl  font-bold font-[cursive] text-green-800">Place Order To Get Deliver From:</h3>
                 </div>
