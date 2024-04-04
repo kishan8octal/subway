@@ -1,6 +1,7 @@
 <script setup>
     import RadioGroup from '../components/RadioGroup.vue';
     import Card from '../components/Card.vue';
+    import QrCode from '../components/QrCode.vue';
     import { useRouter } from 'vue-router';
     import { ref, watch } from 'vue';
     import { useStore } from 'vuex';
@@ -29,6 +30,7 @@
     <section 
     class="flex items-center h-screen p-5 z-50"
     >
+        <QrCode />
         <Card class="shadow-lg container mx-auto">
             <div
             v-motion
