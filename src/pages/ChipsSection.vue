@@ -4,9 +4,13 @@ import Card from "../components/Card.vue";
 import {  useRouter } from "vue-router";
 import chipsDoritosNachoCheese from "../assets/chipsDoritosNachoCheese.avif";
 import chipsLaysClassic from "../assets/chipsLaysClassic.avif";
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 
 const router = useRouter();
+const store = useStore();
+const orderDetails = computed(() => store.state.orderDetails);
 const chipsCard = [
     {
     id: 1,
@@ -19,13 +23,12 @@ const chipsCard = [
     image: chipsLaysClassic
   }
 ]
-const navigateToDrink=(id)=>{
-    router.push({
-        name: 'drinkSection',
-        params: {
-          veggies:id,
-        },
-    });
+const navigateToDrink=(item)=>{
+    orderDetails.value.chips = item;
+    store.dispatch('storeData', orderDetails.value);
+    setTimeout(() => {
+        router.push({ name: 'drinkSection' });
+    }, 300);
 }
 </script>
 <template>
@@ -51,7 +54,7 @@ const navigateToDrink=(id)=>{
           v-for="(item, index) in  chipsCard"
           :key="index"
           class="relative"
-          @click="navigateToDrink(item.id)"
+          @click="navigateToDrink(item)"
         >
           <Card
             class="border border-green-600 ring-2 ring-green-600 ring-opacity-20 cursor-pointer"

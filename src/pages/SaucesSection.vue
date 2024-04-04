@@ -13,8 +13,13 @@ import sauceRostedGarlicAioli from "../assets/sauceRostedGarlicAioli.avif";
 import sauceParmVinaigrette from "../assets/sauceParmVinaigrette.avif";
 import sauceOil from "../assets/sauceOil.avif";
 import sauceRedWineVinegar from "../assets/sauceRedWineVinegar.avif";
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 const router = useRouter();
+const store = useStore();
+const orderDetails = computed(() => store.state.orderDetails);
+
 const SaucesCard = [
   {
     id: 1,
@@ -83,13 +88,12 @@ const SaucesCard = [
     image: sauceRedWineVinegar
   },
 ];
-const navigateToChips=(id)=>{
-    router.push({
-        name: 'chipsSection',
-        params: {
-          sauce:id,
-        },
-    });
+const navigateToChips=(item)=>{
+    orderDetails.value.souces = item;
+    store.dispatch('storeData', orderDetails.value);
+    setTimeout(() => {
+        router.push({ name: 'chipsSection' });
+    }, 300);
 }
 </script>
 <template>
@@ -115,7 +119,7 @@ const navigateToChips=(id)=>{
           v-for="(item, index) in  SaucesCard"
           :key="index"
           class="relative"
-          @click="navigateToChips(item.id)"
+          @click="navigateToChips(item)"
         >
           <Card
             class="border border-green-600 ring-2 ring-green-600 ring-opacity-20 cursor-pointer"

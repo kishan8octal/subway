@@ -9,14 +9,14 @@ export default createStore({
     };
   },
   mutations: {
-    storeBranch(state,data) {
-      state.orderDetails.branch = data;
+    storeData(state,data) {
+      state.orderDetails = data;
       localStorage.setItem('orderDetails', JSON.stringify(state.orderDetails));
     }
   },
   actions: {
-    storeBranch(context,data) {
-      context.commit('storeBranch',data);
+    storeData(context,data) {
+      context.commit('storeData',data);
     }
   },
   getters: {

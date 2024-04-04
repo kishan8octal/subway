@@ -1,14 +1,17 @@
 <script setup>
 import Button from "../components/Button.vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import breadGrainWheat from "../assets/breadGrainWheat.avif";
 import breadtalianWhite from "../assets/breadtalianWhite.avif";
 import breadtalianHerbsCheese from "../assets/breadtalianHerbsCheese.avif";
 import saladImage from "../assets/salad.png";
 import Card from "../components/Card.vue";
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 const router = useRouter();
-const { params } = useRoute();
+const store = useStore();
+const orderDetails = computed(() => store.state.orderDetails);
 
 const sandwitchCategories = [
   {
@@ -50,19 +53,13 @@ const sandwitchCategoriesSecond = [
     image: breadtalianHerbsCheese,
   },
 ];
-const selectedCategoryItems =
-  params.food == 1 ? sandwitchCategories : sandwitchCategoriesSecond;
+const selectedCategoryItems = orderDetails.value?.food?.id == 1 ? sandwitchCategories : sandwitchCategoriesSecond;
 const showCheeseDetails = (item) => {
-  router.push({
-    name: "categoryItem",
-    params: {
-      branch: params.branch,
-      time: params.time,
-      food: params.food,
-      category: params.category,
-      item: item.id,
-    },
-  });
+    orderDetails.value.categoryItem = item;
+    store.dispatch('storeData', orderDetails.value);
+    setTimeout(() => {
+        router.push({ name: 'categoryItem'});
+    }, 300);
 };
 </script>
 <template>

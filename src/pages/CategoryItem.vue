@@ -6,8 +6,13 @@ import cheesePepperJack from "../assets/cheesePepperJack.avif";
 import cheeseProvolone from "../assets/cheeseProvolone.avif";
 import cheeseMontereyCheddarShredded from "../assets/cheeseMontereyCheddarShredded.avif";
 import Card from "../components/Card.vue";
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 const router = useRouter();
 const { params } = useRoute();
+const store = useStore();
+const orderDetails = computed(() => store.state.orderDetails);
+
 const itemVariants = [
   {
     id: 1,
@@ -40,18 +45,12 @@ const itemVariants = [
       "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT9gYFpQiP6QDCSXL4bw8faWc0T3LYWd2acSA&usqp=CAU",
   },
 ];
-const showToastedDetails = (id) => {
-  router.push({
-    name: params.food == 3 ? "veggiesSectionForSalad" : "toastedSection",
-    params: {
-      branch: params.branch,
-      time: params.time,
-      food: params.food,
-      category: params.category,
-      ...(params.food == 3 && { item: params.item }),
-      variant: id,
-    },
-  });
+const showToastedDetails = (item) => {
+    orderDetails.value.selectedCategoryItem = item;
+    store.dispatch('storeData', orderDetails.value);
+    setTimeout(() => {
+        router.push({ name: params.food == 3 ? "veggiesSectionForSalad" : "toastedSection"});
+    }, 300);
 };
 </script>
 <template>
@@ -78,7 +77,7 @@ const showToastedDetails = (id) => {
           class="relative"
           v-for="(item, index) in itemVariants"
           :key="index"
-          @click="showToastedDetails(item.id)"
+          @click="showToastedDetails(item)"
         >
           <Card
             class="border border-green-600 ring-2 ring-green-600 ring-opacity-20 cursor-pointer"

@@ -1,24 +1,20 @@
 <script setup>
 import Button from '../components/Button.vue';
 import Card from '../components/Card.vue';
-import { useRoute, useRouter } from 'vue-router';
+import { useRouter } from 'vue-router';
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 const router = useRouter();
-const { params } = useRoute();
+const store = useStore();
+const orderDetails = computed(() => store.state.orderDetails);
 
-const handleToasted=(id)=>{
-    router.push({
-        name: 'veggiesSection',
-        params: {
-            branch:params.branch,
-            time:params.time,
-            food:params.food,
-            category:params.category,
-            item: params.item,
-            variant: params.id,
-            toast:id,
-        },
-    });
+const handleToasted=(toast)=>{
+    orderDetails.value.selectedToasted = toast;
+    store.dispatch('storeData', orderDetails.value);
+    setTimeout(() => {
+        router.push({ name: 'veggiesSection' });
+    }, 300);
 }
 
 </script>
@@ -32,10 +28,10 @@ const handleToasted=(id)=>{
                 class="container mx-auto my-10 p-2">
             <Card class="border border-green-600 ring-2 ring-green-600 ring-opacity-20">
                 <div class="flex flex-col sm:flex-row gap-5 items-center sm:items-start">
-                        <Button variant="secondary" @click="handleToasted(1)">
+                        <Button variant="secondary" @click="handleToasted({id: 1 ,name: 'toasted'})">
                             Toasted                            
                         </Button>
-                        <Button variant="secondary" @click="handleToasted(2)">
+                        <Button variant="secondary" @click="handleToasted({id: 2 ,name: 'not toasted'})">
                       Not toasted
                     </Button>
                 </div>

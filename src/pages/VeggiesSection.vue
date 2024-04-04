@@ -1,5 +1,5 @@
 <script setup>
-import { ref } from "vue";
+    import { computed, ref } from 'vue';
 import Button from "../components/Button.vue";
 import Card from "../components/Card.vue";
 import { useRouter } from "vue-router";
@@ -14,7 +14,11 @@ import veggieGreenPepper_6in from "../assets/veggieGreenPepper_6in.avif";
 import veggieBlkOlives_6in from "../assets/veggieBlkOlives_6in.avif";
 import veggieJalapeno_6in from "../assets/veggieJalapeno_6in.avif";
 import veggieBananaPeppers_6in from "../assets/veggieBananaPeppers_6in.avif";
+import { useStore } from 'vuex';
+
 const router = useRouter();
+const store = useStore();const orderDetails = computed(() => store.state.orderDetails);
+
 const data = [
   {
     id: 1,
@@ -91,13 +95,12 @@ isSelectedItems.value = data.map(item => {
     };
 });
 const VeggiesCard = ref(data);
-const navigateToSauces=(id)=>{
-    router.push({
-        name: 'saucesSection',
-        params: {
-          veggies:id,
-        },
-    });
+const navigateToSauces=(item)=>{
+    orderDetails.value.vaggies = item;
+    store.dispatch('storeData', orderDetails.value);
+    setTimeout(() => {
+        router.push({ name: 'saucesSection' });
+    }, 300);
 }
 
 const handelRemoveCard = (id) => {
@@ -151,7 +154,7 @@ const vaggiesOptions = [
           v-for="(item, index) in VeggiesCard"
           :key="index"
           class="relative"
-          @click="navigateToSauces(item.id)"
+          @click="navigateToSauces(item)"
         >
           <Card
             class="border border-green-600 ring-2 ring-green-600 ring-opacity-20 cursor-pointer"

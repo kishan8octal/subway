@@ -6,7 +6,12 @@ import drinkDasaniBottle from "../assets/drinkDasaniBottle.avif";
 import drinkDietCoke from "../assets/drinkDietCoke.avif";
 import drinkspritelogo from "../assets/drinkspritelogo.avif";
 import drinkCocaCola from "../assets/drinkCocaCola.avif";
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 const router = useRouter();
+const store = useStore();
+const orderDetails = computed(() => store.state.orderDetails);
+
 const drinkCard = [
     {
     id: 1,

@@ -1,6 +1,6 @@
 <script setup>
 import Button from "../components/Button.vue";
-import { useRoute, useRouter } from "vue-router";
+import { useRouter } from "vue-router";
 import sandwichBlackHam from "../assets/sandwichBlackHam.avif";
 import sandwichBuffaloChicken from "../assets/sandwichBuffaloChicken.avif";
 import sandwichTurkey from "../assets/sandwichTurkey.avif";
@@ -24,9 +24,13 @@ import saladMeatball from "../assets/saladMeatball.avif";
 import saladRotisserieChicken from "../assets/saladRotisserieChicken.avif";
 import saladRoastBeef_Bowl from "../assets/saladRoastBeef_Bowl.avif";
 import Card from "../components/Card.vue";
+import { useStore } from 'vuex';
+import { computed } from 'vue';
 
 const router = useRouter();
-const { params } = useRoute();
+const store = useStore();
+const orderDetails = computed(() => store.state.orderDetails);
+
 const saladItems = [
   {
     id: 1,
@@ -141,47 +145,17 @@ const SandwitchItems = [
     image: sandwichProSweetOnionTeriyaki,
   },
 ];
-const selectedItemsData = params.food == 3 ? saladItems : SandwitchItems;
-const showBreadDetails = (id) => {
-  router.push({
-    name: params.food == 3 ? "categoryItemForSalad" : "categoryItems",
-    params: {
-      branch: params.branch,
-      time: params.time,
-      food: params.food,
-      category: id,
-    },
-  });
+const selectedItemsData = orderDetails?.value?.food?.id == 3 ? saladItems : SandwitchItems;
+
+const showBreadDetails = (category) => {
+    orderDetails.value.foodCategory = category;
+    store.dispatch('storeData', orderDetails.value);
+    setTimeout(() => {
+        router.push({ name: orderDetails?.value?.food?.id == 3 ? "categoryItemForSalad" : "categoryItems" });
+    }, 300);
 };
 </script>
 <template>
-  <!-- <section>
-      <Button variant="primary" class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back</Button>
-      <div class="container mx-auto py-10 px-5">
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 px-10 sm:px-2">
-          <div
-                  v-motion
-                  :initial="{ opacity: 0, y: 100 }"
-                  :enter="{ opacity: 1, y: 0, scale: 1 }"
-                  :variants="{ custom: { scale: 2 } }"
-                  :hovered="{ scale: 1.1 }"
-                  :delay="200"
-                  @click="showBreadDetails(item.id)"
-                  class="cursor-pointer ring-2 ring-green-600 ring-opacity-20
-                   bg-white border border-green-600 shadow-lg rounded-[1rem] px-4" 
-                  v-for="(item, index) in selectedItemsData" :key="index">
-              <div
-                      class="relative h-56 mx-4 -mt-6 overflow-hidden text-white shadow-lg bg-clip-border rounded-xl bg-blue-gray-500 shadow-blue-gray-500/40">
-                  <img :src="item.image" alt="card-image" />
-              </div>
-             <div class="relative  rounded-md">
-                 <img :src="item.image" alt="Image 1" class="rounded-md object-cover" />
-           </div>
-            <h3 class="text-2xl font-[cursive] mb-3 text-center">{{ item.name }}</h3>
-          </div>
-        </div>
-      </div>
-    </section> -->
   <section>
     <Button
       variant="primary"
@@ -190,11 +164,14 @@ const showBreadDetails = (id) => {
       >Back</Button
     >
     <div class="container mx-auto py-10 px-5">
-      <!-- <div class="text-green-600 font-mono font-bold text-xl my-5">
-          Select Your Food Items
-        </div> -->
+        <Card>
+            <h1>Order Details</h1>
+            <div>Your branch :- {{orderDetails.branch.name }}</div>
+            <div> Your Delivery Time :- {{orderDetails.deliveryTime }}</div>
+            <div> Your Food :- {{orderDetails.food.name }}</div>
+        </Card>
 
-      <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+      <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
         <div
           v-motion
           :initial="{ opacity: 0, y: 100 }"
@@ -203,7 +180,7 @@ const showBreadDetails = (id) => {
           :hovered="{ scale: 1.1 }"
           v-for="(item, index) in selectedItemsData"
           :key="index"
-          @click="showBreadDetails(item.id)"
+          @click="showBreadDetails(item)"
           class="relative"
         >
           <Card
