@@ -218,7 +218,7 @@ const showBreadDetails = (id) => {
                 />
               </div>
               <div class="flex flex-col gap-1">
-                <span class="text-gray-950 font-semibold text-xl">{{
+                <span class="text-gray-950 font-semibold text-xl font-[cursive]">{{
                   item.name
                 }}</span>
               </div>
