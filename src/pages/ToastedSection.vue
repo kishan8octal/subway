@@ -21,6 +21,15 @@ const handleToasted=(toast)=>{
 <template>
     <section class="h-screen">
             <Button variant="primary" class="mt-5 mx-3 text-white font-bold" @click="router.back()">Back</Button>
+            <Card>
+                <h1>Order Details</h1>
+                <div>Your branch :- {{orderDetails.branch.name }}</div>
+                <div> Your Delivery Time :- {{orderDetails.deliveryTime }}</div>
+                <div> Your Food :- {{orderDetails.food.name }}</div>
+                <div> Your Food Category :- {{orderDetails.foodCategory.name }}</div>
+                <div> Your Food Category Item:- {{orderDetails.categoryItem.name }}</div>
+                <div> Your Food Category Selected Item:- {{orderDetails.selectedCategoryItem.name }}</div>
+              </Card>
         <div
                 v-motion
                 :initial="{ opacity: 0, y: 100 }"

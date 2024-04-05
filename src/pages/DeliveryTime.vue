@@ -42,8 +42,8 @@
         <div v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1 }" class="flex items-center h-screen p-5 z-50">
             <Card class="shadow-lg container mx-auto">
                 <div class="flex flex-col gap-5 items-center sm:items-start">
-                    <div class="text-green-600 font-[cursive] font-bold text-2xl">Select Your Delivery Time</div>
-                    <div class="font-bold text-xl font-[cursive] text-gray-800">Deliver At
+                    <div class="text-green-600 font-extrabold text-2xl">Select Your Delivery Time</div>
+                    <div class="font-extrabold text-xl text-black">Deliver At
                         {{orderDetails.branch.name}}
                     </div>
                     <div class="flex gap-3 items-center font-bold my-5">

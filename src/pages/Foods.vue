@@ -54,16 +54,19 @@
                     <div>Your branch :- {{orderDetails.branch.name }}</div>
                     <div> Your Delivery Time :- {{orderDetails.deliveryTime }}</div>
                 </Card>
+                <div class="text-black font-extrabold text-center text-[34px] mt-5">
+                    Menu
+                </div>
                 <div class="mt-28 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-28 gap-x-10">
                     <div v-for="(card, index) in cards" :key="index" @click="handleNavigate(card)" v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :variants="{ custom: { scale: 2 } }" :hovered="{ scale: 1.1 }" class="border bg-white border-green-600 cursor-pointer ring-2 ring-green-600 ring-opacity-20 relative rounded-md shadow-lg">
                         <div class="rounded-full mx-auto mt-[-80px] h-[200px] w-[200px]">
                             <img :src="card.image" alt="img" class="rounded-full mx-auto h-[180px] w-[180px] object-cover"/>
                         </div>
                         <div class="p-4 text-center rounded-lg">
-                            <p class="text-2xl font-semibold font-[cursive] uppercase mt-5">
+                            <p class="text-2xl font-extrabold uppercase mt-5">
                                 {{ card.name }} </p>
-                            <p class="text-xl font-[cursive] mt-5">{{ card.dec }}</p>
-                            <span class="text-2xl font-semibold font-[cursive] text-sky-500 mt-5 drop-shadow-2xl hover:text-blue-600">{{card.price}}</span>
+                            <p class="text-xl mt-5 font-extrabold text-green-600 ">{{ card.dec }}</p>
+                            <span class="text-2xl font-extrabold text-black">{{card.price}}</span>
                         </div>
                     </div>
                 </div>

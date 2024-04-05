@@ -1,6 +1,7 @@
 <script setup>
     import RadioGroup from '../components/RadioGroup.vue';
     import Card from '../components/Card.vue';
+    import Header from '../components/Header.vue';
     import QrCode from '../components/QrCode.vue';
     import { useRouter } from 'vue-router';
     import { ref, watch } from 'vue';
@@ -24,19 +25,21 @@
     });
 </script>rou
 <template>
-    <section class="flex items-center h-screen p-5 z-50">
+    <section class=" h-screen p-5 z-50">
 <!--        <QrCode/>-->
-        <Card class="shadow-lg container mx-auto">
+<Header />
+        <Card class="shadow-lg container mx-auto mt-5">
             <div v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1 }" class="flex flex-col gap-10">
                 <div>
-                    <h3 class="text-2xl  font-bold font-[cursive] text-green-800">Place Order To Get Deliver From:</h3>
+                    <h3 class="text-2xl  font-extrabold  text-black">Place Order To Get Deliver From</h3>
                 </div>
                 <div>
-                    <h1 class="text-5xl font-bold font-[cursive] text-gray-800 text-shadow-lg">Subway</h1>
+                    <!-- <h1 class="text-5xl font-bold  text-gray-800 text-shadow-lg">Subway</h1> -->
+                    <img class="h-[100px] w-[150px] filter" src="../assets/subwayLogo.png" />
                 </div>
-                <div class="font-[cursive]">
-                    <p class="text-2xl text-gray-700"> 9979 Bustleton Avenue,</p>
-                    <p class="text-2xl text-gray-700">Philadelphia PA 19115</p>
+                <div class="">
+                    <p class="text-2xl font-extrabold text-black"> 9979 Bustleton Avenue,</p>
+                    <p class="text-2xl font-extrabold text-black">Philadelphia PA 19115</p>
                 </div>
                 <div>
                     <RadioGroup :options="options" v-model="selectedOptions"/>
@@ -45,3 +48,8 @@
         </Card>
     </section>
 </template>
+<style scoped>
+.filter{
+    filter: drop-shadow(2px 4px 6px black);
+}
+</style>

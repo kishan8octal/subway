@@ -4,15 +4,15 @@ import { useRouter } from "vue-router";
 import breadGrainWheat from "../assets/breadGrainWheat.avif";
 import breadtalianWhite from "../assets/breadtalianWhite.avif";
 import breadtalianHerbsCheese from "../assets/breadtalianHerbsCheese.avif";
-import saladImage from "../assets/salad.png";
+import long_Black_Forest_Ham from "../assets/long_Black_Forest_Ham.avif";
 import Card from "../components/Card.vue";
-import { useStore } from 'vuex';
-import { computed } from 'vue';
+import { useStore } from "vuex";
+import { computed } from "vue";
 
 const router = useRouter();
 const store = useStore();
 const orderDetails = computed(() => store.state.orderDetails);
-
+console.log("orderDetails", orderDetails);
 const sandwitchCategories = [
   {
     id: 1,
@@ -53,13 +53,16 @@ const sandwitchCategoriesSecond = [
     image: breadtalianHerbsCheese,
   },
 ];
-const selectedCategoryItems = orderDetails.value?.food?.id == 1 ? sandwitchCategories : sandwitchCategoriesSecond;
+const selectedCategoryItems =
+  orderDetails.value?.food?.id == 1
+    ? sandwitchCategories
+    : sandwitchCategoriesSecond;
 const showCheeseDetails = (item) => {
-    orderDetails.value.categoryItem = item;
-    store.dispatch('storeData', orderDetails.value);
-    setTimeout(() => {
-        router.push({ name: 'categoryItem'});
-    }, 300);
+  orderDetails.value.categoryItem = item;
+  store.dispatch("storeData", orderDetails.value);
+  setTimeout(() => {
+    router.push({ name: "categoryItem" });
+  }, 300);
 };
 </script>
 <template>
@@ -71,8 +74,25 @@ const showCheeseDetails = (item) => {
       >Back</Button
     >
     <div class="container mx-auto py-10 px-5">
-      <div class="text-green-600 font-mono font-bold text-xl my-5">
-        Select the Bread
+      <Card>
+        <h1 class="text-green-600 font-bold">Selected Order Details</h1>
+        <div class="text-green-600 font-bold">{{ orderDetails.branch.name }}</div>
+        <div class="text-green-600 font-bold">Delivery Time {{ orderDetails.deliveryTime }}</div>
+        <div class="text-[34px] font-semibold">
+          {{ orderDetails.food.name }}
+        </div>
+        <div class="flex flex-wrap">
+          <div class="text-[34px] font-semibold mt-5">
+            {{ orderDetails.foodCategory.name }}
+          </div>
+          <div class="mix-blend-darken">
+            <img :src="orderDetails.foodCategory.image" alt="long" class="h-[250px] w-[300px]"/>
+          </div>
+        </div>
+      </Card>
+      <div class="text-green-600 font-extrabold text-xl my-5">
+        Bread
+        <p class="text-[16px] font-extralight">Select 1</p>
       </div>
       <div
         class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-12 sm:px-2"
@@ -97,11 +117,11 @@ const showCheeseDetails = (item) => {
                 alt="bread"
                 class="object-cover h-[50px] w-[50px] rounded-xl"
               />
-              <div class="text-gray-700 font-[cursive] flex flex-col">
-                <span>
+              <div class="flex flex-col">
+                <span class="text-black font-extrabold">
                   {{ item.name }}
                 </span>
-                <span class="text-slate-800">
+                <span class="text-gray-500 text-[12px]">
                   {{ item.des }}
                 </span>
               </div>
@@ -112,3 +132,12 @@ const showCheeseDetails = (item) => {
     </div>
   </section>
 </template>
+
+<style scoped>
+.food-logo {
+  background-image: url(/src/assets/long_Black_Forest_Ham.avif);
+  background-repeat: no-repeat;
+  background-position: 100% 70%;
+  background-size: cover;
+}
+</style>

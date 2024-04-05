@@ -140,8 +140,19 @@ const vaggiesOptions = [
       >Back</Button
     >
     <div class="container mx-auto py-10 px-5">
-      <div class="text-green-600 font-mono font-bold text-xl my-5">
-        Select veggies
+      <Card>
+        <h1>Order Details</h1>
+        <div>Your branch :- {{orderDetails.branch.name }}</div>
+        <div> Your Delivery Time :- {{orderDetails.deliveryTime }}</div>
+        <div> Your Food :- {{orderDetails.food.name }}</div>
+        <div> Your Food Category :- {{orderDetails.foodCategory.name }}</div>
+        <div> Your Food Category Item:- {{orderDetails.categoryItem.name }}</div>
+        <div> Your Food Category Selected Item:- {{orderDetails.selectedCategoryItem.name }}</div>
+        <div> Your Food Category Selected Toasted:- {{orderDetails.selectedToasted.name }}</div>
+      </Card>
+      <div class="text-green-600 font-extrabold text-xl my-5">
+        Veggies
+        <p class="text-[16px] font-extralight">Select up to 10</p>
       </div>
 
       <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
@@ -174,10 +185,10 @@ const vaggiesOptions = [
                 />
               </div>
               <div class="flex flex-col gap-1">
-                <span class="text-gray-950 font-semibold text-xl">{{
+                <span class="text-black font-bold text-lg line-height-[1.5]">{{
                   item.name
                 }}</span>
-                <span class="text-gray-700 text-lg">{{ item.des }}</span>
+                <span class="text-gray-500 text-[12px]">{{ item.des }}</span>
               </div>
             </div>
             <div class="flex gap-5 mt-5 justify-center" @click.stop="">

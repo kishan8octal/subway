@@ -2,3 +2,7 @@
 @tailwind base;
 @tailwind components;
 @tailwind utilities;
+
+*{
+    font-family: "SubwaySansLCGBold","Helvetica Neue","Helvetica","Arial",sans-serif;
+}
