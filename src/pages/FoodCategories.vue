@@ -168,7 +168,7 @@ const showBreadDetails = (category) => {
             <h1>Order Details</h1>
             <div>Your branch :- {{orderDetails.branch.name }}</div>
             <div> Your Delivery Time :- {{orderDetails.deliveryTime }}</div>
-            <div class="text-[34px] font-extrabold">{{orderDetails.food.name }}</div>
+            <div class="text-[24px] font-extrabold">{{orderDetails.food.name }}</div>
         </Card>
 
       <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

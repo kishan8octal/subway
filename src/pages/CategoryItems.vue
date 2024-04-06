@@ -78,11 +78,11 @@ const showCheeseDetails = (item) => {
         <h1 class="text-green-600 font-bold">Selected Order Details</h1>
         <div class="text-green-600 font-bold">{{ orderDetails.branch.name }}</div>
         <div class="text-green-600 font-bold">Delivery Time {{ orderDetails.deliveryTime }}</div>
-        <div class="text-[34px] font-semibold">
+        <div class="text-[24px] font-semibold">
           {{ orderDetails.food.name }}
         </div>
         <div class="flex flex-wrap">
-          <div class="text-[34px] font-semibold mt-5">
+          <div class="text-[24px] font-semibold mt-5">
             {{ orderDetails.foodCategory.name }}
           </div>
           <div class="mix-blend-darken">

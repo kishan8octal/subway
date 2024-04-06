@@ -16,21 +16,29 @@ const drinkCard = [
     {
     id: 1,
     name: "Dasani Water",
+    ounces: "16.9oz",
+    calories:"0 kcal",
     image: drinkDasaniBottle
   },
   {
     id: 2,
     name: "Diet Coke",
+    ounces: "12oz",
+    calories:"0 kcal",
     image: drinkDietCoke
   },
   {
     id: 3,
     name: "Sprite",
+    ounces: "12oz",
+    calories:"134 kcal",
     image: drinkspritelogo,
   },
   {
     id: 4,
     name: "Coca-Cola Classic",
+    ounces: "12oz",
+    calories:"140 kcal",
     image: drinkCocaCola
   }
 ]
@@ -87,7 +95,7 @@ const drinkCard = [
                 <span class="text-gray-950 font-extrabold text-xl">{{
                   item.name
                 }}</span>
-                <!-- <span class="text-gray-700 text-lg">{{ item.des }}</span> -->
+                <span class="text-gray-500 text-[12px]">{{ item.ounces }} Ounces , {{ item.calories }}</span>
               </div>
             </div>
           </Card>

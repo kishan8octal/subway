@@ -15,11 +15,15 @@ const chipsCard = [
     {
     id: 1,
     name: "DORITOS Nacho Cheese",
+    ounces: "1oz",
+    calories:"150 Kcal",
     image: chipsDoritosNachoCheese
   },
   {
     id: 2,
     name: "LAY'S Classic",
+    ounces: "1oz",
+    calories:"160 Kcal",
     image: chipsLaysClassic
   }
 ]
@@ -83,7 +87,7 @@ const navigateToDrink=(item)=>{
                 <span class="text-gray-950 font-extrabold text-xl">{{
                   item.name
                 }}</span>
-                <span class="text-gray-700 text-lg">{{ item.des }}</span>
+                <span class="text-gray-500 text-[12px]">{{ item.ounces }} Ounces , {{ item.calories }}</span>
               </div>
             </div>
           </Card>
