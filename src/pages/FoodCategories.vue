@@ -152,7 +152,7 @@ const showBreadDetails = (category) => {
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
         router.push({ name: orderDetails?.value?.food?.id == 3 ? "categoryItemForSalad" : "categoryItems" });
-    }, 300);
+    }, 100);
 };
 </script>
 <template>

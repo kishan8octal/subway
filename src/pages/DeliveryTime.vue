@@ -33,7 +33,7 @@
         store.dispatch('storeData', orderDetails.value);
         setTimeout(() => {
             router.push({ name: 'foods' });
-        }, 300);
+        }, 100);
     };
 </script>
 <template>

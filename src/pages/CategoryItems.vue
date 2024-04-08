@@ -62,7 +62,7 @@ const showCheeseDetails = (item) => {
   store.dispatch("storeData", orderDetails.value);
   setTimeout(() => {
     router.push({ name: "categoryItem" });
-  }, 300);
+  }, 100);
 };
 </script>
 <template>

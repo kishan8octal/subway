@@ -21,7 +21,7 @@
         store.dispatch('storeData', { branch: value });
         setTimeout(() => {
             router.push({ name: 'deliveryTime' });
-        }, 300);
+        }, 100);
     });
 </script>rou
 <template>

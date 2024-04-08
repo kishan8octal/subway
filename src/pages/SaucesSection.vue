@@ -93,7 +93,7 @@ const navigateToChips=(item)=>{
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
         router.push({ name: 'chipsSection' });
-    }, 300);
+    }, 100);
 }
 </script>
 <template>
@@ -107,14 +107,14 @@ const navigateToChips=(item)=>{
     <div class="container mx-auto py-10 px-5">
       <Card>
         <h1>Order Details</h1>
-        <div>Your branch :- {{orderDetails.branch.name }}</div>
-        <div> Your Delivery Time :- {{orderDetails.deliveryTime }}</div>
-        <div> Your Food :- {{orderDetails.food.name }}</div>
-        <div> Your Food Category :- {{orderDetails.foodCategory.name }}</div>
-        <div> Your Food Category Item:- {{orderDetails.categoryItem.name }}</div>
-        <div> Your Food Category Selected Item:- {{orderDetails.selectedCategoryItem.name }}</div>
-        <div> Your Food Category Selected Toasted:- {{orderDetails.selectedToasted.name }}</div>
-        <div> Selected Vaggies:- {{orderDetails.vaggies.name }}</div>
+        <div>Your branch :- {{orderDetails?.branch?.name }}</div>
+        <div> Your Delivery Time :- {{orderDetails?.deliveryTime }}</div>
+        <div> Your Food :- {{orderDetails?.food?.name }}</div>
+        <div> Your Food Category :- {{orderDetails?.foodCategory?.name }}</div>
+        <div> Your Food Category Item:- {{orderDetails?.categoryItem?.name }}</div>
+        <div> Your Food Category Selected Item:- {{orderDetails?.selectedCategoryItem?.name }}</div>
+        <div> Your Food Category Selected Toasted:- {{orderDetails?.selectedToasted?.name }}</div>
+        <div> Selected Vaggies:- {{orderDetails?.vaggies?.name }}</div>
       </Card>
       <div class="text-green-600 font-extrabold text-xl my-5">
         Select Your Sauces
