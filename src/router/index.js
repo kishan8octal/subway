@@ -1,4 +1,5 @@
 import { createRouter, createWebHistory } from 'vue-router';
+//for version ui 1
 import Index from '../pages/index.vue';
 import DeliveryTime from '../pages/DeliveryTime.vue';
 import Foods from '../pages/Foods.vue';
@@ -10,11 +11,19 @@ import VeggiesSection from '../pages/VeggiesSection.vue';
 import SaucesSection from '../pages/SaucesSection.vue';
 import ChipsSection from '../pages/ChipsSection.vue';
 import DrinkSection from '../pages/DrinkSection.vue';
+// for version ui 2
+import IndexV2 from '../pages/V2/index.vue';
+
+
 const routes = [
     {
         path: '/',
         name: 'index',
         component: Index,
+    }, {
+        path: '/v2',
+        name: 'indexV2',
+        component: IndexV2,
     },
     {
         path: '/delivery-time',

@@ -1,6 +1,7 @@
 <script setup>
     import RadioGroup from '../components/RadioGroup.vue';
     import Card from '../components/Card.vue';
+    // import Header from '../components/Header.vue';
     import QrCode from '../components/QrCode.vue';
     import gradient from '../assets/Gradient.png';
     import { useRouter } from 'vue-router';
@@ -23,11 +24,12 @@
             router.push({ name: 'deliveryTime' });
         }, 100);
     });
-</script>rou
+</script>
 <template>
     <section class=" h-screen p-5 z-50">
 <!--        <QrCode/>-->
 <!-- <img :src="gradient" alt="gradient" /> -->
+<!--<Header />-->
         <Card class="shadow-lg container mx-auto mt-5">
             <div v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1 }" class="flex flex-col gap-10">
                 <div>
@@ -38,8 +40,8 @@
                     <img class="h-[100px] w-[150px] filter" src="../assets/subwayLogo.png" />
                 </div>
                 <div class="">
-                    <p class="text-2xl font-extrabold text-black"> 9979 Bustleton Avenue,</p>
-                    <p class="text-2xl font-extrabold text-black">Philadelphia PA 19115</p>
+                    <p class="text-2xl font-extrabol"> 9979 Bustleton Avenue,</p>
+                    <p class="text-2xl font-extrabol">Philadelphia PA 19115</p>
                 </div>
                 <div>
                     <RadioGroup :options="options" v-model="selectedOptions"/>

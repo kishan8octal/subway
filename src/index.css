@@ -6,3 +6,17 @@
 *{
     font-family: "SubwaySansLCGBold","Helvetica Neue","Helvetica","Arial",sans-serif;
 }
+.text-green-gradient{
+    background: -webkit-linear-gradient(98.81deg, #53E88B -0.82%, #15BE77 101.53%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    /*color: linear-gradient();*/
+}
+.text-black-green-gradient{
+    background: -webkit-linear-gradient(98.81deg, #21392a -0.82%, #1df199 101.53%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+.bg-green-gradient{
+    background: linear-gradient(98.81deg, #53E88B -0.82%, #15BE77 101.53%);
+}
