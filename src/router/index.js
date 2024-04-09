@@ -13,6 +13,7 @@ import ChipsSection from '../pages/ChipsSection.vue';
 import DrinkSection from '../pages/DrinkSection.vue';
 // for version ui 2
 import IndexV2 from '../pages/V2/index.vue';
+import DeliveryTimeV2 from '../pages/V2/DeliveryTimeV2.vue';
 
 
 const routes = [
@@ -24,6 +25,11 @@ const routes = [
         path: '/v2',
         name: 'indexV2',
         component: IndexV2,
+    },
+    , {
+        path: '/delivery-time/v2',
+        name: 'indexV2',
+        component: DeliveryTimeV2,
     },
     {
         path: '/delivery-time',
