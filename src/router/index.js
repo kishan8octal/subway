@@ -23,7 +23,7 @@ const routes = [
         component: Index,
     }, {
         path: '/v2',
-        name: 'indexV2',
+        name: 'index',
         component: IndexV2,
     },
     , {
