@@ -12,7 +12,7 @@ import SaucesSection from '../pages/SaucesSection.vue';
 import ChipsSection from '../pages/ChipsSection.vue';
 import DrinkSection from '../pages/DrinkSection.vue';
 // for version ui 2
-import IndexV2 from '../pages/V2/index.vue';
+import IndexV2 from '../pages/V2/indexV2.vue';
 import DeliveryTimeV2 from '../pages/V2/DeliveryTimeV2.vue';
 
 
@@ -23,12 +23,12 @@ const routes = [
         component: Index,
     }, {
         path: '/v2',
-        name: 'index',
+        name: 'indexV2',
         component: IndexV2,
     },
     , {
         path: '/delivery-time/v2',
-        name: 'indexV2',
+        name: 'deliveryTimeV2',
         component: DeliveryTimeV2,
     },
     {
