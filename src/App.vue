@@ -25,7 +25,7 @@
 </script>
 
 <template>
-    <div class="min-h-100vh">
+    <div class="min-h-screen">
         <router-view></router-view>
     </div>
 </template>

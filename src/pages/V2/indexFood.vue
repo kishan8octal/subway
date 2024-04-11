@@ -53,7 +53,7 @@ const handleNavigate = (food) => {
     <img
       src="../../assets/PatternBackground.png"
       alt="backgroundPettarn"
-      class="absolute top-0 left-0 pointer-events-none"
+      class="absolute w-full h-full top-0 left-0 pointer-events-none"
     />
     <div class="p-5 z-50">
       <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
@@ -65,11 +65,13 @@ const handleNavigate = (food) => {
         <Card
           class="rounded-3xl bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)] mb-10"
         >
-          <div class="flex gap-5 items-center">
+          <div class="flex gap-5 justify-center items-center">
             <img src="../../assets/IconLocation.png" alt="location" class="h-[35px]" />
             <div class="details text-black viga-regular font-extrabold">
-              <div class="flex gap-2">Your branch | <p class="text-[#7DA640]">{{ orderDetails.branch.name }}</p></div>
-              <div class="flex gap-2">Your Delivery Time | <p class="text-[#7DA640]">{{ orderDetails.deliveryTime }}</p></div>
+              <div class="flex gap-2 justify-center">Your branch | <p class="text-[#7DA640]">
+                  {{ orderDetails?.branch?.name }}</p></div>
+              <div class="flex gap-2 justify-center">
+                  Your Delivery Time | <p class="text-[#7DA640]">{{ orderDetails?.deliveryTime }}</p></div>
             </div>
           </div>
         </Card>

@@ -26,15 +26,15 @@ const routes = [
         name: 'indexV2',
         component: IndexV2,
     },
-    , {
-        path: '/foodsV2',
-        name: 'foodsV2',
-        component: IndexFoodV2,
-    },
-    , {
+    {
         path: '/delivery-time/v2',
         name: 'deliveryTimeV2',
         component: DeliveryTimeV2,
+    },
+    {
+        path: '/foodsV2',
+        name: 'foodsV2',
+        component: IndexFoodV2,
     },
     {
         path: '/delivery-time',

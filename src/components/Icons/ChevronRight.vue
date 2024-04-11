@@ -17,7 +17,7 @@
 });
 
 const strokeWidth = computed(() => {
-    return props.thin ? '1' : '1.5';
+    return props.thin ? '1' : '2';
 })
 </script>
 
