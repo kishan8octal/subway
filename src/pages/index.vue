@@ -11,9 +11,9 @@
     const store = useStore();
     const options = [
         // { name: 'Bank', id: 1 },
-        // { name: 'Cintas', id: 2 },
+        // { name: 'Cintas', id: 2 , address:'10080 Sandmeyer Ln Philadelphia, PA 19116'},
         { name: 'Medical Office', id: 3 },
-        { name: 'American Heritage', id: 4 },
+        { name: 'American Heritage Credit Union', id: 4, address:'2068 Red Lion Rd, Philadelphia, PA 19115' },
     ];
     const selectedOptions = ref('');
 

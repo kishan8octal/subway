@@ -14,7 +14,7 @@ import DrinkSection from '../pages/DrinkSection.vue';
 // for version ui 2
 import IndexV2 from '../pages/V2/indexV2.vue';
 import DeliveryTimeV2 from '../pages/V2/DeliveryTimeV2.vue';
-
+import IndexFoodV2 from '../pages/V2/indexFood.vue';
 
 const routes = [
     {
@@ -25,6 +25,11 @@ const routes = [
         path: '/v2',
         name: 'indexV2',
         component: IndexV2,
+    },
+    , {
+        path: '/foodsV2',
+        name: 'foodsV2',
+        component: IndexFoodV2,
     },
     , {
         path: '/delivery-time/v2',
