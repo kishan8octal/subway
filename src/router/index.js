@@ -14,7 +14,9 @@ import DrinkSection from '../pages/DrinkSection.vue';
 // for version ui 2
 import IndexV2 from '../pages/V2/indexV2.vue';
 import DeliveryTimeV2 from '../pages/V2/DeliveryTimeV2.vue';
-import IndexFoodV2 from '../pages/V2/indexFood.vue';
+import FoodV2 from '../pages/V2/FoodsV2.vue';
+import FoodsCategoriesV2 from '../pages/V2/FoodsCategoriesV2.vue';
+import BreadCategoriesV2 from '../pages/V2/BreadCategoriesV2.vue';
 
 const routes = [
     {
@@ -34,7 +36,17 @@ const routes = [
     {
         path: '/foodsV2',
         name: 'foodsV2',
-        component: IndexFoodV2,
+        component: FoodV2,
+    },
+    {
+        path: '/foodsCategoriesV2',
+        name: 'foodsCategoriesV2',
+        component: FoodsCategoriesV2,
+    },
+    {
+        path: '/breadCategoriesV2',
+        name: 'breadCategoriesV2',
+        component: BreadCategoriesV2,
     },
     {
         path: '/delivery-time',
