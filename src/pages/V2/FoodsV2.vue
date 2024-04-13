@@ -5,6 +5,7 @@ import { ChevronLeft } from "../../components/Icons/Index";
 import { useRouter } from "vue-router";
 import sandwiches from "../../assets/allSandWiches.avif";
 import saladImg from "../../assets/salad.avif";
+import HeaderLogo from "../../components/HeaderLogo.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 
@@ -45,19 +46,15 @@ const handleNavigate = (food) => {
 </script>
 <template>
   <section>
-    <img
-    src="../../assets/PatternBackground.png"
-    alt="backgroundPettarn"
-    class="absolute w-full h-full top-0 left-0 pointer-events-none"
-    />
-    <video src="../../assets/2.mp4" autoplay="{true}" loop muted 
-    className="fixed  top-[5px] invert mix-blend-color-burn z-20" />
-    <img src="../../assets/curveBackground.png" class="w-full rotate-180 h-[50%] fixed top-0 pointer-events-none" />
+    <HeaderLogo />
+    <!-- <video src="../../assets/2.mp4" autoplay="{true}" loop muted 
+    className="fixed  top-[5px] invert mix-blend-color-burn z-20" /> -->
+    <!-- <img src="../../assets/curveBackground.png" class="w-full rotate-180 h-[50%] fixed top-0 pointer-events-none" /> -->
     <div class="p-5 z-50">
       <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
         <div
           @click="router.back()"
-          class="absolute mt-[-5px] bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)] p-2 rounded-[10px]"
+          class="absolute z-50 mt-[-5px] bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)] p-2 rounded-[10px]"
         >
           <ChevronLeft size="25" />
         </div>

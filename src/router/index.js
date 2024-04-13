@@ -19,17 +19,18 @@ import FoodsCategoriesV2 from '../pages/V2/FoodsCategoriesV2.vue';
 import BreadCategoriesV2 from '../pages/V2/BreadCategoriesV2.vue';
 
 const routes = [
+    // {
+    //     path: '/',
+    //     name: 'index',
+    //     component: Index,
+    // }, 
     {
         path: '/',
-        name: 'index',
-        component: Index,
-    }, {
-        path: '/v2',
         name: 'indexV2',
         component: IndexV2,
     },
     {
-        path: '/delivery-time/v2',
+        path: '/delivery-time',
         name: 'deliveryTimeV2',
         component: DeliveryTimeV2,
     },
@@ -48,11 +49,11 @@ const routes = [
         name: 'breadCategoriesV2',
         component: BreadCategoriesV2,
     },
-    {
-        path: '/delivery-time',
-        name: 'deliveryTime',
-        component: DeliveryTime,
-    },
+    // {
+    //     path: '/delivery-time',
+    //     name: 'deliveryTime',
+    //     component: DeliveryTime,
+    // },
     {
         path: '/foods',
         name: 'foods',

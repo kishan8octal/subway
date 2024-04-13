@@ -3,6 +3,7 @@ import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import { computed } from "vue";
 import { ChevronLeft } from "../../components/Icons/Index";
+import HeaderLogo from "../../components/HeaderLogo.vue";
 
 const router = useRouter();
 const store = useStore();
@@ -42,9 +43,21 @@ const handleDeliveryTime = (deliveryTime) => {
 };
 </script>
 <template>
-  <div class="p-5 z-50">
-    <img src="../../assets/curveBackground.png" class="absolute w-full rotate-180 h-[65%] left-0 right-0 top-0 pointer-events-none" />
-      <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
+  <div class="z-50">
+   <HeaderLogo />
+   <ul class="circles">
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+    <li></li>
+</ul>
+      <!-- <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
         <div
           @click="router.back()"
           class="absolute mt-[-5px] bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)] p-2 rounded-[10px]"
@@ -55,7 +68,7 @@ const handleDeliveryTime = (deliveryTime) => {
         class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 gap-x-10"
       >
         <img
-          class="mx-auto relative max-h-full pointer-events-none"
+          class="f h-[80%] mx-auto"
           alt="Illustartion pattern"
           src="../../assets/Illustartion.png"
         />
@@ -105,6 +118,6 @@ const handleDeliveryTime = (deliveryTime) => {
           </div>
         </div>
       </div>
-    </div>
+    </div> -->
   </div>
 </template>

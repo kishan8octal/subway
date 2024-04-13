@@ -162,7 +162,7 @@ const showBreadDetails = (category) => {
     <div class="container mx-auto py-10 px-5">
         <div
           @click="router.back()"
-          class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)] p-2 rounded-[10px] absolute"
+          class="bg-white z-50 shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)] p-2 rounded-[10px] absolute"
         >
           <ChevronLeft size="25" />
         </div>
