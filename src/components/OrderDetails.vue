@@ -44,6 +44,21 @@
                     <div v-if="!!orderDetails?.categoryItems?.name" class="text-[#7DA640]">
                         * {{orderDetails?.categoryItems?.name }}
                     </div>
+                    <div v-if="!!orderDetails?.toasted?.name" class="text-[#7DA640]">
+                        * {{orderDetails?.toasted?.name }}
+                    </div>
+                    <div v-if="!!orderDetails?.veggies?.name" class="text-[#7DA640]">
+                        * {{orderDetails?.veggies?.name }}
+                    </div>
+                    <div v-if="!!orderDetails?.sauces?.name" class="text-[#7DA640]">
+                        * {{orderDetails?.sauces?.name }}
+                    </div>
+                    <div v-if="!!orderDetails?.chips?.name" class="text-[#7DA640]">
+                        * {{orderDetails?.chips?.name }}
+                    </div>
+                    <div v-if="!!orderDetails?.drink?.name" class="text-[#7DA640]">
+                        * {{orderDetails?.drink?.name }}
+                    </div>
                 </div>
             </div>
         </div>

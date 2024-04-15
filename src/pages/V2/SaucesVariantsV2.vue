@@ -1,7 +1,7 @@
 <script setup>
 import HeaderLogo from '../../components/HeaderLogo.vue';
 import OrderDetails from '../../components/OrderDetails.vue';
-import { veggiesVariants } from '../../components/helper';
+import { saucesDetails } from '../../components/helper';
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 import { useRouter } from 'vue-router';
@@ -11,11 +11,11 @@ const router = useRouter();
 const store = useStore();
 const orderDetails = computed(() => store.state.orderDetails);
 
-const saucesDetails = (item) => {
-    orderDetails.value.veggies = item;
+const chipsDetails = (item) => {
+    orderDetails.value.sauces = item;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
-        router.push({ name: 'saucesVarientV2' });
+        router.push({ name: 'chipsVarientV2' });
     }, 100);
 };
 </script>
@@ -25,13 +25,13 @@ const saucesDetails = (item) => {
         <div class="container mx-auto py-10 px-5">
             <OrderDetails :orderDetails="orderDetails" />
             <div class="z-20 relative bottom-3 flex justify-center gap-3 lobster-regular text-center">
-                <h1 class="text-black text-3xl">Veggies</h1>
+                <h1 class="text-black text-3xl">Sauces</h1>
                 <span class="text-white text-3xl">
-                    Select up to 10
+                    Select up to 1
                 </span>
             </div>
             <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div v-for="(item, index) in veggiesVariants" :key="index" @click="saucesDetails(item)"
+                <div v-for="(item, index) in saucesDetails" :key="index" @click="chipsDetails(item)"
                     class="relative">
                     <Card class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]">
                         <div class="flex items-center gap-5">

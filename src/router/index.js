@@ -20,6 +20,9 @@ import BreadCategoriesV2 from '../pages/V2/BreadCategoriesV2.vue';
 import CheeseVariantsV2 from '../pages/V2/CheeseVariantsV2.vue';
 import ToastedVarientV2 from '../pages/V2/ToastedVariantsV2.vue';
 import VeggiesVarientV2 from '../pages/V2/VeggiesVarientV2.vue';
+import SaucesVarientV2 from '../pages/V2/SaucesVariantsV2.vue';
+import ChipsVariantsV2 from '../pages/V2/ChipsVariantsV2.vue';
+import DrinkVariantV2 from '../pages/V2/DrinkVariantV2.vue';
 
 const routes = [
     {
@@ -61,6 +64,21 @@ const routes = [
         path: '/veggiesV2',
         name:'veggiesVarientV2',
         component: VeggiesVarientV2
+    },
+    {
+        path: '/saucesV2',
+        name:'saucesVarientV2',
+        component: SaucesVarientV2
+    },
+    {
+        path: '/chipsV2',
+        name:'chipsVarientV2',
+        component: ChipsVariantsV2
+    },
+    {
+        path: '/drinkV2',
+        name:'drinkVarientV2',
+        component: DrinkVariantV2
     },
     // {
     //     path: '/category-items',

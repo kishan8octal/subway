@@ -43,6 +43,23 @@ import veggieGreenPepper_6in from "../assets/veggieGreenPepper_6in.avif";
 import veggieBlkOlives_6in from "../assets/veggieBlkOlives_6in.avif";
 import veggieJalapeno_6in from "../assets/veggieJalapeno_6in.avif";
 import veggieBananaPeppers_6in from "../assets/veggieBananaPeppers_6in.avif";
+import sauceMayonnaise from "../assets/sauceMayonnaise.avif";
+import sauceMustard from "../assets/sauceMustard.avif";
+import sauceHoneyMust_Sauce_OVERHEAD2_ from "../assets/sauceHoneyMust_Sauce_OVERHEAD2_.avif";
+import sauceBuffalo from "../assets/sauceBuffalo.avif";
+import sauceSweetOnion from "../assets/sauceSweetOnion.avif";
+import saucePeppercornRanch from "../assets/saucePeppercornRanch.avif";
+import sauceChipotle from "../assets/sauceChipotle.avif";
+import sauceRostedGarlicAioli from "../assets/sauceRostedGarlicAioli.avif";
+import sauceParmVinaigrette from "../assets/sauceParmVinaigrette.avif";
+import sauceOil from "../assets/sauceOil.avif";
+import sauceRedWineVinegar from "../assets/sauceRedWineVinegar.avif";
+import chipsDoritosNachoCheese from "../assets/chipsDoritosNachoCheese.avif";
+import chipsLaysClassic from "../assets/chipsLaysClassic.avif";
+import drinkDasaniBottle from "../assets/drinkDasaniBottle.avif";
+import drinkDietCoke from "../assets/drinkDietCoke.avif";
+import drinkspritelogo from "../assets/drinkspritelogo.avif";
+import drinkCocaCola from "../assets/drinkCocaCola.avif";
 
 export const sandwitchFoosItems = [
     {
@@ -321,3 +338,120 @@ export const veggiesVariants = [
       image: veggieBananaPeppers_6in
     },
   ];
+
+export  const saucesDetails = [
+    {
+      id: 1,
+      name: "Regular Mayonnaise",
+      des: "200 Cals",
+      image: sauceMayonnaise
+    },
+    {
+      id: 2,
+      name: "Yellow Mustard",
+      des: "20 Cals",
+      image: sauceMustard
+    },
+    {
+      id: 3,
+      name: "Honey  Mustard",
+      des: "120 Cals",
+      image: sauceHoneyMust_Sauce_OVERHEAD2_
+    },
+    {
+      id: 4,
+      name: "Buffalo Sauce",
+      des: "10 Cals",
+      image: sauceBuffalo
+    },
+    {
+      id: 5,
+      name: "Sweet Onion Teriyaki",
+      des: "60 Cals",
+      image: sauceSweetOnion
+    },
+    {
+      id: 6,
+      name: "Peppercorn Ranch",
+      des: "160 Cals",
+      image: saucePeppercornRanch
+    },
+    {
+      id: 7,
+      name: "Baja Chipotle",
+      des: "140 Cals",
+      image: sauceChipotle
+    },
+    {
+      id: 8,
+      name: "Roasted Garlic Aioli",
+      des: "160 Cals",
+      image: sauceRostedGarlicAioli
+    },
+    {
+      id: 9,
+      name: "MVP Parmesan Vinaigrette",
+      des: "120 Cals",
+      image: sauceParmVinaigrette
+    },
+    {
+      id: 10,
+      name: "Oil",
+      des: "90 Cals",
+      image: sauceOil
+    },
+    {
+      id: 11,
+      name: "Red Wine Vinegar",
+      des: "0 Cals",
+      image: sauceRedWineVinegar
+    },
+  ];
+
+export  const chipsDetails = [
+    {
+    id: 1,
+    name: "DORITOS Nacho Cheese",
+    ounces: "1oz",
+    calories:"150 Kcal",
+    image: chipsDoritosNachoCheese
+  },
+  {
+    id: 2,
+    name: "LAY'S Classic",
+    ounces: "1oz",
+    calories:"160 Kcal",
+    image: chipsLaysClassic
+  }
+]
+
+export const drinkDetails = [
+  {
+  id: 1,
+  name: "Dasani Water",
+  ounces: "16.9oz",
+  calories:"0 kcal",
+  image: drinkDasaniBottle
+},
+{
+  id: 2,
+  name: "Diet Coke",
+  ounces: "12oz",
+  calories:"0 kcal",
+  image: drinkDietCoke
+},
+{
+  id: 3,
+  name: "Sprite",
+  ounces: "12oz",
+  calories:"134 kcal",
+  image: drinkspritelogo,
+},
+{
+  id: 4,
+  name: "Coca-Cola Classic",
+  ounces: "12oz",
+  calories:"140 kcal",
+  image: drinkCocaCola
+}
+]
