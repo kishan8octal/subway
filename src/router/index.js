@@ -18,6 +18,8 @@ import FoodV2 from '../pages/V2/FoodsV2.vue';
 import FoodsCategoriesV2 from '../pages/V2/FoodsCategoriesV2.vue';
 import BreadCategoriesV2 from '../pages/V2/BreadCategoriesV2.vue';
 import CheeseVariantsV2 from '../pages/V2/CheeseVariantsV2.vue';
+import ToastedVarientV2 from '../pages/V2/ToastedVariantsV2.vue';
+import VeggiesVarientV2 from '../pages/V2/VeggiesVarientV2.vue';
 
 const routes = [
     {
@@ -49,6 +51,16 @@ const routes = [
         path: '/cheeseV2',
         name:'cheeseV2',
         component: CheeseVariantsV2
+    },
+    {
+        path: '/toastedV2',
+        name:'toastedV2',
+        component: ToastedVarientV2
+    },
+    {
+        path: '/veggiesV2',
+        name:'veggiesVarientV2',
+        component: VeggiesVarientV2
     },
     // {
     //     path: '/category-items',

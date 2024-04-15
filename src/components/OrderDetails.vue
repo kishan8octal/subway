@@ -7,6 +7,7 @@
             default: {},
         },
     });
+    console.log("details",props);
 </script>
 <template>
     <h1 class="relative text-center text-2xl text-white font-extrabold uppercase mb-5 viga-regular">
@@ -29,13 +30,19 @@
                         </div>
                     </div>
                 </div>
-                <div class="text-center mt-2">
+                <div class="text-start mt-3 ml-14">
                     <p>Your Food Items Summary</p>
                     <div v-if="!!orderDetails?.food?.name" class="text-[#7DA640]">
                         * {{orderDetails?.food?.name }}
                     </div>
                     <div v-if="!!orderDetails?.foodCategory?.name" class="text-[#7DA640]">
                         * {{orderDetails?.foodCategory?.name }}
+                    </div>
+                    <div v-if="!!orderDetails?.categoryItem?.name" class="text-[#7DA640]">
+                        * {{orderDetails?.categoryItem?.name }}
+                    </div>
+                    <div v-if="!!orderDetails?.categoryItems?.name" class="text-[#7DA640]">
+                        * {{orderDetails?.categoryItems?.name }}
                     </div>
                 </div>
             </div>
