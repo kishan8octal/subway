@@ -17,13 +17,9 @@ import DeliveryTimeV2 from '../pages/V2/DeliveryTimeV2.vue';
 import FoodV2 from '../pages/V2/FoodsV2.vue';
 import FoodsCategoriesV2 from '../pages/V2/FoodsCategoriesV2.vue';
 import BreadCategoriesV2 from '../pages/V2/BreadCategoriesV2.vue';
+import CheeseVariantsV2 from '../pages/V2/CheeseVariantsV2.vue';
 
 const routes = [
-    // {
-    //     path: '/',
-    //     name: 'index',
-    //     component: Index,
-    // }, 
     {
         path: '/',
         name: 'indexV2',
@@ -49,66 +45,56 @@ const routes = [
         name: 'breadCategoriesV2',
         component: BreadCategoriesV2,
     },
+    {
+        path: '/cheeseV2',
+        name:'cheeseV2',
+        component: CheeseVariantsV2
+    },
     // {
-    //     path: '/delivery-time',
-    //     name: 'deliveryTime',
-    //     component: DeliveryTime,
+    //     path: '/category-items',
+    //     name: 'categoryItems',
+    //     component: CategoryItems,
     // },
-    {
-        path: '/foods',
-        name: 'foods',
-        component: Foods,
-    },
-    {
-        path: '/categories',
-        name: 'foodCategories',
-        component: FoodCategories,
-    },
-    {
-        path: '/category-items',
-        name: 'categoryItems',
-        component: CategoryItems,
-    },
-    {
-        path: '/salad-variants',
-        name: 'categoryItemForSalad',
-        component: CategoryItem,
-    },
-    {
-        path: '/variants',
-        name: 'categoryItem',
-        component: CategoryItem,
-    },
-    {
-        path: '/toasted',
-        name: 'toastedSection',
-        component: ToastedSection,
-    },
-    {
-        path: '/salad-veggies',
-        name: 'veggiesSectionForSalad',
-        component: VeggiesSection,
-    },
-    {
-        path: '/veggies',
-        name: 'veggiesSection',
-        component: VeggiesSection,
-    },
-    {
-        path: '/sauces-veggies',
-        name: 'saucesSection',
-        component: SaucesSection,
-    },
-    {
-        path: '/chips-sauce',
-        name: 'chipsSection',
-        component: ChipsSection,
-    },
-    {
-        path: '/drink',
-        name: 'drinkSection',
-        component: DrinkSection,
-    }
+    // {
+    //     path: '/salad-variants',
+    //     name: 'categoryItemForSalad',
+    //     component: CategoryItem,
+    // },
+    // {
+    //     path: '/variants',
+    //     name: 'categoryItem',
+    //     component: CategoryItem,
+    // },
+    // {
+    //     path: '/toasted',
+    //     name: 'toastedSection',
+    //     component: ToastedSection,
+    // },
+    // {
+    //     path: '/salad-veggies',
+    //     name: 'veggiesSectionForSalad',
+    //     component: VeggiesSection,
+    // },
+    // {
+    //     path: '/veggies',
+    //     name: 'veggiesSection',
+    //     component: VeggiesSection,
+    // },
+    // {
+    //     path: '/sauces-veggies',
+    //     name: 'saucesSection',
+    //     component: SaucesSection,
+    // },
+    // {
+    //     path: '/chips-sauce',
+    //     name: 'chipsSection',
+    //     component: ChipsSection,
+    // },
+    // {
+    //     path: '/drink',
+    //     name: 'drinkSection',
+    //     component: DrinkSection,
+    // }
 ];
 const router = createRouter({
     history: createWebHistory(),

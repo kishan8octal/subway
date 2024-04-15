@@ -1,0 +1,44 @@
+<script setup>
+    import Card from '../components/Card.vue';
+
+    const props = defineProps({
+        orderDetails: {
+            type: Object,
+            default: {},
+        },
+    });
+</script>
+<template>
+    <h1 class="relative text-center text-2xl text-white font-extrabold uppercase mb-5 viga-regular">
+        Order Details </h1>
+    <Card class="relative rounded-3xl z-20 bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)] mb-10">
+        <div class="flex gap-5 justify-center items-center">
+
+            <div class="details text-black viga-regular">
+                <div class="flex gap-5 justify-center items-center">
+                    <img src="../assets/IconLocation.png" alt="location" class="h-[35px]"/>
+                    <div>
+                        <div class="flex gap-2 w-full" v-if="!!orderDetails?.branch?.name">
+                            <div>Your branch |</div>
+                            <p class="text-[#7DA640]">
+                                {{ orderDetails?.branch?.name }} </p>
+                        </div>
+                        <div class="flex gap-2" v-if="!!orderDetails?.deliveryTime">
+                            <div>Your Delivery Time |</div>
+                            <p class="text-[#7DA640]">{{ orderDetails?.deliveryTime }}</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="text-center mt-2">
+                    <p>Your Food Items Summary</p>
+                    <div v-if="!!orderDetails?.food?.name" class="text-[#7DA640]">
+                        * {{orderDetails?.food?.name }}
+                    </div>
+                    <div v-if="!!orderDetails?.foodCategory?.name" class="text-[#7DA640]">
+                        * {{orderDetails?.foodCategory?.name }}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </Card>
+</template>

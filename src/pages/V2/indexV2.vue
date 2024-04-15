@@ -22,8 +22,8 @@ const handleDeliveryTime = (option) => {
 };
 </script>
 <template>
-  <div class="h-screen z-50">
-    <HeaderLogo />
+  <div class="z-50 h-full">
+    <HeaderLogo :isBackButton="false" />
     <!-- <img
       src="../../assets/Pattern.png"
       class="z-10 relative h-[20%] sm:hidden w-[100%] bg-cover"
@@ -39,7 +39,7 @@ const handleDeliveryTime = (option) => {
     <div
       class="sm:absolute sm:top-1/2 sm:left-1/2 sm:-translate-x-1/2 sm:-translate-y-1/2 z-10 sm:w-[40%] px-2"
     >-->
-    <div class="relative z-10 top-24">
+    <div class="relative z-10 flex flex-col gap-36">
       <div class="text-center flex flex-col gap-2">
         <h3 class="text-[28px] font-extrabold text-green-gradient lobster-regular mt-3">
           Place Order To Get Deliver From
@@ -56,7 +56,7 @@ const handleDeliveryTime = (option) => {
           </p>
         </div>
       </div>
-      <div class="relative top-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 gap-x-10 px-6 mt-10">
+      <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 gap-x-10 px-6 mt-10">
         <div v-for="option in options" :key="option.id"
           class="py-4 px-5 flex items-center justify-between rounded-2xl bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
           @click="handleDeliveryTime(option)">
