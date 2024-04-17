@@ -71,7 +71,7 @@ export const sandwitchFoosItems = [
     },
     {
         id: 2,
-        name: 'classic sandwiches',
+        name: 'classic Footlong sandwiches',
         dec: 'Footlong Sandwich + Chips + Soda =',
         price: '$15.00',
         image: sandwiches,
@@ -202,7 +202,7 @@ export const selectedSaladItem = [
     },
 ];
 
-export const breedItemsForSandwitch = [
+export const breadItemsForSixInchSandwitch = [
     {
         id: 1,
         name: "Hearty Multigrain",
@@ -223,7 +223,7 @@ export const breedItemsForSandwitch = [
     },
 ];
 
-export const  breedItemsForSalad = [
+export const  breadItemsForFootLongSandwitch = [
     {
         id: 1,
         name: "Hearty Multigrain",

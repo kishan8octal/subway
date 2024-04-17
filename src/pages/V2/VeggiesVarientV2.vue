@@ -21,6 +21,10 @@ const saucesDetails = (item) => {
 const handleShowDetails = () => {
     isDetailsShow.value = true
 };
+const closeDetails = () => {
+    console.log("click");
+  isDetailsShow.value = false; // Hide the order details overlay
+};
 </script>
 <template>
     <section>
@@ -33,14 +37,14 @@ const handleShowDetails = () => {
                     Show Selected Order Details
                 </div>
             </button>
-            <OrderDetails v-if="isDetailsShow" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
+            <OrderDetails @close="closeDetails" v-if="isDetailsShow" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
             <div class="z-20 relative bottom-3 flex justify-center gap-3 lobster-regular text-center">
                 <h1 class="text-black text-3xl">Veggies</h1>
                 <span class="text-white text-3xl">
                     Select up to 10
                 </span>
             </div>
-            <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="mt-[2rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div v-for="(item, index) in veggiesVariants" :key="index" @click="saucesDetails(item)"
                     class="relative">
                     <Card class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]">

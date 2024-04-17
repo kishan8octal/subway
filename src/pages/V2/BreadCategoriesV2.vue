@@ -2,7 +2,7 @@
 import Card from '../../components/Card.vue';
 import HeaderLogo from '../../components/HeaderLogo.vue';
 import OrderDetails from '../../components/OrderDetails.vue';
-import { breedItemsForSalad, breedItemsForSandwitch } from '../../components/helper';
+import { breadItemsForFootLongSandwitch, breadItemsForSixInchSandwitch } from '../../components/helper';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -12,8 +12,8 @@ const store = useStore();
 const orderDetails = computed(() => store.state.orderDetails);
 const isDetailsShow = ref(false);
 const selectedCategoryItems = orderDetails.value?.food?.id == 1
-    ? breedItemsForSandwitch
-    : breedItemsForSalad;
+    ? breadItemsForSixInchSandwitch
+    : breadItemsForFootLongSandwitch;
 
 const showCheeseDetailsData = (item) => {
     orderDetails.value.categoryItem = item;
@@ -24,6 +24,10 @@ const showCheeseDetailsData = (item) => {
 };
 const handleShowDetails = () => {
     isDetailsShow.value = true
+};
+const closeDetails = () => {
+    console.log("click");
+  isDetailsShow.value = false; // Hide the order details overlay
 };
 </script>
 <template>
@@ -37,14 +41,14 @@ const handleShowDetails = () => {
                     Show Selected Order Details
                 </div>
             </button>
-            <OrderDetails v-if="isDetailsShow" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
+            <OrderDetails v-if="isDetailsShow" @close="closeDetails" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
             <div class="z-20 relative bottom-3 flex justify-center gap-3 lobster-regular text-center">
                 <h1 class="ttext-black text-3xl">Bread</h1>
                 <span class="text-white text-3xl">
                     Select 1
                 </span>
             </div>
-            <div class="mt-20 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="mt-[2rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div v-for="(item, index) in selectedCategoryItems" :key="index" @click="showCheeseDetailsData(item)"
                     class="relative">
                     <Card class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]">

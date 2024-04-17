@@ -1,6 +1,7 @@
 <script setup>
 import Card from '../components/Card.vue';
 import CloseIcon from "../components/Icons/Close.vue";
+const emit  = defineEmits(['close']);
 const props = defineProps({
   orderDetails: {
     type: Object,
@@ -8,15 +9,20 @@ const props = defineProps({
   },
   isDetailsShow: Boolean
 });
+
+const closeDetails = () => {
+  // console.log("clicked");
+  emit('close');
+};
 </script>
 <template>
   <div>
     <!-- Overlay -->
     <div v-if="isDetailsShow" class="fixed pointer-events-none inset-0 bg-gray-800 bg-opacity-50 z-50"></div>
-    <div
-      class="fixed z-50 top-5 left-5 mt-[-5px] bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)] p-2 rounded-[10px]">
-      <CloseIcon size="25" />
-    </div>
+    <button @click="closeDetails"
+      class="fixed z-[9999] top-5 left-5 mt-[-5px] bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)] p-2 rounded-[10px]">
+      <CloseIcon size="25"  />
+    </button>
     <!-- Order Details Content -->
     <div class="fixed inset-0 flex items-center justify-center z-50">
       <!-- Order Details Card -->

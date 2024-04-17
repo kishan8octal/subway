@@ -22,6 +22,10 @@ const handleNavigate = (food) => {
 const handleShowDetails = () => {
   isDetailsShow.value = true
 };
+const closeDetails = () => {
+    console.log("click");
+  isDetailsShow.value = false; // Hide the order details overlay
+};
 </script>
 <template>
   <section>
@@ -37,7 +41,7 @@ const handleShowDetails = () => {
         </div>
       </button>
       <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
-        <OrderDetails v-if="isDetailsShow" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
+        <OrderDetails @close="closeDetails" v-if="isDetailsShow" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 gap-x-10">
           <div class="rounded-3xl bg-white z-10 shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]"
             v-for="(card, index) in sandwitchFoosItems" :key="index" @click="handleNavigate(card)">
