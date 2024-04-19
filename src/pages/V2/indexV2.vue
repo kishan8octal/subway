@@ -41,8 +41,8 @@ const handleDeliveryTime = (option) => {
     >-->
     <div class="relative z-10 flex flex-col gap-36">
       <div class="text-center flex flex-col gap-2">
-        <h3 class="text-[28px] font-extrabold text-green-gradient lobster-regular mt-3">
-          Place Order To Get Deliver From
+        <h3 class="text-[28px] font-extrabold text-white lobster-regular mt-5">
+          Place Your Food Order To Get Delivery From
         </h3>
         <div>
           <img src="../../assets/subwayLogo.png"

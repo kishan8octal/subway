@@ -39,9 +39,9 @@ const closeDetails = () => {
             </button>
             <OrderDetails @close="closeDetails" v-if="isDetailsShow" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
             <div class="z-20 relative bottom-3 flex justify-center gap-3 lobster-regular text-center">
-                <h1 class="text-black text-3xl">Sauces</h1>
+                <!-- <h1 class="text-black text-3xl">Sauces</h1> -->
                 <span class="text-white text-3xl">
-                    Select up to 1
+                    Select Your Sauces
                 </span>
             </div>
             <div class="mt-[2rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

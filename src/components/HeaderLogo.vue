@@ -17,7 +17,7 @@
         <ChevronLeft size="25"/>
     </div>
     <div>
-        <img src="../assets/curveBackground.png" class="z-0 fixed rotate-180 w-full max-h-[60%] h-auto  top-0"/>
+        <img src="../assets/Vector 3.svg" class="z-0 fixed rotate-180 w-full max-h-[60%] h-auto  top-0"/>
     </div>
     <ul class="circles">
         <li></li>

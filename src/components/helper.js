@@ -61,10 +61,11 @@ import drinkDietCoke from "../assets/drinkDietCoke.avif";
 import drinkspritelogo from "../assets/drinkspritelogo.avif";
 import drinkCocaCola from "../assets/drinkCocaCola.avif";
 
+
 export const sandwitchFoosItems = [
     {
         id: 1,
-        name: 'classic sandwiches',
+        name: 'classic 6 Inch sandwiches',
         dec: '6 Inch Sandwich + Chips + Soda =',
         price: '$10.00',
         image: sandwiches,

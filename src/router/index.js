@@ -23,6 +23,9 @@ import VeggiesVarientV2 from '../pages/V2/VeggiesVarientV2.vue';
 import SaucesVarientV2 from '../pages/V2/SaucesVariantsV2.vue';
 import ChipsVariantsV2 from '../pages/V2/ChipsVariantsV2.vue';
 import DrinkVariantV2 from '../pages/V2/DrinkVariantV2.vue';
+import Payment from '../pages/V2/Payment.vue';
+import ConfirmPayment from '../pages/V2/ConfirmPayment.vue';
+
 
 const routes = [
     {
@@ -79,6 +82,16 @@ const routes = [
         path: '/drinkV2',
         name:'drinkVarientV2',
         component: DrinkVariantV2
+    },
+    {
+        path: '/payment',
+        name:'payment',
+        component: Payment
+    },
+    {
+        path: '/confirm-payment',
+        name:'confirmPayment',
+        component: ConfirmPayment
     },
     // {
     //     path: '/category-items',

@@ -41,7 +41,7 @@ const closeDetails = () => {
             <div class="z-20 relative bottom-3 flex justify-center gap-3 lobster-regular text-center">
                 <h1 class="text-black text-3xl">Cheese</h1>
                 <span class="text-white text-3xl">
-                    Select up to 1
+                    Select 1
                 </span>
             </div>
             <div class="mt-[2rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">

@@ -14,9 +14,9 @@ const isDetailsShow = ref(false);
 const navigateToDrinkDetails = (item) => {
     orderDetails.value.drink = item;
     store.dispatch('storeData', orderDetails.value);
-    // setTimeout(() => {
-    //     router.push({ name: 'drinkVariantsV2' });
-    // }, 100);
+    setTimeout(() => {
+        router.push({ name: 'payment' });
+    }, 100);
 };
 const handleShowDetails = () => {
     isDetailsShow.value = true

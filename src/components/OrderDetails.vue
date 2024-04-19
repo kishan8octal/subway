@@ -46,10 +46,12 @@ const closeDetails = () => {
           <hr class="h-px my-[12px] bg-gray-300 border-0 dark:bg-gray-700">
 
           <div class="text-start">
-            <span class="text-3xl text-start font-extrabold flex flex-col gap-[5px] lobster-regular mb-3">Your Food Items <p
-                class="text-[#7DA640] text-end">Summary</p></span>
+            <div class="flex w-full gap-[5px] text-[18px]">
+              <span class="text-start font-extrabold lobster-regular mb-3">{{ orderDetails?.foodCategory.name }}</span>
+              <span class="text-[#7DA640] lobster-regular font-extrabold">{{ orderDetails?.food.name.split(' ').slice(1).join(' ') }}</span>
+            </div>
             <template v-for="(value, key) in orderDetails" :key="key">
-              <div v-if="key !== 'branch' && key !== 'deliveryTime' && !!value?.name"
+              <div v-if="key !== 'branch' && key !== 'deliveryTime' && !!value?.name && key !== 'food' && key !== 'foodCategory'"
                 class="text-[#7DA640] text-[20px] viga-regular">
                 * {{ value?.name }}
               </div>

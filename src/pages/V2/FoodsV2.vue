@@ -47,13 +47,13 @@ const closeDetails = () => {
             v-for="(card, index) in sandwitchFoosItems" :key="index" @click="handleNavigate(card)">
             <img :src="card.image" alt="img" class="rounded-t-3xl object-cover h-[150px] w-full" />
             <div class="p-4 text-center rounded-lg">
-              <p class="text-[2.5rem] text-green-gradient font-extrabold uppercase mt-5 lobster-regular">
+              <p class="text-[2rem] text-green-gradient font-extrabold uppercase mt-5 lobster-regular">
                 {{ card.name }}
               </p>
-              <p class="text-[1rem] mt-5 font-thin text-black viga-regular">
+              <p class="text-[1.5rem] mt-5 font-thin text-black viga-regular">
                 {{ card.dec }}
               </p>
-              <span class="text-[1.5rem] flex justify-center gap-2 font-extrabold text-[#7DA640] viga-regular">{{
+              <span class="text-[1.5rem] flex justify-center gap-2 font-extrabold text-red-800 viga-regular">{{
                 card.price }}
                 <p class="text-black">With Tax</p>
               </span>
