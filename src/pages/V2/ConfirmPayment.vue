@@ -17,7 +17,7 @@ const handleShowDetails = () => {
 
 onMounted(async () => {
   try {
-    const paypal = await loadScript({ "client-id": "test" });
+    const paypal = await loadScript({ "client-id": "AeXw_ZRHUMu5wurm-dmECgfoK4bcLu3lea1llCGEXUKMPXYYtEz98xTJkDepBSzAYVWDjC0B3GDctNRe" });
     paypal.Buttons().render("#paypalButton");
   } catch (err) {
     console.error(err);

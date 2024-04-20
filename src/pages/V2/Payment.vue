@@ -7,6 +7,7 @@
   import { useRouter } from 'vue-router';
   import Card from '../../components/Card.vue';
   import { ChevronRight } from "../../components/Icons/Index";
+  import RazorpayPayment from '../../components/RazorpayPayment.vue';
 
   const router = useRouter();
   const store = useStore();
@@ -24,6 +25,7 @@ const paymentOptions = [
   { name: "Paypal",value:'paypal', id: 2 },
   { name: "Card", value:'card',id: 3 },
 ];
+
 const handleConfiemPayment = (option)=>{
   orderDetails.value.payment = option;
     store.dispatch('storeData', orderDetails.value);
@@ -53,14 +55,16 @@ const handleConfiemPayment = (option)=>{
           <div class="relative mt-[3rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
               <h1 class="text-center text-black text-3xl viga-regular">Payment Method</h1>
               <div class="relative grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-5 gap-x-10 px-6 mt-10">
-                <div v-for="option in paymentOptions" :key="option.id"
+                <RazorpayPayment />
+                <!-- v-for="option in paymentOptions" :key="option.id" -->
+                <!-- <div 
                   class="py-4 px-5 flex items-center justify-between rounded-2xl bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
                   @click="handleConfiemPayment(option)">
                   <span class="text-xl viga-regular text-green-gradient">{{
                     option.name
                   }}</span>
                   <ChevronRight size="21" />
-                </div>
+                </div> -->
                 <!-- </div> -->
               </div>
           </div>
