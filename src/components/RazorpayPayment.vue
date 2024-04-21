@@ -31,14 +31,6 @@ const openPaymentModal = () => {
   const razorpayInstance = new Razorpay(options);
   razorpayInstance.open();
 };
-
-onMounted(() => {
-  const script = document.createElement('script');
-  script.src = 'https://checkout.razorpay.com/v1/checkout.js';
-  script.async = true;
-  script.onload = openPaymentModal;
-  document.head.appendChild(script);
-});
 </script>
 
 <style scoped>

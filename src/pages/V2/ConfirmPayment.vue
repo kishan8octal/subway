@@ -3,7 +3,6 @@ import HeaderLogo from '../../components/HeaderLogo.vue';
 import OrderDetails from '../../components/OrderDetails.vue';
 import { useStore } from 'vuex';
 import GooglePayButton from '../../components/GooglePay.vue';
-import { loadScript } from "@paypal/paypal-js";
 import { computed, ref, onMounted } from 'vue';
 import { useRouter } from 'vue-router';
 
