@@ -1,21 +1,25 @@
 <script setup>
-import HeaderLogo from '../../components/HeaderLogo.vue';
-import OrderDetails from '../../components/OrderDetails.vue';
-import { chipsDetails } from '../../components/helper';
+import Card from '../components/Card.vue';
+import HeaderLogo from '../components/HeaderLogo.vue';
+import OrderDetails from '../components/OrderDetails.vue';
+import { breadItemsForFootLongSandwitch, breadItemsForSixInchSandwitch } from '../components/helper';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import Card from '../../components/Card.vue';
 
 const router = useRouter();
 const store = useStore();
 const orderDetails = computed(() => store.state.orderDetails);
 const isDetailsShow = ref(false);
-const navigateToDrinkDetails = (item) => {
-    orderDetails.value.chips = item;
+const selectedCategoryItems = orderDetails.value?.food?.id == 1
+    ? breadItemsForSixInchSandwitch
+    : breadItemsForFootLongSandwitch;
+
+const showCheeseDetailsData = (item) => {
+    orderDetails.value.categoryItem = item;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
-        router.push({ name: 'drinkVarientV2' });
+        router.push({ name: 'cheese' });
     }, 100);
 };
 const handleShowDetails = () => {
@@ -39,32 +43,25 @@ const closeDetails = () => {
             </button>
             <OrderDetails v-if="isDetailsShow" @close="closeDetails" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
             <div class="z-20 relative bottom-3 flex justify-center gap-3 lobster-regular text-center">
-                <!-- <h1 class="text-black text-3xl">Chips</h1> -->
+                <h1 class="ttext-black text-3xl">Bread</h1>
                 <span class="text-white text-3xl">
-                    Select your Chips 1
+                    Select 1
                 </span>
             </div>
             <div class="mt-[2rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
-                <div v-for="(item, index) in chipsDetails" :key="index" @click="navigateToDrinkDetails(item)"
+                <div v-for="(item, index) in selectedCategoryItems" :key="index" @click="showCheeseDetailsData(item)"
                     class="relative">
                     <Card class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]">
                         <div class="flex items-center gap-5">
-                            <div class="h-full w-[40%]" v-if="item.image">
-                                <img :src="item.image" alt="cheese variants"
-                                    class="object-cover h-[100px] rounded-xl" />
+                            <div>
+                                <img :src="item.image" alt="categories" class="object-cover h-[100px] rounded-xl" />
                             </div>
                             <div class="flex flex-col gap-1">
                                 <span class="text-black viga-regular font-thin text-xl">
                                     {{ item.name }}
                                 </span>
                                 <span class="text-gray-500 text-sm">
-                                    <p>
-                                        {{ item.ounces }}
-                                    </p>
-                                    <p>
-                                        {{ item.calories }}
-                                    </p>
-
+                                    {{ item.des }}
                                 </span>
                             </div>
                         </div>

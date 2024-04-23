@@ -1,143 +1,85 @@
 import { createRouter, createWebHistory } from 'vue-router';
-//for version ui 1
 import Index from '../pages/index.vue';
 import DeliveryTime from '../pages/DeliveryTime.vue';
-import Foods from '../pages/Foods.vue';
-import FoodCategories from '../pages/FoodCategories.vue';
-import CategoryItems from '../pages/CategoryItems.vue';
-import CategoryItem from '../pages/CategoryItem.vue';
-import ToastedSection from '../pages/ToastedSection.vue';
-import VeggiesSection from '../pages/VeggiesSection.vue';
-import SaucesSection from '../pages/SaucesSection.vue';
-import ChipsSection from '../pages/ChipsSection.vue';
-import DrinkSection from '../pages/DrinkSection.vue';
-// for version ui 2
-import IndexV2 from '../pages/V2/indexV2.vue';
-import DeliveryTimeV2 from '../pages/V2/DeliveryTimeV2.vue';
-import FoodV2 from '../pages/V2/FoodsV2.vue';
-import FoodsCategoriesV2 from '../pages/V2/FoodsCategoriesV2.vue';
-import BreadCategoriesV2 from '../pages/V2/BreadCategoriesV2.vue';
-import CheeseVariantsV2 from '../pages/V2/CheeseVariantsV2.vue';
-import ToastedVarientV2 from '../pages/V2/ToastedVariantsV2.vue';
-import VeggiesVarientV2 from '../pages/V2/VeggiesVarientV2.vue';
-import SaucesVarientV2 from '../pages/V2/SaucesVariantsV2.vue';
-import ChipsVariantsV2 from '../pages/V2/ChipsVariantsV2.vue';
-import DrinkVariantV2 from '../pages/V2/DrinkVariantV2.vue';
-import Payment from '../pages/V2/Payment.vue';
-import ConfirmPayment from '../pages/V2/ConfirmPayment.vue';
+import Food from '../pages/Foods.vue';
+import FoodsCategories from '../pages/FoodsCategories.vue';
+import BreadCategories from '../pages/BreadCategories.vue';
+import CheeseVariants from '../pages/CheeseVariants.vue';
+import ToastedVarient from '../pages/ToastedVariants.vue';
+import VeggiesVarient from '../pages/VeggiesVarient.vue';
+import SaucesVarient from '../pages/SaucesVariants.vue';
+import ChipsVariants from '../pages/ChipsVariants.vue';
+import DrinkVariant from '../pages/DrinkVariant.vue';
+import CustomerDetails from '../pages/CustomerDetails.vue';
+import ConfirmPayment from '../pages/ConfirmPayment.vue';
 
 
 const routes = [
     {
         path: '/',
-        name: 'indexV2',
-        component: IndexV2,
+        name: 'index',
+        component: Index,
     },
     {
         path: '/delivery-time',
-        name: 'deliveryTimeV2',
-        component: DeliveryTimeV2,
+        name: 'deliveryTime',
+        component: DeliveryTime,
     },
     {
-        path: '/foodsV2',
-        name: 'foodsV2',
-        component: FoodV2,
+        path: '/foods',
+        name: 'foods',
+        component: Food,
     },
     {
-        path: '/foodsCategoriesV2',
-        name: 'foodsCategoriesV2',
-        component: FoodsCategoriesV2,
+        path: '/foodsCategories',
+        name: 'foodsCategories',
+        component: FoodsCategories,
     },
     {
-        path: '/breadCategoriesV2',
-        name: 'breadCategoriesV2',
-        component: BreadCategoriesV2,
+        path: '/breadCategories',
+        name: 'breadCategories',
+        component: BreadCategories,
     },
     {
-        path: '/cheeseV2',
-        name:'cheeseV2',
-        component: CheeseVariantsV2
+        path: '/cheese',
+        name:'cheese',
+        component: CheeseVariants
     },
     {
-        path: '/toastedV2',
-        name:'toastedV2',
-        component: ToastedVarientV2
+        path: '/toasted',
+        name:'toasted',
+        component: ToastedVarient
     },
     {
-        path: '/veggiesV2',
-        name:'veggiesVarientV2',
-        component: VeggiesVarientV2
+        path: '/veggies',
+        name:'veggiesVarient',
+        component: VeggiesVarient
     },
     {
-        path: '/saucesV2',
-        name:'saucesVarientV2',
-        component: SaucesVarientV2
+        path: '/sauces',
+        name:'saucesVarient',
+        component: SaucesVarient
     },
     {
-        path: '/chipsV2',
-        name:'chipsVarientV2',
-        component: ChipsVariantsV2
+        path: '/chips',
+        name:'chipsVarient',
+        component: ChipsVariants
     },
     {
-        path: '/drinkV2',
-        name:'drinkVarientV2',
-        component: DrinkVariantV2
+        path: '/drink',
+        name:'drinkVarient',
+        component: DrinkVariant
     },
     {
-        path: '/payment',
-        name:'payment',
-        component: Payment
+        path: '/customer-details',
+        name:'customerDetails',
+        component: CustomerDetails
     },
     {
         path: '/confirm-payment',
         name:'confirmPayment',
         component: ConfirmPayment
     },
-    // {
-    //     path: '/category-items',
-    //     name: 'categoryItems',
-    //     component: CategoryItems,
-    // },
-    // {
-    //     path: '/salad-variants',
-    //     name: 'categoryItemForSalad',
-    //     component: CategoryItem,
-    // },
-    // {
-    //     path: '/variants',
-    //     name: 'categoryItem',
-    //     component: CategoryItem,
-    // },
-    // {
-    //     path: '/toasted',
-    //     name: 'toastedSection',
-    //     component: ToastedSection,
-    // },
-    // {
-    //     path: '/salad-veggies',
-    //     name: 'veggiesSectionForSalad',
-    //     component: VeggiesSection,
-    // },
-    // {
-    //     path: '/veggies',
-    //     name: 'veggiesSection',
-    //     component: VeggiesSection,
-    // },
-    // {
-    //     path: '/sauces-veggies',
-    //     name: 'saucesSection',
-    //     component: SaucesSection,
-    // },
-    // {
-    //     path: '/chips-sauce',
-    //     name: 'chipsSection',
-    //     component: ChipsSection,
-    // },
-    // {
-    //     path: '/drink',
-    //     name: 'drinkSection',
-    //     component: DrinkSection,
-    // }
 ];
 const router = createRouter({
     history: createWebHistory(),

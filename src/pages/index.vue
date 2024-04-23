@@ -1,54 +1,56 @@
 <script setup>
-    import RadioGroup from '../components/RadioGroup.vue';
-    import Card from '../components/Card.vue';
-    // import Header from '../components/Header.vue';
-    import QrCode from '../components/QrCode.vue';
-    import { useRouter } from 'vue-router';
-    import { ref, watch } from 'vue';
-    import { useStore } from 'vuex';
+import { ref } from "vue";
+import { ChevronRight } from "../components/Icons/Index";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
+import HeaderLogo from "../components/HeaderLogo.vue";
 
-    const router = useRouter();
-    const store = useStore();
-    const options = [
-        // { name: 'Bank', id: 1 },
-        // { name: 'Cintas', id: 2 , address:'10080 Sandmeyer Ln Philadelphia, PA 19116'},
-        { name: 'Medical Office', id: 3 },
-        { name: 'American Heritage Credit Union', id: 4, address:'2068 Red Lion Rd, Philadelphia, PA 19115' },
-    ];
-    const selectedOptions = ref('');
+const options = [
+  { name: "Medical Office", id: 1 },
+  { name: "American Heritage", id: 2 },
+];
+const selectedOptions = ref("");
+const router = useRouter();
+const store = useStore();
 
-    watch(selectedOptions, (value) => {
-        store.dispatch('storeData', { branch: value });
-        setTimeout(() => {
-            router.push({ name: 'deliveryTime' });
-        }, 100);
-    });
+const handleDeliveryTime = (option) => {
+  store.dispatch("storeData", { branch: option });
+  setTimeout(() => {
+    router.push({ name: "deliveryTime" });
+  }, 100);
+};
 </script>
 <template>
-    <section class=" h-screen p-5 z-50">
-<!--        <QrCode/>-->
-        <Card class="shadow-lg container mx-auto mt-5">
-            <div v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1 }" class="flex flex-col gap-10">
-                <div>
-                    <h3 class="text-2xl  font-extrabold  text-black">Place Order To Get Deliver From</h3>
-                </div>
-                <div>
-                    <!-- <h1 class="text-5xl font-bold  text-gray-800 text-shadow-lg">Subway</h1> -->
-                    <img class="h-[100px] w-[150px] filter" src="../assets/subwayLogo.png" />
-                </div>
-                <div class="">
-                    <p class="text-2xl font-extrabol"> 9979 Bustleton Avenue,</p>
-                    <p class="text-2xl font-extrabol">Philadelphia PA 19115</p>
-                </div>
-                <div>
-                    <RadioGroup :options="options" v-model="selectedOptions"/>
-                </div>
-            </div>
-        </Card>
-    </section>
+  <div class="z-50 h-full">
+    <HeaderLogo :isBackButton="false" />
+    <div class="relative z-10 flex flex-col gap-36">
+      <div class="text-center flex flex-col gap-2">
+        <h3 class="text-[28px] font-extrabold text-white lobster-regular mt-5">
+          Place Your Food Order To Get Delivery From
+        </h3>
+        <div>
+          <img src="../assets/subwayLogo.png"
+            class="h-[100px] w-[100px] sm:w-[300px] bg-img-white sm:h-[300px] relative z-50 object-cover mx-auto" />
+        </div>
+        <div class="flex justify-center mt-2 items-center gap-3">
+          <img src="../assets/outlineLocation.svg" class="h-[30px] bg-img-white" />
+          <p class="flex flex-col text-start text-2xl viga-regular text-white">
+            <span>Philadelphia PA 19115</span>
+            <span>9979 Bustleton Avenue,</span>
+          </p>
+        </div>
+      </div>
+      <div class="relative grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-10 px-6 mt-10">
+        <div v-for="option in options" :key="option.id"
+          class="py-4 px-5 flex items-center justify-between rounded-2xl bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
+          @click="handleDeliveryTime(option)">
+          <span class="text-xl viga-regular text-green-gradient">{{
+            option.name
+          }}</span>
+          <ChevronRight size="21" />
+        </div>
+        <!-- </div> -->
+      </div>
+    </div>
+  </div>
 </template>
-<style scoped>
-.filter{
-    filter: drop-shadow(2px 4px 6px black);
-}
-</style>

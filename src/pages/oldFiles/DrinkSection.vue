@@ -1,11 +1,11 @@
 <script setup>
-import Button from "../components/Button.vue";
-import Card from "../components/Card.vue";
+import Button from "../../components/Button.vue";
+import Card from "../../components/Card.vue";
 import {  useRouter } from "vue-router";
-import drinkDasaniBottle from "../assets/drinkDasaniBottle.avif";
-import drinkDietCoke from "../assets/drinkDietCoke.avif";
-import drinkspritelogo from "../assets/drinkspritelogo.avif";
-import drinkCocaCola from "../assets/drinkCocaCola.avif";
+import drinkDasaniBottle from "../../assets/drinkDasaniBottle.avif";
+import drinkDietCoke from "../../assets/drinkDietCoke.avif";
+import drinkspritelogo from "../../assets/drinkspritelogo.avif";
+import drinkCocaCola from "../../assets/drinkCocaCola.avif";
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 const router = useRouter();

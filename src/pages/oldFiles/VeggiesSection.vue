@@ -1,19 +1,19 @@
 <script setup>
     import { computed, ref } from 'vue';
-import Button from "../components/Button.vue";
-import Card from "../components/Card.vue";
+import Button from "../../components/Button.vue";
+import Card from "../../components/Card.vue";
 import { useRouter } from "vue-router";
-import RadioGroup from '../components/RadioGroup.vue';
-import veggieLettuce_6in from "../assets/veggieLettuce_6in.avif";
-import veggieTomato_6in from "../assets/veggieTomato_6in.avif";
-import veggieOnion_6in from "../assets/veggieOnion_6in.avif";
-import veggieSpinach_6in from "../assets/veggieSpinach_6in.avif";
-import veggieCucumber_6in from "../assets/veggieCucumber_6in.avif";
-import veggiePickle_6in from "../assets/veggiePickle_6in.avif";
-import veggieGreenPepper_6in from "../assets/veggieGreenPepper_6in.avif";
-import veggieBlkOlives_6in from "../assets/veggieBlkOlives_6in.avif";
-import veggieJalapeno_6in from "../assets/veggieJalapeno_6in.avif";
-import veggieBananaPeppers_6in from "../assets/veggieBananaPeppers_6in.avif";
+import RadioGroup from '../../components/RadioGroup.vue';
+import veggieLettuce_6in from "../../assets/veggieLettuce_6in.avif";
+import veggieTomato_6in from "../../assets/veggieTomato_6in.avif";
+import veggieOnion_6in from "../../assets/veggieOnion_6in.avif";
+import veggieSpinach_6in from "../../assets/veggieSpinach_6in.avif";
+import veggieCucumber_6in from "../../assets/veggieCucumber_6in.avif";
+import veggiePickle_6in from "../../assets/veggiePickle_6in.avif";
+import veggieGreenPepper_6in from "../../assets/veggieGreenPepper_6in.avif";
+import veggieBlkOlives_6in from "../../assets/veggieBlkOlives_6in.avif";
+import veggieJalapeno_6in from "../../assets/veggieJalapeno_6in.avif";
+import veggieBananaPeppers_6in from "../../assets/veggieBananaPeppers_6in.avif";
 import { useStore } from 'vuex';
 
 const router = useRouter();

@@ -1,6 +1,6 @@
 <script setup>
-import Button from '../components/Button.vue';
-import Card from '../components/Card.vue';
+import Button from '../../components/Button.vue';
+import Card from '../../components/Card.vue';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { computed } from 'vue';

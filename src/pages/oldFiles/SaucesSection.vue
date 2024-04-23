@@ -1,18 +1,18 @@
 <script setup>
-import Button from "../components/Button.vue";
-import Card from "../components/Card.vue";
+import Button from "../../components/Button.vue";
+import Card from "../../components/Card.vue";
 import { useRoute, useRouter } from "vue-router";
-import sauceMayonnaise from "../assets/sauceMayonnaise.avif";
-import sauceMustard from "../assets/sauceMustard.avif";
-import sauceHoneyMust_Sauce_OVERHEAD2_ from "../assets/sauceHoneyMust_Sauce_OVERHEAD2_.avif";
-import sauceBuffalo from "../assets/sauceBuffalo.avif";
-import sauceSweetOnion from "../assets/sauceSweetOnion.avif";
-import saucePeppercornRanch from "../assets/saucePeppercornRanch.avif";
-import sauceChipotle from "../assets/sauceChipotle.avif";
-import sauceRostedGarlicAioli from "../assets/sauceRostedGarlicAioli.avif";
-import sauceParmVinaigrette from "../assets/sauceParmVinaigrette.avif";
-import sauceOil from "../assets/sauceOil.avif";
-import sauceRedWineVinegar from "../assets/sauceRedWineVinegar.avif";
+import sauceMayonnaise from "../../assets/sauceMayonnaise.avif";
+import sauceMustard from "../../assets/sauceMustard.avif";
+import sauceHoneyMust_Sauce_OVERHEAD2_ from "../../assets/sauceHoneyMust_Sauce_OVERHEAD2_.avif";
+import sauceBuffalo from "../../assets/sauceBuffalo.avif";
+import sauceSweetOnion from "../../assets/sauceSweetOnion.avif";
+import saucePeppercornRanch from "../../assets/saucePeppercornRanch.avif";
+import sauceChipotle from "../../assets/sauceChipotle.avif";
+import sauceRostedGarlicAioli from "../../assets/sauceRostedGarlicAioli.avif";
+import sauceParmVinaigrette from "../../assets/sauceParmVinaigrette.avif";
+import sauceOil from "../../assets/sauceOil.avif";
+import sauceRedWineVinegar from "../../assets/sauceRedWineVinegar.avif";
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 

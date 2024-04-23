@@ -1,11 +1,11 @@
 <script setup>
-import HeaderLogo from '../../components/HeaderLogo.vue';
-import OrderDetails from '../../components/OrderDetails.vue';
-import { cheeseVariants } from '../../components/helper';
+import HeaderLogo from '../components/HeaderLogo.vue';
+import OrderDetails from '../components/OrderDetails.vue';
+import { cheeseVariants } from '../components/helper';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import Card from '../../components/Card.vue';
+import Card from '../components/Card.vue';
 
 const router = useRouter();
 const store = useStore();
@@ -15,7 +15,7 @@ const showToastedDetails = (item) => {
     orderDetails.value.categoryItems = item;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
-        router.push({ name: orderDetails.value.food.id === 3 ? 'veggiesVarientV2' : 'toastedV2' });
+        router.push({ name: orderDetails.value.food.id === 3 ? 'veggiesVarient' : 'toasted' });
     }, 100);
 };
 const handleShowDetails = () => {

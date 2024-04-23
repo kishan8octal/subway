@@ -1,7 +1,7 @@
 <script setup>
-import Card from '../../components/Card.vue';
-import HeaderLogo from '../../components/HeaderLogo.vue';
-import OrderDetails from '../../components/OrderDetails.vue';
+import Card from '../components/Card.vue';
+import HeaderLogo from '../components/HeaderLogo.vue';
+import OrderDetails from '../components/OrderDetails.vue';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -15,7 +15,7 @@ const handleToasted = (item) => {
     orderDetails.value.toasted = item;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
-        router.push({ name: 'veggiesVarientV2' });
+        router.push({ name: 'veggiesVarient' });
     }, 100);
 };
 const handleShowDetails = () => {

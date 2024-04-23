@@ -1,79 +1,70 @@
 <script setup>
-    import Button from '../components/Button.vue';
-    import Card from '../components/Card.vue';
-    import { useRouter } from 'vue-router';
-    import sandwiches from '../assets/allSandWiches.avif';
-    import saladImg from '../assets/salad.avif';
-    import { useStore } from 'vuex';
-    import { computed } from 'vue';
+import { useRouter } from "vue-router";
+import HeaderLogo from "../components/HeaderLogo.vue";
+import OrderDetails from "../components/OrderDetails.vue";
+import { sandwitchFoosItems, handleSendMail } from '../components/helper';
+import { useStore } from "vuex";
+import { computed, ref } from "vue";
+import Card from "../components/Card.vue";
+import CloseIcon from "../components/Icons/Close.vue";
 
-    const router = useRouter();
-    const store = useStore();
-    const orderDetails = computed(() => store.state.orderDetails);
+const router = useRouter();
+const store = useStore();
+const orderDetails = computed(() => store.state.orderDetails);
+const isDetailsShow = ref(false);
 
-    const cards = [
-        {
-            id: 1,
-            name: 'classic sandwiches',
-            dec: '6 Inch Sandwich + Chips + Soda =',
-            price: '$10.00 with tax',
-            image: sandwiches,
-        },
-        {
-            id: 2,
-            name: 'classic sandwiches',
-            dec: 'Footlong Sandwich + Chips + Soda =',
-            price: '$15.00 with tax',
-            image: sandwiches,
-        },
-        {
-            id: 3,
-            name: 'salad',
-            dec: 'Salad + water bottle =',
-            price: '$10.00 with tax',
-            image: saladImg,
-        },
-    ];
-    const handleNavigate = (food) => {
-        orderDetails.value.food = food;
-        store.dispatch('storeData', orderDetails.value);
-        setTimeout(() => {
-            router.push({ name: 'foodCategories', });
-        }, 100);
-    };
+const handleNavigate = (food) => {
+  orderDetails.value.food = food;
+  store.dispatch("storeData", orderDetails.value);
+  setTimeout(() => {
+    router.push({ name: "foodsCategories" });
+  }, 100);
+};
 </script>
 <template>
-    <section>
-        <Button variant="primary" class="mt-5 my-10 mx-3 text-white font-bold" @click="router.back()">Back
-        </Button>
-
-        <div class="p-5 z-50">
-            <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
-                <Card>
-                    <h1>Order Details</h1>
-                    <div>Your branch :- {{orderDetails.branch.name }}</div>
-                    <div> Your Delivery Time :- {{orderDetails.deliveryTime }}</div>
-                </Card>
-                <div class="mt-28 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-28 gap-x-10">
-                    <div v-for="(card, index) in cards" :key="index" @click="handleNavigate(card)" v-motion :initial="{ opacity: 0, y: 100 }" :enter="{ opacity: 1, y: 0, scale: 1 }" :variants="{ custom: { scale: 2 } }" :hovered="{ scale: 1.1 }" class="border bg-white border-green-600 cursor-pointer ring-2 ring-green-600 ring-opacity-20 relative rounded-md shadow-lg">
-                        <div class="rounded-full mx-auto mt-[-80px] h-[200px] w-[200px]">
-                            <img :src="card.image" alt="img" class="rounded-full mx-auto h-[180px] w-[180px] object-cover"/>
-                        </div>
-                        <div class="p-4 text-center rounded-lg">
-                            <p class="text-2xl font-extrabold uppercase mt-5">
-                                {{ card.name }} </p>
-                            <p class="text-xl mt-5 font-extrabold text-green-600 ">{{ card.dec }}</p>
-                            <span class="text-2xl font-extrabold text-black">{{card.price}}</span>
-                        </div>
-                    </div>
-                </div>
-            </div>
+  <section>
+    <HeaderLogo />
+    <!-- <video src="../../assets/2.mp4" autoplay="{true}" loop muted 
+    class="fixed top-[5px] invert mix-blend-color-burn z-0" /> -->
+    <div class="container mx-auto p-5 z-50 mt-16">
+      <button
+        class="relative cursor-pointer py-3 px-[25px] rounded-lg  [border:none] w-full bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">
+        <div @click="isDetailsShow = true"
+          class="relative text-[1.2rem] font-semibold uppercase viga-regular text-white">
+          Show Selected Order Details
         </div>
-        <!-- </div> -->
-    </section>
+      </button>
+      <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
+        <OrderDetails
+                v-if="isDetailsShow"
+                @close="isDetailsShow = false" 
+                :isDetailsShow="isDetailsShow"
+                :orderDetails="orderDetails"
+        />
+        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 gap-x-10">
+          <div class="rounded-3xl bg-white z-10 shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]"
+            v-for="(card, index) in sandwitchFoosItems" :key="index" @click="handleNavigate(card)">
+            <img :src="card.image" alt="img" class="rounded-t-3xl object-cover h-[150px] w-full" />
+            <div class="p-4 text-center rounded-lg">
+              <p class="text-[2rem] text-green-gradient font-extrabold uppercase mt-5 lobster-regular">
+                {{ card.name }}
+              </p>
+              <p class="text-[1.5rem] mt-5 font-thin text-black viga-regular">
+                {{ card.dec }}
+              </p>
+              <span class="text-[1.5rem] flex justify-center gap-2 font-extrabold text-red-800 viga-regular">{{
+                card.price }}
+                <p class="text-black">With Tax</p>
+              </span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
 </template>
 <style scoped>
-    .drop-shadow-2xl {
-        text-shadow: 1px 2px black;
-    }
+.overlay {
+  background-image: linear-gradient(to top, #222 0.33%, rgba(34, 34, 34, 0) 130%);
+}
 </style>

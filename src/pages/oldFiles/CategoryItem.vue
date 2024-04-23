@@ -1,11 +1,11 @@
 <script setup>
-import Button from "../components/Button.vue";
+import Button from "../../components/Button.vue";
 import { useRoute, useRouter } from "vue-router";
-import cheeseWhiteAmerican from "../assets/cheeseWhiteAmerican.avif";
-import cheesePepperJack from "../assets/cheesePepperJack.avif";
-import cheeseProvolone from "../assets/cheeseProvolone.avif";
-import cheeseMontereyCheddarShredded from "../assets/cheeseMontereyCheddarShredded.avif";
-import Card from "../components/Card.vue";
+import cheeseWhiteAmerican from "../../assets/cheeseWhiteAmerican.avif";
+import cheesePepperJack from "../../assets/cheesePepperJack.avif";
+import cheeseProvolone from "../../assets/cheeseProvolone.avif";
+import cheeseMontereyCheddarShredded from "../../assets/cheeseMontereyCheddarShredded.avif";
+import Card from "../../components/Card.vue";
 import { useStore } from 'vuex';
 import { computed } from 'vue';
 const router = useRouter();

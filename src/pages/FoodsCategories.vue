@@ -1,8 +1,8 @@
 <script setup>
-import HeaderLogo from '../../components/HeaderLogo.vue';
-import OrderDetails from '../../components/OrderDetails.vue';
-import Card from '../../components/Card.vue';
-import { selectedSaladItem, selectedSandwitchItem } from '../../components/helper';
+import HeaderLogo from '../components/HeaderLogo.vue';
+import OrderDetails from '../components/OrderDetails.vue';
+import Card from '../components/Card.vue';
+import { selectedSaladItem, selectedSandwitchItem } from '../components/helper';
 import { useRouter } from 'vue-router';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
@@ -16,7 +16,7 @@ const showBreadDetails = (category) => {
     orderDetails.value.foodCategory = category;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
-        router.push({ name: orderDetails?.value?.food?.id == 3 ? 'cheeseV2' : 'breadCategoriesV2' });
+        router.push({ name: orderDetails?.value?.food?.id == 3 ? 'cheese' : 'breadCategories' });
     }, 100);
 };
 const handleShowDetails = () => {

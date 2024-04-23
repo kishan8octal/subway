@@ -1,11 +1,11 @@
 <script setup>
-import Button from "../components/Button.vue";
+import Button from "../../components/Button.vue";
 import { useRouter } from "vue-router";
-import breadGrainWheat from "../assets/breadGrainWheat.avif";
-import breadtalianWhite from "../assets/breadtalianWhite.avif";
-import breadtalianHerbsCheese from "../assets/breadtalianHerbsCheese.avif";
-import long_Black_Forest_Ham from "../assets/long_Black_Forest_Ham.avif";
-import Card from "../components/Card.vue";
+import breadGrainWheat from "../../assets/breadGrainWheat.avif";
+import breadtalianWhite from "../../assets/breadtalianWhite.avif";
+import breadtalianHerbsCheese from "../../assets/breadtalianHerbsCheese.avif";
+import long_Black_Forest_Ham from "../../assets/long_Black_Forest_Ham.avif";
+import Card from "../../components/Card.vue";
 import { useStore } from "vuex";
 import { computed } from "vue";
 

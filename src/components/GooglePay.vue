@@ -1,6 +1,5 @@
 environment="TEST" <!-- or "PRODUCTION" for production -->
 <script setup>
-import '@google-pay/button-element';
 </script>
 <template>
     <google-pay-button

@@ -1,12 +1,12 @@
 <script setup>
-import HeaderLogo from '../../components/HeaderLogo.vue';
-import OrderDetails from '../../components/OrderDetails.vue';
-import { veggiesVariants } from '../../components/helper';
+import HeaderLogo from '../components/HeaderLogo.vue';
+import OrderDetails from '../components/OrderDetails.vue';
+import { veggiesVariants } from '../components/helper';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
-import Card from '../../components/Card.vue';
-import Button from '../../components/Button.vue';
+import Card from '../components/Card.vue';
+import Button from '../components/Button.vue';
 
 const router = useRouter();
 const store = useStore();
@@ -38,27 +38,28 @@ const handleItemVariant = (data, value) => {
 }
 
 const handleNextPage = () =>{
-    let veggies = veggiesVariants.filter((item, index) => {
-        if(selectedArray.value[index].value){
+    let veggies = veggiesVariants.map((item, index) => {
+        if (selectedArray.value[index]?.value) {
             let variant = null;
-            if(selectedArray.value[index]?.variant == 1){
-                variant = 'Less'
-
-            }else if(selectedArray.value[index]?.variant == 2){
-                variant = 'Regular'
-            }else if(selectedArray.value[index]?.variant == 3){
-                variant = 'More'
-                
+            switch(selectedArray.value[index]?.variant) {
+                case 1:
+                    variant = 'Less';
+                    break;
+                case 2:
+                    variant = 'Regular';
+                    break;
+                case 3:
+                    variant = 'More';
+                    break;
             }
-            item.variant = variant;
-            return item;
+            return { ...item, variant };
         }
-    });
+    }).filter(Boolean);
     
     orderDetails.value.veggies = veggies;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
-        router.push({ name: 'saucesVarientV2' });
+        router.push({ name: 'saucesVarient' });
     }, 100);
 }
 </script>
