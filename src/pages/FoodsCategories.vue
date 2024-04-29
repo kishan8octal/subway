@@ -1,6 +1,5 @@
 <script setup>
 import HeaderLogo from '../components/HeaderLogo.vue';
-import OrderDetails from '../components/OrderDetails.vue';
 import Card from '../components/Card.vue';
 import { selectedSaladItem, selectedSandwitchItem } from '../components/helper';
 import { useRouter } from 'vue-router';
@@ -12,10 +11,14 @@ const store = useStore();
 const orderDetails = computed(() => store.state.orderDetails);
 const selectedItemsData = orderDetails?.value?.food?.id == 3 ? selectedSaladItem : selectedSandwitchItem;
 const isDetailsShow = ref(false);
+const isLoading = ref(false);
+
 const showBreadDetails = (category) => {
+    isLoading.value = true;
     orderDetails.value.foodCategory = category;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
+        isLoading.value = false;
         router.push({ name: orderDetails?.value?.food?.id == 3 ? 'cheese' : 'breadCategories' });
     }, 100);
 };
@@ -29,16 +32,8 @@ const closeDetails = () => {
 </script>
 <template>
     <section>
-        <HeaderLogo />
+        <HeaderLogo :isLoading="isLoading" />
         <div class="container mx-auto py-10 px-5 mt-14">
-            <button
-                class="relative cursor-pointer py-3 px-[25px] rounded-lg  [border:none] w-full bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">
-                <div @click="handleShowDetails()"
-                    class="relative text-[1.2rem] font-semibold uppercase viga-regular text-white">
-                    Show Selected Order Details
-                </div>
-            </button>
-            <OrderDetails v-if="isDetailsShow" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" @close="closeDetails" />
             <div class="mt-[2rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div v-for="(item, index) in selectedItemsData" :key="index" @click="showBreadDetails(item)"
                     class="relative">

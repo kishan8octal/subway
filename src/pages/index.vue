@@ -4,6 +4,8 @@ import { ChevronRight } from "../components/Icons/Index";
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
 import HeaderLogo from "../components/HeaderLogo.vue";
+import Button from "../components/Button.vue";
+import RadioGroup from "../components/RadioGroup.vue";
 
 const options = [
   { name: "Medical Office", id: 1 },
@@ -12,18 +14,48 @@ const options = [
 const selectedOptions = ref("");
 const router = useRouter();
 const store = useStore();
+const isLoading = ref(false);
+const customer = ref({
+    name: '',
+    contact: '',
+    email:''
+});
 
-const handleDeliveryTime = (option) => {
-  store.dispatch("storeData", { branch: option });
-  setTimeout(() => {
-    router.push({ name: "deliveryTime" });
-  }, 100);
-};
+const handleSubmit = () => {
+    isLoading.value = true;
+    if (customer.value.name?.trim() === ""){
+        iziToast.error({
+            position:'topRight',
+            message: 'The name is required.',
+        });
+        isLoading.value = false;
+        return false;
+    }
+
+    if (customer.value.contact.toString()?.trim() === ""){
+        iziToast.error({
+            position:'topRight',
+            message: 'The contact is required.',
+        });
+        isLoading.value = false;
+        return false;
+    }
+
+    store.dispatch("storeData", { branch: selectedOptions, customer: customer.value });
+    setTimeout(() => {
+      router.push({ name: "deliveryTime" });
+    }, 100);
+    
+}
 </script>
 <template>
   <div class="z-50 h-full">
-    <HeaderLogo :isBackButton="false" />
-    <div class="relative z-10 flex flex-col gap-36">
+    <HeaderLogo
+            :isBackButton="false"
+            :isLoading="isLoading"
+            :isShowOrderDetails="false"
+    />
+    <div class="relative z-10 flex flex-col gap-[1rem]">
       <div class="text-center flex flex-col gap-2">
         <h3 class="text-[28px] font-extrabold text-white lobster-regular mt-5">
           Place Your Food Order To Get Delivery From
@@ -40,17 +72,56 @@ const handleDeliveryTime = (option) => {
           </p>
         </div>
       </div>
-      <div class="relative grid grid-cols-1 sm:grid-cols-2 gap-y-5 gap-x-10 px-6 mt-10">
-        <div v-for="option in options" :key="option.id"
-          class="py-4 px-5 flex items-center justify-between rounded-2xl bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]"
-          @click="handleDeliveryTime(option)">
-          <span class="text-xl viga-regular text-green-gradient">{{
-            option.name
-          }}</span>
-          <ChevronRight size="21" />
+        <div class="container mx-auto px-5 pb-[2rem] pt-[5rem] relative z-20">
+            <div class="mx-auto w-full max-w-[550px]">
+                <div>
+                    <div class="text-center text-4xl my-3 font-semibold text-xl viga-regular text-green-gradient">Customer Details</div>
+                    <div class="mb-5">
+                        <label for="name" class="text-xl text-gray-500">Name
+                        <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                                v-model="customer.name"
+                                autofocus
+                                type="text" name="name" id="name" placeholder="Name"
+                                class="w-full rounded-lg border my-2
+                                border-green-600 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]
+                                 bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none 
+                                  focus:ring-2 focus:ring-green-600 focus:ring-opacity-20" />
+                    </div>
+                    <div class="mb-5">
+                        <label for="contact" class="text-xl text-gray-500 py-2">Contact
+                            <span class="text-red-500">*</span>
+                        </label>
+                        <input
+                                v-model="customer.contact"
+                                type="number" name="contact" id="contact" placeholder="Contact"
+                                class="w-full rounded-lg border my-2 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]
+                                 border-green-600 bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none
+                                  focus:ring-2 focus:ring-green-600 focus:ring-opacity-20" />
+                    </div>
+                    <div class="mb-5">
+                        <label for="email" class="text-xl text-gray-500 py-2">Email
+                        </label>
+                        <input
+                                v-model="customer.email"
+                                type="email" name="email" id="email" placeholder="Email" 
+                                class="w-full rounded-lg border my-2 bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]
+                                border-green-600 py-3 px-6 text-xl font-medium text-[#6B7280] outline-none
+                                  focus:ring-2 focus:ring-green-600 focus:ring-opacity-20" />
+                    </div>
+                </div>
         </div>
-        <!-- </div> -->
-      </div>
+            <label class="text-xl text-gray-500">Select Branch
+            </label>
+            <RadioGroup v-model="selectedOptions" :options="options" class="my-3" />
+        </div>
+        <Button 
+                variant="primary"
+                class="p-4 bg-green-gradient text-lg"
+                :loading="isLoading"
+                @click="handleSubmit"
+        >Next</Button>
     </div>
   </div>
 </template>

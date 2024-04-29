@@ -1,7 +1,6 @@
 <script setup>
 import Card from '../components/Card.vue';
 import HeaderLogo from '../components/HeaderLogo.vue';
-import OrderDetails from '../components/OrderDetails.vue';
 import { breadItemsForFootLongSandwitch, breadItemsForSixInchSandwitch } from '../components/helper';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
@@ -9,6 +8,7 @@ import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const store = useStore();
+const isLoading = ref(false);
 const orderDetails = computed(() => store.state.orderDetails);
 const isDetailsShow = ref(false);
 const selectedCategoryItems = orderDetails.value?.food?.id == 1
@@ -16,32 +16,19 @@ const selectedCategoryItems = orderDetails.value?.food?.id == 1
     : breadItemsForFootLongSandwitch;
 
 const showCheeseDetailsData = (item) => {
+    isLoading.value = true;
     orderDetails.value.categoryItem = item;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
+        isLoading.value = false;
         router.push({ name: 'cheese' });
     }, 100);
-};
-const handleShowDetails = () => {
-    isDetailsShow.value = true
-};
-const closeDetails = () => {
-    console.log("click");
-  isDetailsShow.value = false; // Hide the order details overlay
 };
 </script>
 <template>
     <section>
-        <HeaderLogo />
-        <div class="container mx-auto py-10 px-5 mt-14">
-            <button
-                class="relative mb-14 cursor-pointer py-3 px-[25px] rounded-lg  [border:none] w-full bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">
-                <div @click="handleShowDetails()"
-                    class="relative text-[1.2rem] font-semibold uppercase viga-regular text-white">
-                    Show Selected Order Details
-                </div>
-            </button>
-            <OrderDetails v-if="isDetailsShow" @close="closeDetails" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
+        <HeaderLogo :isLoading="isLoading" />
+        <div class="container mx-auto py-10 px-5 mt-24">
             <div class="z-20 relative bottom-3 flex justify-center gap-3 lobster-regular text-center">
                 <h1 class="ttext-black text-3xl">Bread</h1>
                 <span class="text-white text-3xl">

@@ -1,6 +1,5 @@
 <script setup>
 import HeaderLogo from '../components/HeaderLogo.vue';
-import OrderDetails from '../components/OrderDetails.vue';
 import { veggiesVariants } from '../components/helper';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
@@ -10,8 +9,8 @@ import Button from '../components/Button.vue';
 
 const router = useRouter();
 const store = useStore();
+const isLoading = ref(false);
 const orderDetails = computed(() => store.state.orderDetails);
-const isDetailsShow = ref(false);
 
 const selectedArray = ref(veggiesVariants.map(item => {
     return {id:item.id, value:false, variant: 0};
@@ -23,14 +22,6 @@ const saucesDetails = (data) => {
     SelectedVariant.value = !SelectedVariant.value;
 };
 
-const handleShowDetails = () => {
-    isDetailsShow.value = true;
-};
-
-const closeDetails = () => {
-  isDetailsShow.value = false; // Hide the order details overlay
-};
-
 const handleItemVariant = (data, value) => {
     let SelectedVariant = selectedArray.value.find(item => item.id == data.id);
     SelectedVariant.variant = value;
@@ -38,6 +29,7 @@ const handleItemVariant = (data, value) => {
 }
 
 const handleNextPage = () =>{
+    isLoading.value = true;
     let veggies = veggiesVariants.map((item, index) => {
         if (selectedArray.value[index]?.value) {
             let variant = null;
@@ -59,22 +51,15 @@ const handleNextPage = () =>{
     orderDetails.value.veggies = veggies;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
+        isLoading.value = false;
         router.push({ name: 'saucesVarient' });
     }, 100);
 }
 </script>
 <template>
     <section>
-        <HeaderLogo />
-        <div class="container mx-auto py-10 px-5 mt-14">
-            <button
-                class="relative mb-14 cursor-pointer py-3 px-[25px] rounded-lg  [border:none] w-full bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">
-                <div @click="handleShowDetails()"
-                    class="relative text-[1.2rem] font-semibold uppercase viga-regular text-white">
-                    Show Selected Order Details
-                </div>
-            </button>
-            <OrderDetails @close="closeDetails" v-if="isDetailsShow" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
+        <HeaderLogo :isLoading="isLoading" />
+        <div class="container mx-auto py-10 px-5 mt-24">
             <div class="z-20 relative bottom-3 flex justify-center gap-3 lobster-regular text-center">
                 <!-- <h1 class="text-black text-3xl">Veggies</h1> -->
                 <span class="text-white text-3xl">
@@ -116,7 +101,7 @@ const handleNextPage = () =>{
                 </div>
             </div>
             <div class="flex justify-center items-center">
-                <Button @click="handleNextPage" variant="primary" class="mt-3">Next</button>
+                <Button @click="handleNextPage" variant="primary" class="mt-3 z-20">Next</button>
             </div>
         </div>
     </section>

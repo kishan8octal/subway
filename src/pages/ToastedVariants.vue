@@ -1,43 +1,28 @@
 <script setup>
 import Card from '../components/Card.vue';
 import HeaderLogo from '../components/HeaderLogo.vue';
-import OrderDetails from '../components/OrderDetails.vue';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 
 const router = useRouter();
 const store = useStore();
+const isLoading = ref(false);
 const orderDetails = computed(() => store.state.orderDetails);
-const isDetailsShow = ref(false);
-console.log("item", orderDetails.value);
 const handleToasted = (item) => {
+    isLoading.value = true;
     orderDetails.value.toasted = item;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
+        isLoading.value = false;
         router.push({ name: 'veggiesVarient' });
     }, 100);
-};
-const handleShowDetails = () => {
-    isDetailsShow.value = true
-};
-const closeDetails = () => {
-    console.log("click");
-  isDetailsShow.value = false; // Hide the order details overlay
 };
 </script>
 <template>
     <section>
-        <HeaderLogo />
+        <HeaderLogo :isLoading="isLoading"/>
         <div class="container mx-auto py-10 px-5 mt-14">
-            <button
-                class="relative cursor-pointer py-3 px-[25px] rounded-lg  [border:none] w-full bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">
-                <div @click="handleShowDetails()"
-                    class="relative text-[1.2rem] font-semibold uppercase viga-regular text-white">
-                    Show Selected Order Details
-                </div>
-            </button>
-            <OrderDetails @close="closeDetails" v-if="isDetailsShow" :isDetailsShow="isDetailsShow" :orderDetails="orderDetails" />
             <div class="mt-[5rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
                 <div class="relative flex flex-col gap-3">
                     <Card class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]">

@@ -1,12 +1,14 @@
 <script setup>
 import { useRouter } from "vue-router";
 import { useStore } from "vuex";
-import { computed } from "vue";
+import { computed, ref } from "vue";
 import HeaderLogo from "../components/HeaderLogo.vue";
 
 const router = useRouter();
 const store = useStore();
 const orderDetails = computed(() => store.state.orderDetails);
+const isDetailsShow = ref(false)
+const isLoading = ref(false);
 
 const startTime = computed(() => {
   return {
@@ -26,37 +28,25 @@ const endTime = computed(() => {
   }[orderDetails.value.branch.id];
 });
 
-const address = computed(() => {
-  return {
-    1: "10080 Sandmeyer Ln Philadelphia, PA 19116",
-    2: "American Heritage Credit Union 2068 Red Lion Rd, Philadelphia, PA 19115",
-  }[orderDetails.value.branch.id];
-});
-
 const handleDeliveryTime = (deliveryTime) => {
+    isLoading.value = true;
   orderDetails.value.deliveryTime = deliveryTime;
   store.dispatch("storeData", orderDetails.value);
   setTimeout(() => {
-    router.push({ name: "foods" });
+      isLoading.value = false;
+      router.push({ name: "foods" });
   }, 100);
 };
 </script>
 <template>
   <div class="z-50">
-    <HeaderLogo />
+    <HeaderLogo :isLoading="isLoading" />
     <div class="h-full">
-        <div class="z-10 relative top-0">
-            <img class="z-10 h-[350px] mx-auto" alt="Illustartion pattern" src="../assets/Illustartion.png" />
-        </div>
+<!--        <div class="z-10 relative top-0">-->
+<!--            <img class="z-10 h-[350px] mx-auto" alt="Illustartion pattern" src="../assets/Illustartion.png" />-->
+<!--        </div>-->
       <div class="z-10 relative mx-auto p-5 mt-8 sm:p-20">
-          <div class="py-4 px-5 flex flex-col rounded-2xl bg-white shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]">
-            <p class="mb-2 text-[#7DA640]  viga-regular">Delivery To </p>
-            <div class="flex justify-center items-center">
-              <img src="../assets/outlineLocation.svg" class="h-[25px] mr-2" />
-              <span class="text-[1rem] viga-regular text-black">{{ address }}</span>
-            </div>
-          </div>
-        <div class="text-center text-3xl mt-5">
+        <div class="text-center text-3xl mt-20 bg-white p-5">
           <div class="items-start justify-start py-0">
             <h2
               class="m-0 flex-1 relative leading-[131.02%] font-extrabold text-green-gradient whitespace-pre-wrap lobster-regular">

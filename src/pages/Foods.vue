@@ -1,46 +1,30 @@
 <script setup>
 import { useRouter } from "vue-router";
 import HeaderLogo from "../components/HeaderLogo.vue";
-import OrderDetails from "../components/OrderDetails.vue";
 import { sandwitchFoosItems, handleSendMail } from '../components/helper';
 import { useStore } from "vuex";
-import { computed, ref } from "vue";
-import Card from "../components/Card.vue";
-import CloseIcon from "../components/Icons/Close.vue";
+import { computed, ref } from 'vue';
 
 const router = useRouter();
 const store = useStore();
 const orderDetails = computed(() => store.state.orderDetails);
-const isDetailsShow = ref(false);
+const isLoading = ref(false);
 
 const handleNavigate = (food) => {
+    isLoading.value = true;
   orderDetails.value.food = food;
   store.dispatch("storeData", orderDetails.value);
   setTimeout(() => {
-    router.push({ name: "foodsCategories" });
+      isLoading.value = false;
+      router.push({ name: "foodsCategories" });
   }, 100);
 };
 </script>
 <template>
   <section>
-    <HeaderLogo />
-    <!-- <video src="../../assets/2.mp4" autoplay="{true}" loop muted 
-    class="fixed top-[5px] invert mix-blend-color-burn z-0" /> -->
-    <div class="container mx-auto p-5 z-50 mt-16">
-      <button
-        class="relative cursor-pointer py-3 px-[25px] rounded-lg  [border:none] w-full bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">
-        <div @click="isDetailsShow = true"
-          class="relative text-[1.2rem] font-semibold uppercase viga-regular text-white">
-          Show Selected Order Details
-        </div>
-      </button>
+    <HeaderLogo :isLoading="isLoading" />
+    <div class="container mx-auto p-5 z-50 mt-24">
       <div class="sm:max-w-7xl mx-auto p-5 sm:p-20">
-        <OrderDetails
-                v-if="isDetailsShow"
-                @close="isDetailsShow = false" 
-                :isDetailsShow="isDetailsShow"
-                :orderDetails="orderDetails"
-        />
         <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-y-10 gap-x-10">
           <div class="rounded-3xl bg-white z-10 shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]"
             v-for="(card, index) in sandwitchFoosItems" :key="index" @click="handleNavigate(card)">

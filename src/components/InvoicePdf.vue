@@ -1,70 +1,133 @@
 <script setup>
     import jsPDF from 'jspdf';
+    import 'jspdf-autotable';
+    import moment from 'moment';
+    import { computed, defineProps } from 'vue';
 
-    const generatePDF = () => {
-       // Create a new jsPDF instance
-       const doc = new jsPDF();
+    const props = defineProps({
+        orderDetails:{
+            type:Object,
+            required: true
+        }
+    });
 
-       const invoiceHTML = `
-        <div style="font-family: Arial, sans-serif;">
-          <h2 class="text-red-500">Invoice</h2>
-          <div>
-            <strong>Invoice Number:</strong> INV-001<br>
-            <strong>Date:</strong> ${new Date().toLocaleDateString()}<br>
-            <strong>Customer:</strong> John Doe<br>
-            <strong>Email:</strong> john@example.com<br>
-          </div>
-          <hr>
-          <table style="width: 100%; border-collapse: collapse;">
-            <thead>
-              <tr>
-                <th style="border: 1px solid #000; padding: 8px;">Item</th>
-                <th style="border: 1px solid #000; padding: 8px;">Description</th>
-                <th style="border: 1px solid #000; padding: 8px;">Quantity</th>
-                <th style="border: 1px solid #000; padding: 8px;">Unit Price</th>
-                <th style="border: 1px solid #000; padding: 8px;">Total</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr>
-                <td style="border: 1px solid #000; padding: 8px;">Item 1</td>
-                <td style="border: 1px solid #000; padding: 8px;">Description 1</td>
-                <td style="border: 1px solid #000; padding: 8px;">2</td>
-                <td style="border: 1px solid #000; padding: 8px;">$10</td>
-                <td style="border: 1px solid #000; padding: 8px;">$20</td>
-              </tr>
-              <tr>
-                <td style="border: 1px solid #000; padding: 8px;">Item 2</td>
-                <td style="border: 1px solid #000; padding: 8px;">Description 2</td>
-                <td style="border: 1px solid #000; padding: 8px;">3</td>
-                <td style="border: 1px solid #000; padding: 8px;">$15</td>
-                <td style="border: 1px solid #000; padding: 8px;">$45</td>
-              </tr>
-            </tbody>
-          </table>
-          <hr>
-          <div>
-            <strong>Total:</strong> $65
-          </div>
-        </div>
-      `;
-       doc.html(invoiceHTML, {
-           callback: function (doc) {
-               doc.save('invoice.pdf');
-           },
-       },10, 10);
+    const address = computed(() => {
+        return {
+            1: "10080 Sandmeyer Ln Philadelphia, PA 19116",
+            2: "American Heritage Credit Union 2068 Red Lion Rd, Philadelphia, PA 19115",
+        }[props.orderDetails?.branch?.id];
+    });
+    
+    const printInvoice = () => {
+        const doc = new jsPDF({
+            orientation: 'portrait',
+            unit: 'in',
+            format: [4, 6], // Width and height in inches
+        });
+        
+        const customer = props.orderDetails?.customer;
+        doc.setFontSize(15);
+        doc.setFillColor(204, 204,204,0);
+        doc.rect(0, 0, 4, 0.8, "F");
+        doc.setTextColor(255, 255, 255);
+        doc.setFont("helvetica", "bold");
+        doc.text('Your Order', getXWidth('Your Order',doc), 0.3);
 
-       // Add content to the PDF
-       // doc.text(invoiceHTML, 10, 10);
+        doc.setFont("helvetica", "normal");
+        doc.setFontSize(13);
+        doc.setTextColor(192, 192, 192);
+        doc.text(moment().format('dddd, MMMM Do YYYY, h a'), getXWidth(moment().format('dddd, MMMM Do YYYY, h a'),doc), 0.6);
 
-       // Save or download the PDF
-       // doc.save('example.pdf');
-   }
+        
+        doc.setFontSize(11);
+        doc.setTextColor(0, 0, 0);
+        doc.setFont("helvetica", "bold");
+        doc.setFillColor(248, 226,213);
+        doc.rect(0, 1.05, 4, 0.4, "F");
+        doc.text(`Customer Details`, getXWidth('Customer Details',doc), 1.3);
 
+        doc.setFontSize(10);
+        doc.setTextColor(0, 0, 0);
+        doc.text(`Name    : ${customer.name}`, 0.1, 1.6);
+        doc.text(`Email   : ${customer.email}`, 0.1, 1.8);
+        doc.text(`Contact : ${customer.contact}`, 0.1, 2);
+        doc.text(`branch : ${props.orderDetails?.branch?.name}`, 0.1, 2.2);
+        let ySize = 2.2;
+        address.value?.split(',').forEach((item) => {
+            ySize+=0.2;
+            doc.text(`Add. : ${item},`, 0.1, ySize);
+        })
+        doc.text(`Delivery Time:  ${props.orderDetails?.deliveryTime}`, 0.1, 2.6);
+
+        doc.setFontSize(11);
+        doc.setTextColor(0, 0, 0);
+        doc.setFont("helvetica", "bold");
+        doc.setFillColor(248, 226,213);
+        doc.rect(0, 2.5, 4, 0.4, "F");
+        doc.text(`Order Details`, getXWidth('Order Details',doc), 2.7);
+        
+        doc.setFontSize(10);
+        doc.setTextColor(0, 0, 0);
+        doc.text(`* ${props.orderDetails?.food?.name} ${ !!props.orderDetails?.food?.price ? props.orderDetails?.food?.price : ''}`, 0.1, 3.2);
+        doc.text(`* ${props.orderDetails?.foodCategory?.name}`, 0.1, 3.4);
+        
+        let isSalad = 3.6;
+        if (!!props.orderDetails?.categoryItem?.name){
+            doc.text(`* ${props.orderDetails?.categoryItem?.name} ${ !!props.orderDetails?.categoryItem?.des && (props.orderDetails?.categoryItem?.des)}`, 0.1, 3.6);
+            isSalad = 3.8;
+        }
+        
+        doc.text(`* ${props.orderDetails?.categoryItems?.name} ${ !!props.orderDetails?.categoryItems?.des && (props.orderDetails?.categoryItems?.des)}`, 0.1, isSalad);
+
+        isSalad = 3.8;
+        if (props.orderDetails?.chips?.name){
+            doc.text(`* ${props.orderDetails?.chips?.name} ${ !!props.orderDetails?.chips?.ounces && (props.orderDetails?.chips?.ounces)}`, 0.1, 4);
+            isSalad = 4.2;
+        }
+        doc.text(`* ${props.orderDetails?.drink?.name} ${ !!props.orderDetails?.drink?.ounces && (props.orderDetails?.drink?.ounces)}`, 0.1, isSalad);
+        isSalad += 0.2;
+        doc.text(`* ${props.orderDetails?.sauces?.name} ${ !!props.orderDetails?.sauces?.des && (props.orderDetails?.sauces?.des)}`, 0.1, isSalad);
+
+        isSalad = 4;
+        if (!!props.orderDetails?.toasted?.name){
+            doc.text(`* ${props.orderDetails?.toasted?.name}`, 0.1, 4.6);
+            isSalad = 4.6;
+        }
+        
+        let y = isSalad;
+        props.orderDetails?.veggies.forEach(item => {
+            y+= 0.2;
+            doc.text(`* ${item.name} ${item.variant} ${item.des}`, 0.1, y);
+        });
+
+        doc.text(`your payable amount ${props.orderDetails?.food?.price}`, 0.1, y+0.2);
+
+        // props.orderDetails.food.price
+        // doc.autoPrint();
+        doc.setFillColor(204, 204,204,0);
+        doc.rect(0, 5.6, 4, 0.5, "F");
+        doc.setTextColor(255, 255, 255);
+        doc.setFont("helvetica", "bold");
+        doc.text('Thank you for your order.', getXWidth('Thank you for your order',doc), 5.9);
+        
+        doc.output('dataurlnewwindow');
+        
+        
+        // let pdfData = doc.output();
+        // handleSendMail('kishan@eligocs.com','invoice','test invoice',pdfData);
+    };
+    
+    const getXWidth = (text,doc) => {
+        const textWidth = doc.getStringUnitWidth(text) * doc.internal.getFontSize() / doc.internal.scaleFactor;
+        const pageWidth = doc.internal.pageSize.getWidth();
+        const xSide = (pageWidth - textWidth) / 2;
+        return xSide;
+    }
+    console.error(props.orderDetails);
 </script>
 <template>
     <div>
-        <button class="text-black relative z-10" @click="generatePDF">Generate PDF</button>
+        <button class="text-black relative z-10" @click="printInvoice">Generate PDF</button>
     </div>
 </template>
 
