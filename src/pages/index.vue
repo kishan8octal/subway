@@ -116,9 +116,10 @@ const handleSubmit = () => {
                     </div>
                 </div>
         </div>
-            <label class="text-xl text-gray-500">Select Branch
-            </label>
-            <RadioGroup @change="handleSubmit" v-model="selectedOptions" :options="options" class="my-3" />
+            <div class="flex items-center justify-center flex-col">
+                <label class="text-xl text-gray-500">Select Branch</label>
+                <RadioGroup @change="handleSubmit" v-model="selectedOptions" :options="options" class="my-3" />
+            </div>
         </div>
         <Button 
                 variant="destructive"
