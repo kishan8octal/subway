@@ -3,6 +3,7 @@
     import 'jspdf-autotable';
     import moment from 'moment';
     import { computed, defineProps } from 'vue';
+    import RazorpayPayment from '../components/RazorpayPayment.vue';
 
     const props = defineProps({
         orderDetails:{
@@ -43,64 +44,65 @@
         doc.setTextColor(0, 0, 0);
         doc.setFont("helvetica", "bold");
         doc.setFillColor(248, 226,213);
-        doc.rect(0, 1.05, 4, 0.4, "F");
-        doc.text(`Customer Details`, getXWidth('Customer Details',doc), 1.3);
+        doc.rect(0, 0.8, 4, 0.4, "F");
+        doc.text(`Customer Details`, getXWidth('Customer Details',doc), 1.05);
 
         doc.setFontSize(10);
         doc.setTextColor(0, 0, 0);
-        doc.text(`Name    : ${customer.name}`, 0.1, 1.6);
-        doc.text(`Email   : ${customer.email}`, 0.1, 1.8);
-        doc.text(`Contact : ${customer.contact}`, 0.1, 2);
-        doc.text(`branch : ${props.orderDetails?.branch?.name}`, 0.1, 2.2);
-        let ySize = 2.2;
-        address.value?.split(',').forEach((item) => {
-            ySize+=0.2;
-            doc.text(`Add. : ${item},`, 0.1, ySize);
-        })
-        doc.text(`Delivery Time:  ${props.orderDetails?.deliveryTime}`, 0.1, 2.6);
+        doc.text(`Name    : ${customer.name}`, 0.1, 1.4);
+        doc.text(`Email   : ${customer.email}`, 0.1, 1.6);
+        doc.text(`Phone Number : ${customer.contact}`, 0.1, 1.8);
+        doc.text(`branch : ${props.orderDetails?.branch?.name}`, 0.1, 2);
+        doc.text(`Address:  ${address.value}`, 0.1, 2.2,{
+            maxWidth:4
+        });
+        let height = props.orderDetails?.branch?.id === 1 ? 2.4 : 2.6;
+        doc.text(`Delivery Time:  ${props.orderDetails?.deliveryTime}`, 0.1, height);
 
         doc.setFontSize(11);
         doc.setTextColor(0, 0, 0);
         doc.setFont("helvetica", "bold");
         doc.setFillColor(248, 226,213);
-        doc.rect(0, 2.5, 4, 0.4, "F");
-        doc.text(`Order Details`, getXWidth('Order Details',doc), 2.7);
+        height+=0.2;
+        doc.rect(0, height, 4, 0.4, "F");
+        height+=0.2;
+        doc.text(`Order Details`, getXWidth('Order Details',doc), height);
         
         doc.setFontSize(10);
         doc.setTextColor(0, 0, 0);
-        doc.text(`* ${props.orderDetails?.food?.name} ${ !!props.orderDetails?.food?.price ? props.orderDetails?.food?.price : ''}`, 0.1, 3.2);
-        doc.text(`* ${props.orderDetails?.foodCategory?.name}`, 0.1, 3.4);
-        
-        let isSalad = 3.6;
+        height+=0.4;
+        doc.text(`* ${props.orderDetails?.food?.name} ${ !!props.orderDetails?.food?.price ? props.orderDetails?.food?.price : ''}`, 0.1, height);
+        height+=0.2;
+        doc.text(`* ${props.orderDetails?.foodCategory?.name}`, 0.1, height);
+
+        height+=0.2;
         if (!!props.orderDetails?.categoryItem?.name){
-            doc.text(`* ${props.orderDetails?.categoryItem?.name} ${ !!props.orderDetails?.categoryItem?.des && (props.orderDetails?.categoryItem?.des)}`, 0.1, 3.6);
-            isSalad = 3.8;
+            doc.text(`* ${props.orderDetails?.categoryItem?.name} ${ !!props.orderDetails?.categoryItem?.des && (props.orderDetails?.categoryItem?.des)}`, 0.1, height);
+            height += 0.2;
         }
-        
-        doc.text(`* ${props.orderDetails?.categoryItems?.name} ${ !!props.orderDetails?.categoryItems?.des && (props.orderDetails?.categoryItems?.des)}`, 0.1, isSalad);
 
-        isSalad = 3.8;
+        doc.text(`* ${props.orderDetails?.categoryItems?.name} ${ !!props.orderDetails?.categoryItems?.des && (props.orderDetails?.categoryItems?.des)}`, 0.1, height);
+
+        height += 0.2;
         if (props.orderDetails?.chips?.name){
-            doc.text(`* ${props.orderDetails?.chips?.name} ${ !!props.orderDetails?.chips?.ounces && (props.orderDetails?.chips?.ounces)}`, 0.1, 4);
-            isSalad = 4.2;
+            doc.text(`* ${props.orderDetails?.chips?.name} ${ !!props.orderDetails?.chips?.ounces && (props.orderDetails?.chips?.ounces)}`, 0.1, height);
+            height += 0.2;
         }
-        doc.text(`* ${props.orderDetails?.drink?.name} ${ !!props.orderDetails?.drink?.ounces && (props.orderDetails?.drink?.ounces)}`, 0.1, isSalad);
-        isSalad += 0.2;
-        doc.text(`* ${props.orderDetails?.sauces?.name} ${ !!props.orderDetails?.sauces?.des && (props.orderDetails?.sauces?.des)}`, 0.1, isSalad);
+        doc.text(`* ${props.orderDetails?.drink?.name} ${ !!props.orderDetails?.drink?.ounces && (props.orderDetails?.drink?.ounces)}`, 0.1, height);
+        height += 0.2;
+        doc.text(`* ${props.orderDetails?.sauces?.name} ${ !!props.orderDetails?.sauces?.des && (props.orderDetails?.sauces?.des)}`, 0.1, height);
 
-        isSalad = 4;
         if (!!props.orderDetails?.toasted?.name){
-            doc.text(`* ${props.orderDetails?.toasted?.name}`, 0.1, 4.6);
-            isSalad = 4.6;
+            height += 0.2;
+            doc.text(`* ${props.orderDetails?.toasted?.name}`, 0.1, height);
         }
         
-        let y = isSalad;
         props.orderDetails?.veggies.forEach(item => {
-            y+= 0.2;
-            doc.text(`* ${item.name} ${item.variant} ${item.des}`, 0.1, y);
+            height+= 0.2;
+            doc.text(`* ${item.name} ${item.variant} ${item.des}`, 0.1, height);
         });
-
-        doc.text(`your payable amount ${props.orderDetails?.food?.price}`, 0.1, y+0.2);
+        height+= 0.4;
+        doc.text(`Your payable amount is ${props.orderDetails?.food?.price}`, 0.1, height);
 
         // props.orderDetails.food.price
         // doc.autoPrint();
@@ -110,8 +112,8 @@
         doc.setFont("helvetica", "bold");
         doc.text('Thank you for your order.', getXWidth('Thank you for your order',doc), 5.9);
         
-        doc.output('dataurlnewwindow');
-        
+        // doc.output('dataurlnewwindow');
+        doc.save('invoice')
         
         // let pdfData = doc.output();
         // handleSendMail('kishan@eligocs.com','invoice','test invoice',pdfData);
@@ -127,7 +129,8 @@
 </script>
 <template>
     <div>
-        <button class="text-black relative z-10" @click="printInvoice">Generate PDF</button>
+        <RazorpayPayment @change="printInvoice" />
+<!--        <button class="text-black relative z-10" @click="printInvoice">Generate PDF</button>-->
     </div>
 </template>
 

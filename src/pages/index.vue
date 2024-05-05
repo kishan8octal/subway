@@ -8,8 +8,9 @@ import Button from "../components/Button.vue";
 import RadioGroup from "../components/RadioGroup.vue";
 
 const options = [
-  { name: "Medical Office", id: 1 },
-  { name: "American Heritage", id: 2 },
+    { name: "William Loesche Elementary School", id: 1 }
+  // { name: "Medical Office", id: 1 },
+  // { name: "American Heritage", id: 2 },
 ];
 const selectedOptions = ref("");
 const router = useRouter();
@@ -67,15 +68,18 @@ const handleSubmit = () => {
         <div class="flex justify-center mt-2 items-center gap-3">
           <img src="../assets/outlineLocation.svg" class="h-[30px] bg-img-white" />
           <p class="flex flex-col text-start text-2xl viga-regular text-white">
-            <span>Philadelphia PA 19115</span>
-            <span>9979 Bustleton Avenue,</span>
+              <span>595 Tomlinson Rd, Philadelphia, PA 19116</span>
+<!--            <span>Philadelphia PA 19115</span>-->
+<!--            <span>9979 Bustleton Avenue,</span>-->
           </p>
         </div>
       </div>
-        <div class="container mx-auto px-5 pb-[2rem] pt-[5rem] relative z-20">
+        <div class="container mx-auto px-5 pb-[2rem] pt-[5rem] md:pt-[15rem] relative z-20">
             <div class="mx-auto w-full max-w-[550px]">
                 <div>
-                    <div class="text-center text-4xl my-3 font-semibold text-xl viga-regular text-green-gradient">Customer Details</div>
+                    <div class="text-center text-4xl my-3 font-semibold text-xl viga-regular text-green-gradient">
+                        Customer Details
+                    </div>
                     <div class="mb-5">
                         <label for="name" class="text-xl text-gray-500">Name
                         <span class="text-red-500">*</span>
@@ -90,12 +94,12 @@ const handleSubmit = () => {
                                   focus:ring-2 focus:ring-green-600 focus:ring-opacity-20" />
                     </div>
                     <div class="mb-5">
-                        <label for="contact" class="text-xl text-gray-500 py-2">Contact
+                        <label for="contact" class="text-xl text-gray-500 py-2">Phone Number
                             <span class="text-red-500">*</span>
                         </label>
                         <input
                                 v-model="customer.contact"
-                                type="number" name="contact" id="contact" placeholder="Contact"
+                                type="number" name="contact" id="contact" placeholder="Phone Number"
                                 class="w-full rounded-lg border my-2 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]
                                  border-green-600 bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none
                                   focus:ring-2 focus:ring-green-600 focus:ring-opacity-20" />
@@ -114,11 +118,11 @@ const handleSubmit = () => {
         </div>
             <label class="text-xl text-gray-500">Select Branch
             </label>
-            <RadioGroup v-model="selectedOptions" :options="options" class="my-3" />
+            <RadioGroup @change="handleSubmit" v-model="selectedOptions" :options="options" class="my-3" />
         </div>
         <Button 
-                variant="primary"
-                class="p-4 bg-green-gradient text-lg"
+                variant="destructive"
+                class="p-4 text-lg"
                 :loading="isLoading"
                 @click="handleSubmit"
         >Next</Button>

@@ -39,7 +39,7 @@
 </script>
 <template>
       <button
-              @click="openPaymentModal"  class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
+              @click="$emit('change')"  class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none">
           Make Payment
       </button>
 </template>

@@ -35,7 +35,7 @@ const showCheeseDetailsData = (item) => {
                     Select 1
                 </span>
             </div>
-            <div class="mt-[2rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="mt-[2rem] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
                 <div v-for="(item, index) in selectedCategoryItems" :key="index" @click="showCheeseDetailsData(item)"
                     class="relative">
                     <Card class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]">
