@@ -13,10 +13,11 @@
     });
 
     const address = computed(() => {
-        return {
-            1: "10080 Sandmeyer Ln Philadelphia, PA 19116",
-            2: "American Heritage Credit Union 2068 Red Lion Rd, Philadelphia, PA 19115",
-        }[props.orderDetails?.branch?.id];
+       return '595 Tomlinson Rd, Philadelphia, PA 19116';
+        // return {
+        //     1: "10080 Sandmeyer Ln Philadelphia, PA 19116",
+        //     2: "American Heritage Credit Union 2068 Red Lion Rd, Philadelphia, PA 19115",
+        // }[props.orderDetails?.branch?.id];
     });
     
     const printInvoice = () => {
@@ -29,34 +30,34 @@
         const customer = props.orderDetails?.customer;
         doc.setFontSize(15);
         doc.setFillColor(204, 204,204,0);
-        doc.rect(0, 0, 4, 0.8, "F");
+        doc.rect(0, 0, 4, 0.6, "F");
         doc.setTextColor(255, 255, 255);
         doc.setFont("helvetica", "bold");
-        doc.text('Your Order', getXWidth('Your Order',doc), 0.3);
+        // doc.text('Your Order', getXWidth('Your Order',doc), 0.3);
 
         doc.setFont("helvetica", "normal");
         doc.setFontSize(13);
         doc.setTextColor(192, 192, 192);
-        doc.text(moment().format('dddd, MMMM Do YYYY, h a'), getXWidth(moment().format('dddd, MMMM Do YYYY, h a'),doc), 0.6);
+        doc.text(moment().format('dddd, MMMM Do YYYY, h a'), getXWidth(moment().format('dddd, MMMM Do YYYY, h a'),doc), 0.4);
 
         
         doc.setFontSize(11);
         doc.setTextColor(0, 0, 0);
         doc.setFont("helvetica", "bold");
         doc.setFillColor(248, 226,213);
-        doc.rect(0, 0.8, 4, 0.4, "F");
-        doc.text(`Customer Details`, getXWidth('Customer Details',doc), 1.05);
+        doc.rect(0, 0.6, 4, 0.4, "F");
+        doc.text(`William Loesche Elementary School`, getXWidth('William Loesche Elementary School',doc), 0.8);
 
         doc.setFontSize(10);
         doc.setTextColor(0, 0, 0);
-        doc.text(`Name    : ${customer.name}`, 0.1, 1.4);
-        doc.text(`Email   : ${customer.email}`, 0.1, 1.6);
-        doc.text(`Phone Number : ${customer.contact}`, 0.1, 1.8);
-        doc.text(`branch : ${props.orderDetails?.branch?.name}`, 0.1, 2);
-        doc.text(`Address:  ${address.value}`, 0.1, 2.2,{
+        doc.text(`Name    : ${customer.name}`, 0.1, 1.2);
+        doc.text(`Email   : ${customer.email}`, 0.1, 1.4);
+        doc.text(`Phone Number : ${customer.contact}`, 0.1, 1.6);
+        doc.text(`branch : ${props.orderDetails?.branch?.name}`, 0.1, 1.8);
+        doc.text(`Address:  ${address.value}`, 0.1, 2,{
             maxWidth:4
         });
-        let height = props.orderDetails?.branch?.id === 1 ? 2.4 : 2.6;
+        let height = props.orderDetails?.branch?.id === 1 ? 2.2 : 2.4;
         doc.text(`Delivery Time:  ${props.orderDetails?.deliveryTime}`, 0.1, height);
 
         doc.setFontSize(11);
@@ -104,6 +105,9 @@
         height+= 0.4;
         doc.text(`Your payable amount is ${props.orderDetails?.food?.price}`, 0.1, height);
 
+    height+=0.4;
+        doc.text('contact us test@gmail.com', 0.1, height);
+
         // props.orderDetails.food.price
         // doc.autoPrint();
         doc.setFillColor(204, 204,204,0);
@@ -134,3 +138,6 @@
     </div>
 </template>
 
+<!--2 km ni bar n open thavi jove web-->
+<!--squre up .com payment servce-->
+<!--zoho mail-->

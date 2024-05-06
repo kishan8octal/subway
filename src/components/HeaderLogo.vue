@@ -31,7 +31,6 @@
 
     const loadingData = ref(false)
 
-
     const handleBackPage = () => {
         loadingData.value = true;
         switch (router.currentRoute?.value?.name) {
@@ -77,7 +76,6 @@
             router.back();
         }, 300);
     };
-    
 </script>
 <template>
     <div v-if="isLoading || loadingData" class="h-screen fixed z-50 w-full flex items-center justify-center">

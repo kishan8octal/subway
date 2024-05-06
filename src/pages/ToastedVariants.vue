@@ -23,7 +23,7 @@ const handleToasted = (item) => {
     <section>
         <HeaderLogo :isLoading="isLoading"/>
         <div class="container mx-auto py-10 px-5 mt-14">
-            <div class="mt-[5rem] grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-8">
+            <div class="mt-[5rem]">
                 <div class="relative flex flex-col gap-3">
                     <Card class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]">
                         <div class="flex justify-center lobster-regular text-2xl  text-green-gradient"

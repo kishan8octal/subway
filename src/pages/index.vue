@@ -6,6 +6,7 @@ import { useStore } from "vuex";
 import HeaderLogo from "../components/HeaderLogo.vue";
 import Button from "../components/Button.vue";
 import RadioGroup from "../components/RadioGroup.vue";
+import iziToast from 'izitoast';
 
 const options = [
     { name: "William Loesche Elementary School", id: 1 }
