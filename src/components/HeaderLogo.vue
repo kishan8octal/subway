@@ -92,7 +92,7 @@
     <div class="absolute z-20 top-16 w-full flex justify-center">
         <button
                 v-if="isShowOrderDetails"
-                class="cursor-pointer relative py-4 w-96 bg-white z-10 shadow-[0px_0px_50px_rgba(90,_110,_235,_0.3)]"
+                class="cursor-pointer relative py-3 lobster-regular text-xl w-96 bg-white z-10 shadow-[0px_0px_50px_rgba(90,_110,_235,_0.3)]"
                 @click="isDetailsShow = true">
             Show Selected Order Details
         </button>

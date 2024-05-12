@@ -7,6 +7,7 @@ import HeaderLogo from "../components/HeaderLogo.vue";
 import Button from "../components/Button.vue";
 import RadioGroup from "../components/RadioGroup.vue";
 import iziToast from 'izitoast';
+import axios from 'axios';
 
 const options = [
     { name: "William Loesche Elementary School", id: 1 }
@@ -23,6 +24,7 @@ const customer = ref({
     email:''
 });
 
+
 const handleSubmit = () => {
     isLoading.value = true;
     if (customer.value.name?.trim() === ""){
@@ -38,6 +40,15 @@ const handleSubmit = () => {
         iziToast.error({
             position:'topRight',
             message: 'The contact is required.',
+        });
+        isLoading.value = false;
+        return false;
+    }
+
+    if (customer.value.email.toString()?.trim() === ""){
+        iziToast.error({
+            position:'topRight',
+            message: 'The Email is required.',
         });
         isLoading.value = false;
         return false;
@@ -62,27 +73,27 @@ const handleSubmit = () => {
         <h3 class="text-[28px] font-extrabold text-white lobster-regular mt-5">
           Place Your Food Order To Get Delivery From
         </h3>
-        <div>
-          <img src="../assets/subwayLogo.png"
-            class="h-[100px] w-[100px] sm:w-[300px] bg-img-white sm:h-[300px] relative z-50 object-cover mx-auto" />
-        </div>
-        <div class="flex justify-center mt-2 items-center gap-3">
-          <img src="../assets/outlineLocation.svg" class="h-[30px] bg-img-white" />
-          <p class="flex flex-col text-start text-2xl viga-regular text-white">
-              <span>595 Tomlinson Rd, Philadelphia, PA 19116</span>
+<!--        <div>-->
+<!--          <img src="../assets/subwayLogo.png"-->
+<!--            class="h-[100px] w-[100px] sm:w-[300px] bg-img-white sm:h-[300px] relative z-50 object-cover mx-auto" />-->
+<!--        </div>-->
+<!--        <div class="flex justify-center mt-2 items-center gap-3">-->
+<!--          <img src="../assets/outlineLocation.svg" class="h-[30px] bg-img-white" />-->
+<!--          <p class="flex flex-col text-start text-2xl viga-regular text-white">-->
+<!--              <span>595 Tomlinson Rd, Philadelphia, PA 19116</span>-->
 <!--            <span>Philadelphia PA 19115</span>-->
 <!--            <span>9979 Bustleton Avenue,</span>-->
-          </p>
-        </div>
+<!--          </p>-->
+<!--        </div>-->
       </div>
         <div class="container mx-auto px-5 pb-[2rem] pt-[5rem] md:pt-[15rem] relative z-20">
             <div class="mx-auto w-full max-w-[550px]">
                 <div>
-                    <div class="text-center text-4xl my-3 font-semibold text-xl viga-regular text-green-gradient">
+                    <div class="text-center text-4xl my-3 font-bold text-xl viga-regular">
                         Customer Details
                     </div>
                     <div class="mb-5">
-                        <label for="name" class="text-xl text-gray-500">Name
+                        <label for="name" class="text-xl font-semibold text-gray-900">Name
                         <span class="text-red-500">*</span>
                         </label>
                         <input
@@ -95,7 +106,7 @@ const handleSubmit = () => {
                                   focus:ring-2 focus:ring-green-600 focus:ring-opacity-20" />
                     </div>
                     <div class="mb-5">
-                        <label for="contact" class="text-xl text-gray-500 py-2">Phone Number
+                        <label for="contact" class="text-xl font-semibold text-gray-900 py-2">Phone Number
                             <span class="text-red-500">*</span>
                         </label>
                         <input
@@ -106,7 +117,7 @@ const handleSubmit = () => {
                                   focus:ring-2 focus:ring-green-600 focus:ring-opacity-20" />
                     </div>
                     <div class="mb-5">
-                        <label for="email" class="text-xl text-gray-500 py-2">Email
+                        <label for="email" class="text-xl py-2 font-semibold text-gray-900">Email
                         </label>
                         <input
                                 v-model="customer.email"
@@ -118,7 +129,7 @@ const handleSubmit = () => {
                 </div>
         </div>
             <div class="flex items-center justify-center flex-col">
-                <label class="text-xl text-gray-500">Select Branch</label>
+                <label class="text-xl font-semibold text-gray-900">Select Branch</label>
                 <RadioGroup @change="handleSubmit" v-model="selectedOptions" :options="options" class="my-3" />
             </div>
         </div>

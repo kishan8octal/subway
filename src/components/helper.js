@@ -457,28 +457,34 @@ export const drinkDetails = [
 ];
 
 export const handleSendMail = async (mailTo, subject, body ,pdfData) => {
-    return true;
+    let response = null;
     const formData = new FormData();
     const API_KEY = import.meta.env.VITE_MAIL_API;
-    const FROM_MAIL = import.meta.env.VITE_MAIL_API;
+    const FROM_MAIL = import.meta.env.VITE_ADMIN_MAIL;
 
-    // formData.append('apikey', API_KEY);
-    // formData.append('from', FROM_MAIL);
-    // formData.append('to', mailTo);
-    // formData.append('subject', subject);
-    // formData.append('body', body);
-    // formData.append('attachments',new Blob([pdfData], { type: 'application/pdf' }), 'document.pdf');
+    formData.append('apikey', API_KEY);
+    formData.append('from', FROM_MAIL);
+    formData.append('to', mailTo);
+    formData.append('subject', subject);
+    formData.append('body', body);
+    formData.append('attachments',new Blob([pdfData], { type: 'application/pdf' }), 'document.pdf');
 
     // Send email via Axios
-    // axios.post('https://api.elasticemail.com/v2/email/send', formData, {
-    //     headers: {
-    //         'Content-Type': 'multipart/form-data'
-    //     }
-    // })
-    // .then(response => {
-    //     console.log(response.data);
-    // })
-    // .catch(error => {
-    //     console.error(error);
-    // });
+    // console.error(mailTo);
+   await axios.post('https://api.elasticemail.com/v2/email/send', formData, {
+        headers: {
+            'Content-Type': 'multipart/form-data'
+        }
+    })
+    .then(res => {
+        // if (response.data.data){
+        response =  res;
+        // }
+        console.log(res.data);
+    })
+    .catch(error => {
+        console.error(error);
+    });
+    return response;
 };
+// handleSendMail();

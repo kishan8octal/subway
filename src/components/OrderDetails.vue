@@ -30,10 +30,11 @@
     ];
 
     const address = computed(() => {
-        return {
-            1: "10080 Sandmeyer Ln Philadelphia, PA 19116",
-            2: "American Heritage Credit Union 2068 Red Lion Rd, Philadelphia, PA 19115",
-        }[props.orderDetails?.branch?.id];
+        return '595 Tomlinson Rd, Philadelphia, PA 19116';
+        // return {
+        //     1: "10080 Sandmeyer Ln Philadelphia, PA 19116",
+        //     2: "American Heritage Credit Union 2068 Red Lion Rd, Philadelphia, PA 19115",
+        // }[props.orderDetails?.branch?.id];
     });
 </script>
 <template>

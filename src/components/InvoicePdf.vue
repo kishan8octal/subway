@@ -2,8 +2,9 @@
     import jsPDF from 'jspdf';
     import 'jspdf-autotable';
     import moment from 'moment';
-    import { computed, defineProps } from 'vue';
-    import RazorpayPayment from '../components/RazorpayPayment.vue';
+    import { computed, defineProps, defineEmits } from 'vue';
+    import { handleSendMail } from './helper';
+    // import RazorpayPayment from '../components/RazorpayPayment.vue';
 
     const props = defineProps({
         orderDetails:{
@@ -11,7 +12,8 @@
             required: true
         }
     });
-
+    
+    const emits = defineEmits(['orderSend']);
     const address = computed(() => {
        return '595 Tomlinson Rd, Philadelphia, PA 19116';
         // return {
@@ -20,7 +22,7 @@
         // }[props.orderDetails?.branch?.id];
     });
     
-    const printInvoice = () => {
+    const printInvoice = async () => {
         const doc = new jsPDF({
             orientation: 'portrait',
             unit: 'in',
@@ -106,7 +108,7 @@
         doc.text(`Your payable amount is ${props.orderDetails?.food?.price}`, 0.1, height);
 
     height+=0.4;
-        doc.text('contact us test@gmail.com', 0.1, height);
+        doc.text('23734subway@gmail.com', 0.1, height);
 
         // props.orderDetails.food.price
         // doc.autoPrint();
@@ -116,11 +118,11 @@
         doc.setFont("helvetica", "bold");
         doc.text('Thank you for your order.', getXWidth('Thank you for your order',doc), 5.9);
         
-        // doc.output('dataurlnewwindow');
-        doc.save('invoice')
-        
-        // let pdfData = doc.output();
-        // handleSendMail('kishan@eligocs.com','invoice','test invoice',pdfData);
+        let pdfData = doc.output();
+        if (!!customer.email?.length){
+            const response = await handleSendMail(customer.email,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
+            emits('orderSend',response)
+        }
     };
     
     const getXWidth = (text,doc) => {
@@ -129,15 +131,12 @@
         const xSide = (pageWidth - textWidth) / 2;
         return xSide;
     }
-    console.error(props.orderDetails);
 </script>
 <template>
     <div>
-        <RazorpayPayment @change="printInvoice" />
-<!--        <button class="text-black relative z-10" @click="printInvoice">Generate PDF</button>-->
+        <button
+                @click="printInvoice" class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none z-50">
+            Cash On delivery
+        </button>
     </div>
 </template>
-
-<!--2 km ni bar n open thavi jove web-->
-<!--squre up .com payment servce-->
-<!--zoho mail-->
