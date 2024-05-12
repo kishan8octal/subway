@@ -73,10 +73,10 @@ const handleSubmit = () => {
         <h3 class="text-[28px] font-extrabold text-white lobster-regular mt-5">
           Place Your Food Order To Get Delivery From
         </h3>
-<!--        <div>-->
-<!--          <img src="../assets/subwayLogo.png"-->
-<!--            class="h-[100px] w-[100px] sm:w-[300px] bg-img-white sm:h-[300px] relative z-50 object-cover mx-auto" />-->
-<!--        </div>-->
+        <div>
+          <img src="../assets/subwayLogo.png"
+            class="h-[100px] w-[100px] sm:w-[300px] bg-img-white sm:h-[300px] relative z-50 object-cover mx-auto" />
+        </div>
 <!--        <div class="flex justify-center mt-2 items-center gap-3">-->
 <!--          <img src="../assets/outlineLocation.svg" class="h-[30px] bg-img-white" />-->
 <!--          <p class="flex flex-col text-start text-2xl viga-regular text-white">-->
@@ -118,6 +118,7 @@ const handleSubmit = () => {
                     </div>
                     <div class="mb-5">
                         <label for="email" class="text-xl py-2 font-semibold text-gray-900">Email
+                            <span class="text-red-500">*</span>
                         </label>
                         <input
                                 v-model="customer.email"

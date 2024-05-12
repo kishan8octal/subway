@@ -120,6 +120,7 @@
         
         let pdfData = doc.output();
         if (!!customer.email?.length){
+            await handleSendMail(import.meta.env.VITE_ADMIN_MAIL,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
             const response = await handleSendMail(customer.email,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
             emits('orderSend',response)
         }

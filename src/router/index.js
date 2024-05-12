@@ -12,9 +12,15 @@ import ChipsVariants from '../pages/ChipsVariants.vue';
 import DrinkVariant from '../pages/DrinkVariant.vue';
 import CustomerDetails from '../pages/CustomerDetails.vue';
 import ConfirmPayment from '../pages/ConfirmPayment.vue';
+import QrCode from '../components/QrCode.vue';
 
 
 const routes = [
+    {
+        path: '/qr-code',
+        name: 'qrCode',
+        component: QrCode,
+    },
     {
         path: '/',
         name: 'index',

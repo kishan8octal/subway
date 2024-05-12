@@ -101,7 +101,7 @@ const handleNextPage = () =>{
                 </div>
             </div>
             <div class="flex justify-center items-center">
-                <Button @click="handleNextPage" variant="primary" class="mt-3 z-20">Next</button>
+                <Button @click="handleNextPage" variant="primary" class="mt-5 w-full max-w-2xl z-20">Next</button>
             </div>
         </div>
     </section>

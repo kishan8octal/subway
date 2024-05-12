@@ -467,7 +467,7 @@ export const handleSendMail = async (mailTo, subject, body ,pdfData) => {
     formData.append('to', mailTo);
     formData.append('subject', subject);
     formData.append('body', body);
-    formData.append('attachments',new Blob([pdfData], { type: 'application/pdf' }), 'document.pdf');
+    formData.append('attachments',new Blob([pdfData], { type: 'application/pdf' }), 'order.pdf');
 
     // Send email via Axios
     // console.error(mailTo);

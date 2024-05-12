@@ -38,7 +38,7 @@
             <Card v-if="isOrderSend">
                 <h1
                 class="text-xl">
-                    Order Send successfully Please check mail and download pdf for your orders</h1>
+                    Order Send successfully Please check mail temporary we accept cash only.</h1>
                 <Button variant="primary" class="mt-5" @click="handleBackToHome">
                     Back to Home
                 </Button>
