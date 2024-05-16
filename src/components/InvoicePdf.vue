@@ -104,11 +104,11 @@
             height+= 0.2;
             doc.text(`* ${item.name} ${item.variant} ${item.des}`, 0.1, height);
         });
-        height+= 0.4;
+        height+= 0.2;
         doc.text(`Your payable amount is ${props.orderDetails?.food?.price}`, 0.1, height);
 
-    height+=0.4;
-        doc.text('23734subway@gmail.com', 0.1, height);
+    height+=0.2;
+        doc.text('contact us 23734subway@gmail.com', 0.1, height);
 
         // props.orderDetails.food.price
         // doc.autoPrint();
@@ -120,9 +120,8 @@
         
         let pdfData = doc.output();
         if (!!customer.email?.length){
-            await handleSendMail(import.meta.env.VITE_ADMIN_MAIL,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
-            const response = await handleSendMail(customer.email,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
-            emits('orderSend',response)
+            await handleSendMail(customer.email,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
+            emits('orderSend');
         }
     };
     

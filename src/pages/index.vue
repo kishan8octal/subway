@@ -53,6 +53,15 @@ const handleSubmit = () => {
         isLoading.value = false;
         return false;
     }
+    
+    if (!(/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(String(customer?.value?.email).toLowerCase()))){
+        iziToast.error({
+            position:'topRight',
+            message: 'Enter valid email address.',
+        });
+        isLoading.value = false;
+        return false;
+    }
 
     store.dispatch("storeData", { branch: selectedOptions, customer: customer.value });
     setTimeout(() => {

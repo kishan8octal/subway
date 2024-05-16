@@ -21,12 +21,13 @@ const startTime = computed(() => {
 });
 
 const endTime = computed(() => {
-  return {
-    1: "1:00",
-    2: "1:15",
-    3: "1:30",
-    4: "1:45",
-  }[orderDetails.value.branch.id];
+    return "1:30";
+  // return {
+  //   1: "1:00",
+  //   2: "1:15",
+  //   3: "1:30",
+  //   4: "1:45",
+  // }[orderDetails.value.branch.id];
 });
 
 const handleDeliveryTime = (deliveryTime) => {
@@ -62,12 +63,12 @@ const handleDeliveryTime = (deliveryTime) => {
                 {{ startTime }} AM
               </div>
             </button>
-<!--            <button @click="handleDeliveryTime(endTime)"-->
-<!--              class="cursor-pointer rounded-lg [border:none] py-3 px-[25px] bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">-->
-<!--              <div class="relative text-base viga-regular text-white min-w-[38px] z-[1]">-->
-<!--                {{ endTime }} PM-->
-<!--              </div>-->
-<!--            </button>-->
+            <button @click="handleDeliveryTime(endTime)"
+              class="cursor-pointer rounded-lg [border:none] py-3 px-[25px] bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">
+              <div class="relative text-base viga-regular text-white min-w-[38px] z-[1]">
+                {{ endTime }} PM
+              </div>
+            </button>
           </div>
         </div>
       </div>

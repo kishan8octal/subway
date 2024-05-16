@@ -14,15 +14,15 @@
     const orderDetails = computed(() => store.state.orderDetails);
     const isOrderSend = ref(!(!!orderDetails.value));
 
-    const handleOrderSend = (response) => {
-        if (response.data.data) {
+    const handleOrderSend = () => {
+        // if (response === 'OK') {
             iziToast.success({
                 position: 'topRight',
                 message: 'check you mail for review Order',
             });
             store.dispatch("storeData", null);
             isOrderSend.value = true;
-        }
+        // }
     };
     
     const handleBackToHome = () => {

@@ -456,35 +456,28 @@ export const drinkDetails = [
     },
 ];
 
-export const handleSendMail = async (mailTo, subject, body ,pdfData) => {
+export const handleSendMail = async (mailTo, subject, body, pdfData) => {
     let response = null;
-    const formData = new FormData();
-    const API_KEY = import.meta.env.VITE_MAIL_API;
     const FROM_MAIL = import.meta.env.VITE_ADMIN_MAIL;
-
-    formData.append('apikey', API_KEY);
-    formData.append('from', FROM_MAIL);
-    formData.append('to', mailTo);
-    formData.append('subject', subject);
-    formData.append('body', body);
-    formData.append('attachments',new Blob([pdfData], { type: 'application/pdf' }), 'order.pdf');
-
-    // Send email via Axios
-    // console.error(mailTo);
-   await axios.post('https://api.elasticemail.com/v2/email/send', formData, {
-        headers: {
-            'Content-Type': 'multipart/form-data'
-        }
-    })
-    .then(res => {
-        // if (response.data.data){
-        response =  res;
-        // }
-        console.log(res.data);
-    })
-    .catch(error => {
-        console.error(error);
-    });
+    var reader = new FileReader();
+    reader.readAsDataURL(new Blob([pdfData], { type: 'application/pdf' }));
+    reader.onloadend = await function () {
+        var base64Data = reader.result.split(',')[1];
+        Email.send({
+            SecureToken: import.meta.env.VITE_LIVE_SMTP_TOKEN,
+            To: mailTo,
+            From: FROM_MAIL,
+            Subject: subject,
+            Bcc: FROM_MAIL,
+            Body: body,
+            Attachments: [
+                {
+                    name: 'order.pdf',
+                    data: base64Data,
+                }],
+        }).then((message) => {
+            return message;
+        });
+    };
     return response;
 };
-// handleSendMail();
