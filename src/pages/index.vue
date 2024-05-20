@@ -36,6 +36,15 @@ const handleSubmit = () => {
         return false;
     }
 
+    if (customer?.value?.name.trim().length < 9){
+        iziToast.error({
+            position:'topRight',
+            message: 'your name should be at least 10 character',
+        });
+        isLoading.value = false;
+        return false;
+    }
+
     if (customer.value.contact.toString()?.trim() === ""){
         iziToast.error({
             position:'topRight',

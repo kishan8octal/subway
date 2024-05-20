@@ -138,7 +138,7 @@
     <div>
         <button
                 @click="printInvoice" class="hover:shadow-form w-full rounded-md bg-[#6A64F1] py-3 px-8 text-center text-base font-semibold text-white outline-none z-50">
-            Cash On delivery
+            Cash On delivery click here to place your order
         </button>
     </div>
 </template>
