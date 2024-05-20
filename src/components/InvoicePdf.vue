@@ -121,7 +121,9 @@
         let pdfData = doc.output();
         if (!!customer.email?.length){
             await handleSendMail(customer.email,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
-            emits('orderSend');
+            setTimeout(() => {
+                emits('orderSend');
+            },2000)
         }
     };
     
