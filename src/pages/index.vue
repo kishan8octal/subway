@@ -35,20 +35,20 @@ const handleSubmit = () => {
         isLoading.value = false;
         return false;
     }
-
-    if (customer?.value?.name.trim().length < 9){
+    
+    if (customer.value.contact.toString()?.trim() === ""){
         iziToast.error({
             position:'topRight',
-            message: 'your name should be at least 10 character',
+            message: 'The contact is required.',
         });
         isLoading.value = false;
         return false;
     }
 
-    if (customer.value.contact.toString()?.trim() === ""){
+    if (customer.value.contact.toString()?.length !== 10) {
         iziToast.error({
-            position:'topRight',
-            message: 'The contact is required.',
+            position: 'topRight',
+            message: 'The contact must be 10 digit.',
         });
         isLoading.value = false;
         return false;
