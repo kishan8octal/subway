@@ -21,7 +21,7 @@ const startTime = computed(() => {
 });
 
 const endTime = computed(() => {
-    return "1:30";
+    return "12:30";
   // return {
   //   1: "1:00",
   //   2: "1:15",
