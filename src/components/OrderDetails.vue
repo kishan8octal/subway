@@ -28,13 +28,13 @@
         'foodCategory',
         'customer'
     ];
-
+    
     const address = computed(() => {
-        return '595 Tomlinson Rd, Philadelphia, PA 19116';
-        // return {
-        //     1: "10080 Sandmeyer Ln Philadelphia, PA 19116",
-        //     2: "American Heritage Credit Union 2068 Red Lion Rd, Philadelphia, PA 19115",
-        // }[props.orderDetails?.branch?.id];
+        return {
+            1: "595 Tomlinson Rd, Philadelphia, PA 19116",
+            2: "2060 Red Lion Rd, Philadelphia, PA 19115",
+            3: "9880 Bustleton Ave, Philadelphia, PA 19115",
+        }[props.orderDetails?.branch?.id];
     });
 </script>
 <template>

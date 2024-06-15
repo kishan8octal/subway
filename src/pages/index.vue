@@ -11,7 +11,6 @@ import axios from 'axios';
 
 const options = [
     { name: "William Loesche Elementary School", id: 1 },
-  // { name: "Medical Office", id: 1 },
     { name: "American Heritage credit union", id: 2 },
     { name: "Einstein Physicians Center One", id: 3 },
 ];
