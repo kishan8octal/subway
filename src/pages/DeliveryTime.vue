@@ -11,23 +11,23 @@ const isDetailsShow = ref(false)
 const isLoading = ref(false);
 
 const startTime = computed(() => {
-    return "11:00";
-  // return {
-  //   1: "11:00",
-  //   2: "11:15",
-  //   3: "11:30",
+    // return "11:00";
+  return {
+    1: "11:00",
+    2: "12:00",
+    3: "12:30",
   //   4: "11:45",
-  // }[orderDetails.value.branch.id];
+  }[orderDetails.value.branch.id];
 });
 
 const endTime = computed(() => {
-    return "12:30";
-  // return {
-  //   1: "1:00",
-  //   2: "1:15",
-  //   3: "1:30",
-  //   4: "1:45",
-  // }[orderDetails.value.branch.id];
+    // return "1:30";
+  return {
+    1: "1:30",
+    2: "2:00",
+    3: "2:30",
+    // 4: "1:45",
+  }[orderDetails.value.branch.id];
 });
 
 const handleDeliveryTime = (deliveryTime) => {
