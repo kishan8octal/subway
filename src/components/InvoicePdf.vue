@@ -123,14 +123,12 @@
         doc.text('Thank you for your order.', getXWidth('Thank you for your order',doc), 5.9);
         
         let pdfData = doc.output();
-        const pdfUrl = URL.createObjectURL(new Blob([pdfData], { type: 'application/pdf' }));
-        window.open(pdfUrl);
-        // if (!!customer.email?.length){
-        //     await handleSendMail(customer.email,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
-        //     setTimeout(() => {
-        //         emits('orderSend');
-        //     },2000)
-        // }
+        if (!!customer.email?.length){
+            await handleSendMail(customer.email,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
+            setTimeout(() => {
+                emits('orderSend');
+            },2000)
+        }
     };
     
     const getXWidth = (text,doc) => {
