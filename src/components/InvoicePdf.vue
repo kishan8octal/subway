@@ -108,9 +108,12 @@
         height+= 0.2;
         doc.text(`Your payable amount is ${props.orderDetails?.food?.price}`, 0.1, height);
 
-    height+=0.2;
+        height+=0.2;
         doc.text('contact us 23734subway@gmail.com', 0.1, height);
-
+        if (props?.orderDetails?.requestBox.trim().length){
+            height += 0.2;
+            doc.text(`requests: ${props?.orderDetails?.requestBox}`, 0.1, height);
+        }
         // props.orderDetails.food.price
         // doc.autoPrint();
         doc.setFillColor(204, 204,204,0);

@@ -5,14 +5,24 @@ import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
 import Card from '../components/Card.vue';
+import iziToast from 'izitoast';
 
 const router = useRouter();
 const store = useStore();
 const isLoading = ref(false)
+const requestBox = ref('');
 const orderDetails = computed(() => store.state.orderDetails);
 const navigateToDrinkDetails = (item) => {
+    if (requestBox.value.length > 50){
+        iziToast.error({
+            position:'topRight',
+            message: 'Please enter less then 50 character.',
+        });
+        return false;
+    }
     isLoading.value = true;
     orderDetails.value.chips = item;
+    orderDetails.value.requestBox = requestBox.value;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
         isLoading.value = false;
@@ -55,6 +65,17 @@ const navigateToDrinkDetails = (item) => {
                             </div>
                         </div>
                     </Card>
+                </div>
+                <div>
+                    <div class="mb-5">
+                        <label class="text-xl font-semibold text-gray-900 py-2">Add request</label>
+                        <textarea rows="5" @change="handleRequestBox"
+                                v-model="requestBox"
+                                type="number" name="contact" id="contact" placeholder="Enter your request"
+                                class="w-full rounded-lg border my-2 shadow-[rgba(0,_0,_0,_0.24)_0px_3px_8px]
+                                 border-green-600 bg-white py-3 px-6 text-xl font-medium text-[#6B7280] outline-none
+                                  focus:ring-2 focus:ring-green-600 focus:ring-opacity-20" />
+                    </div>
                 </div>
             </div>
         </div>
