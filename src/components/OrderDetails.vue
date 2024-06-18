@@ -26,7 +26,8 @@
         'deliveryTime',
         'food',
         'foodCategory',
-        'customer'
+        'customer',
+        'requestBox'
     ];
     
     const address = computed(() => {
