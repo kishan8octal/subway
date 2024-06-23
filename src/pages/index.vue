@@ -154,7 +154,7 @@ const handleSubmit = () => {
         </div>
         <Button 
                 variant="destructive"
-                class="p-4 text-lg"
+                class="py-5 text-xl"
                 :loading="isLoading"
                 @click="handleSubmit"
         >Next</Button>

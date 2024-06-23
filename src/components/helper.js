@@ -458,13 +458,19 @@ export const drinkDetails = [
 
 export const handleSendMail = async (mailTo, subject, body, pdfData) => {
     let response = null;
-    const FROM_MAIL = import.meta.env.VITE_ADMIN_MAIL;
+    const App = import.meta.env.VITE_APP_ENV;
+    const FROM_MAIL = App !== 'local' ? import.meta.env.VITE_ADMIN_MAIL
+        : import.meta.env.VITE_ADMIN_MAIL_LOCAL;
     var reader = new FileReader();
+    const TOKEN = App !== 'local'
+        ?
+        import.meta.env.VITE_LIVE_SMTP_TOKEN
+        : import.meta.env.VITE_SMTP_TOKEN_LOCAL;
     reader.readAsDataURL(new Blob([pdfData], { type: 'application/pdf' }));
     reader.onloadend = await function () {
         var base64Data = reader.result.split(',')[1];
         Email.send({
-            SecureToken: import.meta.env.VITE_LIVE_SMTP_TOKEN,
+            SecureToken: TOKEN,
             To: mailTo,
             From: FROM_MAIL,
             Subject: subject,

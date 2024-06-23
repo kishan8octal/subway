@@ -74,6 +74,9 @@
                             <div v-if="!!orderDetails?.deliveryTime" class="text-start  text-black viga-regular font-thin mt-2">
                                 Your Delivery Time | {{ orderDetails?.deliveryTime }}
                             </div>
+                            <div v-if="!!orderDetails?.requestBox" class="text-start  text-black viga-regular font-thin mt-2">
+                                Your Request | {{ orderDetails?.requestBox }}
+                            </div>
                             <hr class="h-px my-[12px] bg-gray-300 border-0 dark:bg-gray-700">
                             <div class="flex w-full gap-[5px] text-[18px]">
                                 <span class="text-[#7DA640] lobster-regular font-extrabold">{{ orderDetails?.food?.name.split(' ').slice(1).join(' ') }}</span>

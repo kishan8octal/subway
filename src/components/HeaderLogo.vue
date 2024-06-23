@@ -61,6 +61,7 @@
                 break;
             case 'chipsVarient':
                 delete orderDetails.value.sauces;
+                delete orderDetails.value.requestBox;
                 break;
             case 'drinkVarient':
                 delete orderDetails.value.chips;
