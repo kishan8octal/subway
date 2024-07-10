@@ -11,22 +11,20 @@ const isDetailsShow = ref(false)
 const isLoading = ref(false);
 
 const startTime = computed(() => {
-    // return "11:00";
   return {
     1: "11:00",
     2: "12:00",
     3: "12:30",
-  //   4: "11:45",
+    4: "12:15",
   }[orderDetails.value.branch.id];
 });
 
 const endTime = computed(() => {
-    // return "1:30";
   return {
     1: "1:30",
     2: "2:00",
     3: "2:30",
-    // 4: "1:45",
+    4: "2:45",
   }[orderDetails.value.branch.id];
 });
 
@@ -44,9 +42,6 @@ const handleDeliveryTime = (deliveryTime) => {
   <div class="z-50">
     <HeaderLogo :isLoading="isLoading" />
     <div class="h-full">
-<!--        <div class="z-10 relative top-0">-->
-<!--            <img class="z-10 h-[350px] mx-auto" alt="Illustartion pattern" src="../assets/Illustartion.png" />-->
-<!--        </div>-->
       <div class="z-10 relative mx-auto p-5 mt-8 sm:p-20">
         <div class="text-center text-3xl mt-20 bg-white p-5">
           <div class="items-start justify-start py-0">

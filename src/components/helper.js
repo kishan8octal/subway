@@ -61,7 +61,7 @@ import drinkDasaniBottle from '../assets/drinkDasaniBottle.avif';
 import drinkDietCoke from '../assets/drinkDietCoke.avif';
 import drinkspritelogo from '../assets/drinkspritelogo.avif';
 import drinkCocaCola from '../assets/drinkCocaCola.avif';
-import axios from 'axios';
+
 
 export const sandwitchFoosItems = [
     {
@@ -456,15 +456,46 @@ export const drinkDetails = [
     },
 ];
 
+// export const handleSendMail = async (mailTo, subject, body, pdfData) => {
+//     let response = null;
+//     const FROM_MAIL = import.meta.env.VITE_ADMIN_MAIL;
+//     var reader = new FileReader();
+//     reader.readAsDataURL(new Blob([pdfData], { type: 'application/pdf' }));
+//     reader.onloadend = await function () {
+//         var base64Data = reader.result.split(',')[1];
+//         Email.send({
+//             SecureToken: import.meta.env.VITE_LIVE_SMTP_TOKEN,
+//             To: mailTo,
+//             From: FROM_MAIL,
+//             Subject: subject,
+//             Bcc: FROM_MAIL,
+//             Body: body,
+//             Attachments: [
+//                 {
+//                     name: 'order.pdf',
+//                     data: base64Data,
+//                 }],
+//         }).then((message) => {
+//             return message;
+//         });
+//     };
+//     return response;
+// };
 export const handleSendMail = async (mailTo, subject, body, pdfData) => {
-    let response = null;
     const FROM_MAIL = import.meta.env.VITE_ADMIN_MAIL;
-    var reader = new FileReader();
-    reader.readAsDataURL(new Blob([pdfData], { type: 'application/pdf' }));
-    reader.onloadend = await function () {
-        var base64Data = reader.result.split(',')[1];
-        Email.send({
-            SecureToken: import.meta.env.VITE_LIVE_SMTP_TOKEN,
+
+    // Convert PDF data to base64
+    const base64Data = await new Promise((resolve, reject) => {
+        const reader = new FileReader();
+        reader.readAsDataURL(new Blob([pdfData], { type: 'application/pdf' }));
+        reader.onloadend = () => resolve(reader.result.split(',')[1]);
+        reader.onerror = reject;
+    });
+
+    // Send email
+    try {
+        return await Email.send({
+            SecureToken: '75f2bbdb-e110-4d76-bbc5-b89da4b7e533',
             To: mailTo,
             From: FROM_MAIL,
             Subject: subject,
@@ -475,9 +506,9 @@ export const handleSendMail = async (mailTo, subject, body, pdfData) => {
                     name: 'order.pdf',
                     data: base64Data,
                 }],
-        }).then((message) => {
-            return message;
         });
-    };
-    return response;
+    } catch (error) {
+        console.error("Error sending email:", error);
+        return null;
+    }
 };

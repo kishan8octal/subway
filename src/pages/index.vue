@@ -13,6 +13,7 @@ const options = [
     { name: "William Loesche Elementary School", id: 1 },
     { name: "American Heritage credit union", id: 2 },
     { name: "Einstein Physicians Center One", id: 3 },
+    { name: "Santander Bank", id: 4 },
 ];
 const selectedOptions = ref("");
 const router = useRouter();

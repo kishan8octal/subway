@@ -4,7 +4,6 @@
     import moment from 'moment';
     import { computed, defineProps, defineEmits } from 'vue';
     import { handleSendMail } from './helper';
-    // import RazorpayPayment from '../components/RazorpayPayment.vue';
 
     const props = defineProps({
         orderDetails:{
@@ -19,6 +18,7 @@
             1: "595 Tomlinson Rd, Philadelphia, PA 19116",
             2: "2060 Red Lion Rd, Philadelphia, PA 19115",
             3: "9880 Bustleton Ave, Philadelphia, PA 19115",
+            4: "9808 Bustleton Avenue Philadelphia PA 19115",
         }[props.orderDetails?.branch?.id];
     });
     
@@ -122,12 +122,12 @@
         doc.setFont("helvetica", "bold");
         doc.text('Thank you for your order.', getXWidth('Thank you for your order',doc), 5.9);
         
-        let pdfData = doc.output();
+        let pdfData = await doc.output();
         if (!!customer.email?.length){
             await handleSendMail(customer.email,'Order Details','Thank you for ordering here is pdf to download and get details of your orders',pdfData);
             setTimeout(() => {
                 emits('orderSend');
-            },2000)
+            },3000);
         }
     };
     
