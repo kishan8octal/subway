@@ -44,10 +44,12 @@ const handleNextPage = () =>{
                     variant = 'More';
                     break;
             }
+            if(!variant){
+                return null;
+            }
             return { ...item, variant };
         }
     }).filter(Boolean);
-    
     orderDetails.value.veggies = veggies;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {

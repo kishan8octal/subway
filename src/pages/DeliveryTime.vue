@@ -11,21 +11,20 @@ const isDetailsShow = ref(false)
 const isLoading = ref(false);
 
 const startTime = computed(() => {
-  return {
-    1: "11:00",
-    2: "12:00",
-    3: "12:30",
-    4: "12:15",
-  }[orderDetails.value.branch.id];
+    return {
+        1: "11:00",
+        2: "12:00",
+        3: "12:30",
+    }[orderDetails.value.branch.id];
 });
 
 const endTime = computed(() => {
-  return {
-    1: "1:30",
-    2: "2:00",
-    3: "2:30",
-    4: "2:45",
-  }[orderDetails.value.branch.id];
+    return {
+        1: "1:30",
+        2: "2:00",
+        3: "2:30",
+        4: "2:45",
+    }[orderDetails.value.branch.id];
 });
 
 const handleDeliveryTime = (deliveryTime) => {
@@ -51,14 +50,14 @@ const handleDeliveryTime = (deliveryTime) => {
             </h2>
           </div>
           <div class="flex justify-center gap-3 mt-8">
-            <button
+            <button v-if="!!startTime"
               class="cursor-pointer rounded-lg [border:none] py-3 px-[25px] bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">
               <div @click="handleDeliveryTime(startTime)"
                 class="relative text-base viga-regular text-white min-w-[38px] z-[1]">
                 {{ startTime }} AM
               </div>
             </button>
-            <button @click="handleDeliveryTime(endTime)"
+            <button v-if="!!endTime" @click="handleDeliveryTime(endTime)"
               class="cursor-pointer rounded-lg [border:none] py-3 px-[25px] bg-[transparent] [background:linear-gradient(98.81deg,_#53e88b,_#15be77)]">
               <div class="relative text-base viga-regular text-white min-w-[38px] z-[1]">
                 {{ endTime }} PM

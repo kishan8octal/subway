@@ -482,8 +482,7 @@ export const drinkDetails = [
 //     return response;
 // };
 export const handleSendMail = async (mailTo, subject, body, pdfData) => {
-    const FROM_MAIL = import.meta.env.VITE_ADMIN_MAIL;
-
+    const FROM_MAIL = '23734subway@gmail.com';
     // Convert PDF data to base64
     const base64Data = await new Promise((resolve, reject) => {
         const reader = new FileReader();
@@ -495,7 +494,7 @@ export const handleSendMail = async (mailTo, subject, body, pdfData) => {
     // Send email
     try {
         return await Email.send({
-            SecureToken: '75f2bbdb-e110-4d76-bbc5-b89da4b7e533',
+            SecureToken: 'bb01a740-9eba-4e4a-9ea9-d51cf4943fb1',
             To: mailTo,
             From: FROM_MAIL,
             Subject: subject,

@@ -1,6 +1,7 @@
 <script setup>
 import HeaderLogo from '../components/HeaderLogo.vue';
 import { saucesDetails } from '../components/helper';
+import Button from '../components/Button.vue';
 import { useStore } from 'vuex';
 import { computed, ref } from 'vue';
 import { useRouter } from 'vue-router';
@@ -10,9 +11,14 @@ const router = useRouter();
 const store = useStore();
 const isLoading = ref(false)
 const orderDetails = computed(() => store.state.orderDetails);
-const chipsDetails = (item) => {
-    isLoading.value = true;
-    orderDetails.value.sauces = item;
+
+const souceArray =  ref(Array.from({ length: saucesDetails.length }, () => false));
+
+const chipsDetails = () => {
+    // isLoading.value = true;
+    const selectedItem = saucesDetails.filter((item, index) => souceArray.value[index] === true);
+    // saucesDetails
+    orderDetails.value.sauces = selectedItem;
     store.dispatch('storeData', orderDetails.value);
     setTimeout(() => {
         isLoading.value = false;
@@ -25,14 +31,16 @@ const chipsDetails = (item) => {
         <HeaderLogo :isLoading="isLoading" />
         <div class="container mx-auto py-10 px-5 mt-24">
             <div class="z-20 relative bottom-3 flex justify-center gap-3 lobster-regular text-center">
-                <!-- <h1 class="text-black text-3xl">Sauces</h1> -->
                 <span class="text-white text-3xl">
                     Select Your Sauces
                 </span>
             </div>
             <div class="mt-[2rem] grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-8">
-                <div v-for="(item, index) in saucesDetails" :key="index" @click="chipsDetails(item)" class="relative">
-                    <Card class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]">
+                <div v-for="(item, index) in saucesDetails"
+                     @click="souceArray[index] = !souceArray[index]"
+                     :key="index" class="relative">
+                    <Card class="bg-white shadow-[0px_0px_50px_rgba(90,_108,_234,_0.2)]"
+                    :class="souceArray[index] ? 'border border-red-600 ring-2 ring-red-600 ring-opacity-20' : ''">
                         <div class="flex items-center gap-5">
                             <div v-if="item.image">
                                 <img :src="item.image" alt="cheese variants"
@@ -49,6 +57,9 @@ const chipsDetails = (item) => {
                         </div>
                     </Card>
                 </div>
+            </div>
+            <div class="flex justify-center items-center">
+                <Button @click="chipsDetails" variant="primary" class="mt-5 py-5 text-xl w-full max-w-2xl z-20">Next</button>
             </div>
         </div>
     </section>

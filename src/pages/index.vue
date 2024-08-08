@@ -25,7 +25,6 @@ const customer = ref({
     email:''
 });
 
-
 const handleSubmit = () => {
     isLoading.value = true;
     if (customer.value.name?.trim() === ""){
@@ -47,7 +46,7 @@ const handleSubmit = () => {
     }
 
     if (customer.value.contact.toString()?.length !== 10) {
-        iziToast.error({
+        iziToast.error({    
             position: 'topRight',
             message: 'The contact must be 10 digit.',
         });
